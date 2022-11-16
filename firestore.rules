@@ -1,0 +1,211 @@
+rules_version = '2';
+function isComment(comment){
+return comment.text.size()>1
+      &&comment.text.size()<20
+      &&comment.size()==4
+      &&comment.userId is string
+      &&comment.comment is string
+      &&comment.token is string
+      &&comment.username is string
+}
+
+function isValidPost(data){
+return data.size()<=25
+&& data.text is string
+&& data.text.size()>1
+&& data.text.size()<250
+&& data.userId is string
+&& data.token is string
+&& data.username is string
+&& data.createdAt is string
+&& data.likes is number
+&& data.comments is number
+&& data.shares is number
+&& data.option1 is string
+&& data.option2 is string
+&& data.option3 is string
+&& data.option4 is string
+&& data.votes1 is number
+&& data.votes2 is number
+&& data.votes3 is number
+&& data.votes4 is number
+&& data.avatar is string
+&& data.Ravatar is string
+&& data.Rusername is string
+&& data.Rtext is string
+&& data.Rtext.size()>1
+&& data.Rtext.size()<100
+
+}
+
+
+function isValidMessage(){
+  return request.resource.data.userId==request.auth.uid
+  }
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+  // match /{document=**}{
+  // allow write,read
+  // }
+   
+
+
+function checkUsername(username){
+return get(/databases/$(database)/documents/users/$(username)).data.userId
+}
+  match /users/{usernameID} {
+  allow create;
+  allow update: if request.auth.uid!=null
+  allow read;
+  
+           match /followingNUM/{folwId}{
+           allow write;
+           allow update: if request.auth.uid!=null
+            && checkUsername(folwId)==request.auth.uid
+           allow read;
+           }
+           match /followersNUM/{folloId}{
+           allow write;
+           allow read;
+           }
+  
+  
+           match /following/{followingId}{
+           
+          
+           allow create: if request.auth.uid!=null
+            && checkUsername(usernameID)==request.auth.uid
+           allow read;
+           allow update: if request.auth.uid!=null
+           allow delete;
+           }
+           match /followers/{followersId}{
+          
+           allow create: if request.auth.uid!=null
+            && checkUsername(followersId)==request.auth.uid
+            
+            
+          
+      
+           allow update: if request.auth.uid!=null
+           allow read;
+           allow delete: if request.auth.uid!=null
+            && checkUsername(followersId)==request.auth.uid
+           
+           
+           }
+           match /retweets/{retweetId}{
+           allow write:if request.auth.uid!=null
+            
+            && request.auth.uid==checkUsername(usernameID)
+            
+           allow read;
+           }
+           match /likedposts/{likedId}{
+           allow create:if request.auth.uid!=null
+           && checkUsername(usernameID)==request.auth.uid
+           allow update:if request.auth.uid!=null
+           && checkUsername(usernameID)==request.auth.uid
+           allow delete:if request.auth.uid!=null
+           && checkUsername(usernameID)==request.auth.uid
+            
+           allow read;
+           }
+           match /notifications/{notiId}{
+           allow write:if request.auth.uid!=null
+           
+           allow read:if request.auth.uid!=null
+           }
+           match /votes/{voteId}{
+           allow create:if request.auth.uid!=null
+           && request.auth.uid==checkUsername(request.resource.data.Rusername)
+           allow update: if false
+           allow delete: if false
+           allow read:if request.auth.uid!=null
+           }
+          
+           match /retweetsMettekst/{ retweetsMettekstId}{
+           allow write:if request.auth.uid!=null
+           
+           allow read:if request.auth.uid!=null
+           }
+         
+  }
+  
+  match /posts/{postID} {
+  allow create: if request.auth.uid!=null
+  && request.resource.data.userId==request.auth.uid
+  //&& isValidPost(request.resource.data)
+  allow read;
+  allow update: if request.auth.uid!=null
+  // (!request.resource.data.diff(resource.data).affectedKeys()
+  //       .hasAny(['likes', 'comments','shares','votes1','votes2','votes3','votes4']))
+         
+  allow delete:if false
+        
+  
+  }
+  match /comments/{commentID} {
+  allow create:if request.auth.uid!=null
+            && request.resource.data.userId==request.auth.uid;
+            allow update:if false
+  allow read;
+   allow delete:if false
+               
+  }
+  match /hashtrends/{hashtrendsID} {
+  allow create:if request.auth.uid!=null
+  && request.resource.data.size()==3
+   && request.resource.data.hashtag is string
+   && request.resource.data.postsCount is number
+   
+   allow update:if request.auth.uid!=null
+   allow delete:if false
+ 
+   
+   
+  
+           
+  allow read;
+  }
+  match /messages/{messagesID} {
+   function checkreceiverAccesRoom(){
+           return get(/databases/$(database)/documents/messages/$(messagesID)).data.receiverUsername
+           }
+           function checksenderAccesRoom(){
+           return get(/databases/{database}/documents/messages/$(messagesID)).data.senderUsername
+           }
+  allow create: if request.auth.uid!=null
+           && request.resource.data.userId==request.auth.uid
+           
+  allow read:if request.auth.uid!=null
+  allow delete:if false
+            
+            
+           
+            
+  
+          
+           
+           match /messages/{roomId}{
+          
+            allow create: if request.auth.uid!=null
+            && request.resource.data.userId==request.auth.uid
+            
+           
+            &&( request.resource.data.username==checkreceiverAccesRoom()
+             || request.resource.data.username==checksenderAccesRoom())
+            allow read:if request.auth.uid!=null
+            && request.resource.data.userId==request.auth.uid
+            
+           
+            &&( request.resource.data.username==checkreceiverAccesRoom()
+             || request.resource.data.username==checksenderAccesRoom())
+            allow update: if false;
+            allow delete: if false
+            }
+         
+  }
+  
+  }}

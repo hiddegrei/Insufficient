@@ -1,0 +1,215 @@
+.post__footer {
+  /* position: absolute; */
+  /* bottom: 20; */
+  display: flex;
+  align-items: center;
+  color: white;
+
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post__footer__option {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.post__footer__option--widget {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+.post__commentsContainer {
+  display: grid;
+  justify-content: center;
+  z-index: 100;
+  flex-direction: column;
+}
+.comments {
+  display: flex;
+
+  border-radius: 20px;
+  z-index: 100;
+  flex-direction: column;
+  background-color: white;
+  border: 5px solid black;
+  color: black;
+  width: 500px;
+  height: 500px;
+}
+.comments__body {
+  display: flex;
+  flex-direction: column;
+  height: 390px;
+}
+.comments > button {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 20px;
+  background-color: red;
+}
+.comments > button:hover {
+  cursor: pointer;
+}
+.post__comments__header {
+  display: flex;
+  place-content: center;
+
+  border-bottom: 1px solid white;
+}
+
+.comments__input > form {
+  flex: 1;
+  border-radius: 30px;
+  padding: 10px;
+  border: none;
+}
+.post__form__button {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 20px !important;
+  height: 30px !important;
+  margin-top: 20px !important;
+  margin-left: auto !important;
+}
+.post__form__button {
+  cursor: pointer;
+}
+.comments__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+  border-top: 1px solid lightgray;
+}
+.comments__footer > form {
+  flex: 1;
+  display: flex;
+}
+.comments__footer > form > input {
+  border-radius: 30px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid black;
+}
+.comments__footer > form > button {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-size: 25;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 20px !important;
+  height: 30px !important;
+  margin-top: 20px !important;
+  margin-left: auto !important;
+  padding: 20px;
+}
+.comments__footer > form > button:hover {
+  cursor: pointer;
+}
+
+.repeat__window {
+  display: flex;
+  border-radius: 20px;
+  z-index: 100;
+  flex-direction: column;
+  background-color: white;
+  border: 5px solid black;
+  color: white;
+  min-width: 250px;
+  min-width: 300px;
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+.repeat__closeButton {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid var(--twitter-background);
+}
+
+.tweetBox__retweetBody {
+  display: flex;
+  max-height: 180px;
+  max-width: 200px;
+  align-items: flex-start;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+  place-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.retweetBody__avatar {
+  padding: 10px;
+}
+.retweetBody__profile__pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: flex;
+}
+.retweetBody_BodyvanBody {
+  padding: 10px;
+}
+.retweetBody__BodyvanBody__header__headerText > h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: grey;
+}
+.retweetBody__BodyvanBody__header__headerSpecial {
+  font-weight: 600;
+  font-size: 12px;
+  color: gray;
+}
+.retweetBody__BodyvanBody__header__badge {
+  font-size: 14px !important;
+  color: var(--twitter-color);
+}
+.retweetBody__BodyvanBody__header__headerDescription {
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: black;
+}
+.retweetBody__BodyvanBody__header__img {
+  border-radius: 20px;
+  height: 120px;
+  width: 120px;
+  margin-right: 5px;
+}
+.maxchar {
+  display: flex;
+  text-align: center;
+  z-index: 100;
+  position: absolute;
+  color: black;
+  margin-left: 85%;
+  font-size: 15px;
+  font-weight: bold;
+}
+.audio2 {
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  margin-left: 11%;
+  width: 100px;
+}
+.iconChat:hover {
+  background-color: blue;
+}

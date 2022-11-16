@@ -1,0 +1,87 @@
+.edit {
+  flex: 0.4;
+  border-right: 1px solid var(--twitter-background);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 1;
+}
+.edit::-webkit-scrollbar {
+  display: none;
+}
+
+.edit__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-background);
+  padding: 15px 20px;
+}
+.edit__header > h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+.edit__image {
+  display: flex;
+  border-bottom: 1px solid #ebebeb;
+  padding: 30px;
+  justify-content: space-between;
+}
+.edit__name {
+  display: flex;
+  border-bottom: 1px solid #ebebeb;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px;
+}
+.edit__name > h3 {
+  margin-left: 10px;
+}
+.edit__name > h2 {
+  margin-right: 10px;
+}
+
+.edit__bio {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  justify-content: space-between;
+}
+
+.edit__bio__input {
+  border: none;
+  width: 100%;
+  height: 30px;
+  display: flex;
+}
+.edit__bio > h3 {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.edit__name:hover {
+  background-color: var(--twitter-background);
+}
+.edit__bio:hover {
+  background-color: var(--twitter-background);
+}
+.edit__image:hover {
+  background-color: var(--twitter-background);
+}
+.edit__image__icon {
+  cursor: pointer;
+}
+.maxchar2 {
+  display: flex;
+  text-align: center;
+  z-index: 100;
+  margin-left: 3px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.bio__input {
+  height: 100%;
+  width: 100%;
+}

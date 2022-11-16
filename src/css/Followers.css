@@ -1,0 +1,48 @@
+.followers {
+  flex: 0.4;
+  border-right: 1px solid var(--twitter-background);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 1;
+}
+.followers::-webkit-scrollbar {
+  display: none;
+}
+
+.followers__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-background);
+  padding: 15px 20px;
+}
+.followers__header > h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+.followers__optie {
+  display: flex;
+  padding: 20px;
+
+  cursor: pointer;
+  border-bottom: 2px solid #f6f6f6;
+}
+
+.followers__optie:hover {
+  background-color: #ebebeb;
+}
+.followers__optie__info > h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.followers__optie__info {
+  margin-left: 15px;
+}
+
+a {
+  text-decoration: none !important;
+  color: black;
+}

@@ -1,0 +1,122 @@
+.tweetbox {
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  padding-right: 10px;
+  height: 150px;
+}
+.tweetBox__extend {
+  height: 450px !important;
+}
+
+.tweetBox > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweetBox__input {
+  padding: 10px;
+  display: flex;
+}
+.tweetBox__input > input {
+  flex: 1;
+  margin-left: 20px;
+  font-size: 20px;
+  border: none;
+}
+.maxchar2 {
+  display: flex;
+  text-align: center;
+  z-index: 100;
+  margin-left: 3px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.bytes {
+  color: black;
+}
+.addedImage {
+  width: 35px;
+  height: 35px;
+}
+.addedImageCon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tweetBox__tweetButton {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 30px !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+  margin-left: auto !important;
+}
+.tweetBox__tweetbutton {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.tweetBox__tweetButtonO {
+  opacity: 0.5;
+}
+
+.tweetBox__footer {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.tweetBox__2 {
+  padding-bottom: 10px;
+
+  padding-right: 10px;
+  height: 150px;
+}
+.tweetBox__2 > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet__poll {
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.repeat__closeButton {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid var(--twitter-background);
+}
+.tweet__poll__input {
+  display: flex;
+
+  align-items: center;
+  background-color: var(--twitter-background);
+  padding: 10px;
+  border-radius: 20px;
+}
+.pickerContainer {
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 210px;
+  left: 37%;
+}
+.picker__button {
+  color: white;
+}

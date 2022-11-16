@@ -1,0 +1,25 @@
+{
+  "short_name": "SocialHit",
+  "name": "SocialHit-app",
+  "icons": [
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/twitterclone-6c140.appspot.com/o/shortlogoSocialHit.jpg?alt=media&token=68b2e724-0787-4d13-91ed-4001379e11ba",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/twitterclone-6c140.appspot.com/o/shortlogoSocialHit.jpg?alt=media&token=68b2e724-0787-4d13-91ed-4001379e11ba",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/twitterclone-6c140.appspot.com/o/shortlogoSocialHit.jpg?alt=media&token=68b2e724-0787-4d13-91ed-4001379e11ba",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

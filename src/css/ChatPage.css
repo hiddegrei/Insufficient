@@ -1,0 +1,38 @@
+.chat {
+  flex: 0.4;
+  border-right: 1px solid var(--twitter-background);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 1;
+}
+.chat::-webkit-scrollbar {
+  display: none;
+}
+
+.chat__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-background);
+  padding: 15px 20px;
+}
+.chat__header > h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.chat__input {
+  display: flex;
+  align-items: center;
+  background-color: var(--twitter-background);
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.chat__input > input {
+  border: none;
+  background-color: var(--twitter-background);
+}

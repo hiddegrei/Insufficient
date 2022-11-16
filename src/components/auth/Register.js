@@ -1,0 +1,161 @@
+import React, { useState, useEffect } from "react";
+import "../../css/Login.css";
+import { Link, useHistory } from "react-router-dom";
+import { db, auth, storage } from "../../firebase";
+import { useStateValue } from "../../Stateprovider";
+
+function Register() {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [{ user, handle }, dispatch] = useStateValue();
+  const [open, setOpen] = useState(false);
+
+  const register = (e) => {
+    e.preventDefault();
+
+    var newemail = email.replace(/\s+/g, "");
+
+    if (username && username != "undefined") {
+      db.collection("users")
+        .where("username", "==", username)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            return alert(username + ":this username is already taken");
+          } else {
+            auth
+              .createUserWithEmailAndPassword(newemail, password)
+              .then((userCredential) => {
+                // Signed in
+                var newuser = userCredential.user;
+
+                db.collection("users").doc(username).set({
+                  username: username,
+                  email: newuser.email,
+                  userId: newuser.uid,
+                  imageUrl: "",
+                  bio: "",
+                });
+
+                var today = new Date();
+                for (let j = 0; j < 12; j++) {
+                  let months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
+
+                  var year = today.getFullYear();
+                  var month = j;
+                  var newDate = new Date(year, j, 0);
+                  var newDays = newDate.getDate();
+                  console.log(year, month, newDays);
+
+                  var today2 = new Date();
+                  var day2 = today.getDate();
+                  var month2 = today.getMonth();
+                  var year2 = today.getFullYear();
+                  let avaiTrue = false;
+                  for (let i = 1; i < newDays + 1; i++) {
+                    if (year === year2 && month === month2 && i === day2) {
+                      avaiTrue = true;
+                    }
+                    if (avaiTrue) {
+                      db.collection("users")
+                        .doc(username)
+                        .collection("calender")
+                        .doc(`${year}`)
+                        .collection(`${month}`)
+                        .doc(`${i}`)
+                        .set({ waterIntake: 0, goal: 2000, date: new Date(year, j, i), achieved: false, available: true })
+                        .catch((err) => console.log(err));
+                    }
+                  }
+                }
+
+                db.collection("users")
+                  .doc(username)
+                  .collection("followingNUM")
+                  .doc(username)
+                  .set({
+                    following: 0,
+                  })
+                  .catch((error) => alert(error.message));
+                db.collection("users")
+                  .doc(username)
+                  .collection("followersNUM")
+                  .doc(username)
+                  .set({
+                    followers: 0,
+                  })
+                  .catch((error) => alert(error.message));
+
+                newuser
+                  .sendEmailVerification()
+                  .then(function () {})
+                  .catch(function (error) {
+                    // An error happened.
+                  });
+
+                setEmail("");
+                setUsername("");
+                setPassword("");
+              })
+              .then((auth) => {
+                setOpen(true);
+              })
+              .catch((error) => alert(error.message));
+          }
+        });
+    } else {
+      alert("please enter username");
+    }
+  };
+
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => {
+        setOpen(false);
+      }, 3000);
+    }
+  }, [open]);
+  return (
+    <div className="login">
+      <Link to="/">
+        {/* <img className="header__logo" id="myimg" src="https://firebasestorage.googleapis.com/v0/b/twitterclone-6c140.appspot.com/o/socialHit.jpg.jpg?alt=media&token=421646ee-5d89-4c89-8eab-57d3c88174f6"></img> */}
+        {/* <img className="header__logo" src=""></img> */}
+        <h3>Insufficient</h3>
+      </Link>
+      <div className="login__container">
+        <h1>Register</h1>
+
+        <form>
+          <h5>Username</h5>
+          <input onChange={(e) => setUsername(e.target.value)} value={username} type="text"></input>
+
+          <h5>Email</h5>
+          <input onChange={(e) => setEmail(e.target.value)} value={email} type="text"></input>
+
+          <h5>Password</h5>
+          <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
+        </form>
+        {/* <p>
+                By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
+                Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
+            </p> */}
+        <button onClick={register} className="login__registerButton">
+          Create account
+        </button>
+
+        <button type="submit" onClick={() => history.push("/login")} className="login__button">
+          Back to Sign in
+        </button>
+      </div>
+      {open && (
+        <div className="login__popup">
+          <h1>Thanks for signing up! You can Login now!</h1>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Register;

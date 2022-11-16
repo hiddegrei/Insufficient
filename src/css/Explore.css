@@ -1,0 +1,68 @@
+.explore {
+  flex: 0.5;
+  border-right: 1px solid var(--twitter-background);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 1;
+}
+.explore::-webkit-scrollbar {
+  display: none;
+}
+
+.explore__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  display: flex;
+  border: 1px solid var(--twitter-background);
+  padding: 15px 20px;
+}
+.explore__header__left {
+  display: flex;
+  flex-direction: column;
+}
+.explore__header > h2 {
+  font-size: 16px;
+  font-weight: 800;
+}
+.explore__header__left__but:hover {
+  cursor: pointer;
+}
+
+.widgets__input {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: var(--twitter-background);
+
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.widgets__input > input {
+  width: 100%;
+}
+.widget__optie {
+  display: flex;
+  padding: 20px;
+
+  cursor: pointer;
+  border-bottom: 2px solid gray;
+}
+
+.widget__optie:hover {
+  background-color: #ebebeb;
+}
+.widget__optie__info > h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.widget__optie__info {
+  margin-left: 15px;
+}
+.SearchTwitter {
+  height: 100%;
+}

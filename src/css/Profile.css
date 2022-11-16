@@ -1,0 +1,156 @@
+.profile {
+  flex: 0.5;
+  border-right: 1px solid var(--twitter-background);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.feed::-webkit-scrollbar {
+  display: none;
+}
+.profile__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-background);
+  padding: 15px 20px;
+}
+.profile__header > h1 {
+  font-size: 20px;
+  font-weight: 800;
+}
+.profile__body {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  padding: 20px;
+}
+.profile__avatar {
+  display: grid;
+  place-items: center;
+  padding: 40px;
+}
+.profile__bio {
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid var(--twitter-background);
+  place-items: center;
+}
+.profile__option {
+  padding: 20px;
+}
+.profile__follow {
+  display: flex;
+  place-items: center;
+  padding: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--twitter-background);
+}
+
+.profile__num {
+  padding: 20px;
+  font-size: 25;
+  font-weight: bold;
+}
+.profile__num:hover {
+  background-color: lightgray;
+}
+
+.profile__edit {
+  display: flex;
+  padding: 5px;
+}
+.profile__edit:hover {
+  cursor: pointer;
+}
+.profile__commentsContainer {
+  display: flex;
+  z-index: 100;
+  flex-direction: column;
+
+  position: absolute;
+  left: 40%;
+  top: 25%;
+}
+.profile__open {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: black;
+
+  z-index: 100;
+}
+.profile__open__input {
+  display: flex;
+  width: 100%;
+}
+.profile__followf {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 30px !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+  margin-left: auto !important;
+  padding: 5px;
+}
+.profile__followf:hover {
+  cursor: pointer;
+}
+.profile__2followf {
+  background-color: var(--twitter-color) !important;
+  opacity: 0.5;
+  padding: 5px;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 30px !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+  margin-left: auto !important;
+}
+.profile__2followf:hover {
+  cursor: pointer;
+}
+.followbutton {
+  display: flex;
+  justify-content: space-between;
+}
+.profile__a {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+.loading {
+  display: grid;
+  place-items: center;
+  font-size: 25;
+  font-weight: bold;
+}
+.postOptions {
+  display: flex;
+  flex: 1;
+}
+.postOptions__option {
+  display: flex;
+
+  flex: 0.5;
+  justify-content: center;
+}
+
+.postOptions :hover {
+  cursor: pointer;
+  background-color: var(--twitter-background);
+}
+.loading {
+  display: grid;
+  place-items: center;
+  font-size: 25;
+  font-weight: bold;
+}
