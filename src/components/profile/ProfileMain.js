@@ -35,6 +35,8 @@ function ProfileMain() {
   const [followingNUM, setFollowingNUM] = useState("");
   const [followersNUM, setFollowersNUM] = useState("");
 
+  const [streak, setStreak] = useState(profile.streak);
+
   useEffect(() => {
     let isSubscribed = true;
 
@@ -313,6 +315,7 @@ function ProfileMain() {
             ) : (
               <div>
                 <LocalFireDepartmentIcon />
+                {streak}
               </div>
             )}
 
