@@ -14,6 +14,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
+import InvertColorsIcon from "@mui/icons-material/InvertColors";
 
 function Sidebar() {
   var getUrl = window.location;
@@ -112,7 +113,7 @@ function Sidebar() {
       <Link to="/explore">{explore1 ? <SidebarOption active Icon={SearchIcon} text="Explore" /> : <SidebarOption Icon={SearchIcon} text="Explore" />}</Link>
       <Link to="/notifications">{notify ? <div>{notifi1 ? <SidebarOption active alert Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div> : <div>{notifi1 ? <SidebarOption active Icon={NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div>}</Link>
       <Link to="/chat">{chat1 ? <SidebarOption Icon={MailOutlineIcon} active text="Chat" /> : <SidebarOption Icon={MailOutlineIcon} text="Chat" />}</Link>
-
+      <Link to="/water">{profile1 ? <SidebarOption Icon={InvertColorsIcon} active text="Water" /> : <SidebarOption Icon={InvertColorsIcon} text="Water" />}</Link>
       <Link to={`/profile/${profile?.username}`}>{profile1 ? <SidebarOption Icon={AccountCircleIcon} active text="Profile" /> : <SidebarOption Icon={AccountCircleIcon} text="Profile" />}</Link>
 
       {/* <Link to="/games">

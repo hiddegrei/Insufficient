@@ -22,6 +22,7 @@ import ProfileMain from "./profile/ProfileMain";
 import PostPop from "./post/PostPop";
 import ForgotPassword from "./auth/ForgotPassword";
 import Reset from "./auth/Reset";
+import WaterMain from "./water/WaterMain";
 // import Games from "./Games"
 
 function App() {
@@ -98,6 +99,12 @@ function App() {
           <Route path="/notifications">
             <Sidebar />
             <Notifications />
+            <Widgets />
+          </Route>
+
+          <Route path="/water">
+            <Sidebar />
+            <WaterMain />
             <Widgets />
           </Route>
 
