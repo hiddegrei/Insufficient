@@ -11,6 +11,7 @@ import firebase from "firebase";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import ProfileLikes from "./ProfileLikes";
 import Profile from "./Profile";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 function ProfileMain() {
   const { pName } = useParams();

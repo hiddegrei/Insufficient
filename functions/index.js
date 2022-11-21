@@ -20,7 +20,16 @@ exports.scheduledFunctionEndDay = functions.pubsub.schedule("0 0 6 * *").onRun((
     .collection("users")
     .get()
     .forEach((doc) => {
-      admin.firestore().collection("users").doc(doc.id).collection("calender").doc(`${year}`).collection(`${month}`).doc(`${day}`).update({ available: false });
+      admin
+        .firestore()
+        .collection("users")
+        .doc(doc.id)
+        .collection("calender")
+        .doc(`${year}`)
+        .collection(`${month}`)
+        .doc(`${day}`)
+        .update({ available: false })
+        .catch((err) => console.log(err));
     });
 });
 

@@ -120,9 +120,8 @@ function Register() {
   return (
     <div className="login">
       <Link to="/">
-        {/* <img className="header__logo" id="myimg" src="https://firebasestorage.googleapis.com/v0/b/twitterclone-6c140.appspot.com/o/socialHit.jpg.jpg?alt=media&token=421646ee-5d89-4c89-8eab-57d3c88174f6"></img> */}
-        {/* <img className="header__logo" src=""></img> */}
-        <h3>Insufficient</h3>
+        <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
+        
       </Link>
       <div className="login__container">
         <h1>Register</h1>

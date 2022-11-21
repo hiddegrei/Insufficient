@@ -104,9 +104,8 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <Link to="/">
-        {/* <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/twitterclone-6c140.appspot.com/o/shortlogoSocialHit.jpg?alt=media&token=68b2e724-0787-4d13-91ed-4001379e11ba"></img> */}
+        <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
         {/* <TwitterIcon className="sidebar__twitterIcon" /> */}
-        <h3>Insufficient</h3>
       </Link>
       <Link to="/">{follow1 ? <SidebarOption active Icon={HomeIcon} text="Following" /> : <SidebarOption Icon={HomeIcon} text="Following" />}</Link>
 
