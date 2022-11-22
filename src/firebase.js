@@ -9,7 +9,7 @@ const firebaseConfig = {
   // messagingSenderId: "879425228770",
   // appId: "1:879425228770:web:ea9586bec39521d51573bb",
   // measurementId: "G-LKF179XKY0"
-  apiKey: "AIzaSyBZlB99C96cwW4K4LGoDTIkN-Ksp1dC2Dg",
+  apiKey: "AIzaSyA6PALAt5T-IJWKUbF7HbkcO6iF2YMnj98",
   authDomain: "insufficient-8211b.firebaseapp.com",
   databaseURL: "https://insufficient-8211b-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "insufficient-8211b",

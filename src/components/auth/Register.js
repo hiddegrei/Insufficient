@@ -37,9 +37,11 @@ function Register() {
                   userId: newuser.uid,
                   imageUrl: "",
                   bio: "",
+                  streak: 0,
                 });
 
                 var today = new Date();
+                let avaiTrue = false;
                 for (let j = 0; j < 12; j++) {
                   let months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
 
@@ -53,7 +55,7 @@ function Register() {
                   var day2 = today.getDate();
                   var month2 = today.getMonth();
                   var year2 = today.getFullYear();
-                  let avaiTrue = false;
+
                   for (let i = 1; i < newDays + 1; i++) {
                     if (year === year2 && month === month2 && i === day2) {
                       avaiTrue = true;

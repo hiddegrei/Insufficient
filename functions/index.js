@@ -9,20 +9,48 @@ admin.initializeApp();
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
-exports.scheduledFunctionEndDay = functions.pubsub.schedule("0 0 6 * *").onRun((context) => {
-  var today = new Date();
-  var day = today.getDate();
-  var month = today.getMonth();
-  var year = today.getFullYear();
+exports.scheduledFunctionEndDay = functions.pubsub
+  .schedule("59 23 * * *")
+  .timeZone("Europe/Paris")
+  .onRun((context) => {
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth();
+    var year = today.getFullYear();
 
-  admin
-    .firestore()
-    .collection("users")
-    .get()
-    .forEach((doc) => {
-      admin.firestore().collection("users").doc(doc.id).collection("calender").doc(`${year}`).collection(`${month}`).doc(`${day}`).update({ available: false });
-    });
-});
+    admin
+      .firestore()
+      .collection("users")
+      .get()
+      .forEach((doc) => {
+        admin
+          .firestore()
+          .collection("users")
+          .doc(doc.id)
+          .collection("calender")
+          .doc(`${year}`)
+          .collection(`${month}`)
+          .doc(`${day}`)
+          .get()
+          .then((doc) => {
+            if (doc.data().goal <= doc.data().waterIntake) {
+              admin
+                .firestore()
+                .collection("users")
+                .doc(doc.id)
+                .update({
+                  streak: FieldValue.Increment(1),
+                });
+            } else {
+              admin.firestore().collection("users").doc(doc.id).update({
+                streak: 0,
+              });
+            }
+          });
+
+        admin.firestore().collection("users").doc(doc.id).collection("calender").doc(`${year}`).collection(`${month}`).doc(`${day}`).update({ available: false });
+      });
+  });
 
 exports.myFunction = functions.firestore.document("users/{userId}/calender/{yearId}/{monthId}/{dayId}").onUpdate((change, context) => {
   var today = new Date();
