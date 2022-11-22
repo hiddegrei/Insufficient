@@ -1,0 +1,15 @@
+.water{
+    flex: 0.5;
+        border-right: 1px solid var(--twitter-background);
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+}
+.water__header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--twitter-background);
+    padding: 15px 20px;
+}

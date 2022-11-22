@@ -61,7 +61,6 @@ exports.myFunction = functions.firestore.document("users/{userId}/calender/{year
   console.log(context.params.userId);
 
   if (change.after.data().goal <= change.after.data().waterIntake) {
-    console.log("yes goal achieved");
     admin
       .firestore()
       .collection("users")

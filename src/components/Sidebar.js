@@ -14,6 +14,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
+import InvertColorsIcon from "@mui/icons-material/InvertColors";
 
 function Sidebar() {
   var getUrl = window.location;
@@ -104,16 +105,15 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <Link to="/">
-        {/* <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/twitterclone-6c140.appspot.com/o/shortlogoSocialHit.jpg?alt=media&token=68b2e724-0787-4d13-91ed-4001379e11ba"></img> */}
+        <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
         {/* <TwitterIcon className="sidebar__twitterIcon" /> */}
-        <h3>Insufficient</h3>
       </Link>
       <Link to="/">{follow1 ? <SidebarOption active Icon={HomeIcon} text="Following" /> : <SidebarOption Icon={HomeIcon} text="Following" />}</Link>
 
       <Link to="/explore">{explore1 ? <SidebarOption active Icon={SearchIcon} text="Explore" /> : <SidebarOption Icon={SearchIcon} text="Explore" />}</Link>
       <Link to="/notifications">{notify ? <div>{notifi1 ? <SidebarOption active alert Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div> : <div>{notifi1 ? <SidebarOption active Icon={NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div>}</Link>
       <Link to="/chat">{chat1 ? <SidebarOption Icon={MailOutlineIcon} active text="Chat" /> : <SidebarOption Icon={MailOutlineIcon} text="Chat" />}</Link>
-
+      <Link to="/water">{profile1 ? <SidebarOption Icon={InvertColorsIcon} active text="Water" /> : <SidebarOption Icon={InvertColorsIcon} text="Water" />}</Link>
       <Link to={`/profile/${profile?.username}`}>{profile1 ? <SidebarOption Icon={AccountCircleIcon} active text="Profile" /> : <SidebarOption Icon={AccountCircleIcon} text="Profile" />}</Link>
 
       {/* <Link to="/games">

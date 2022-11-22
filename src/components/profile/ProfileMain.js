@@ -11,6 +11,7 @@ import firebase from "firebase";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import ProfileLikes from "./ProfileLikes";
 import Profile from "./Profile";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 function ProfileMain() {
   const { pName } = useParams();
@@ -33,6 +34,8 @@ function ProfileMain() {
   const [floading, setFloading] = useState(false);
   const [followingNUM, setFollowingNUM] = useState("");
   const [followersNUM, setFollowersNUM] = useState("");
+
+  const [streak, setStreak] = useState(profile.streak);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -274,7 +277,7 @@ function ProfileMain() {
   if (!floading) {
     return (
       <div className="loading__page">
-        <img className="loading__logo" src="https://firebasestorage.googleapis.com/v0/b/twitterclone-6c140.appspot.com/o/shortlogoSocialHit.jpg?alt=media&token=68b2e724-0787-4d13-91ed-4001379e11ba"></img>
+        <img className="loading__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
         <h1 className="loading">Loading...</h1>
       </div>
     );
@@ -297,6 +300,7 @@ function ProfileMain() {
                 <IconButton onClick={handleMessage} className="profile__followf">
                   <EmailOutlinedIcon />
                 </IconButton>
+
                 {/* <button onClick={handleMessage} className="profile__followf">Message</button> */}
                 {!follow ? (
                   <button onClick={handleFollow} className="profile__followf">
@@ -309,8 +313,12 @@ function ProfileMain() {
                 )}
               </div>
             ) : (
-              <div></div>
+              <div>
+                <LocalFireDepartmentIcon />
+                {streak}
+              </div>
             )}
+
             {allow && (
               <div className="profile__edit">
                 {" "}
