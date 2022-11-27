@@ -4,6 +4,10 @@
         overflow-y: scroll;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        /* border:1px solid black; */
+}
+.water::-webkit-scrollbar {
+    display: none;
 }
 .water__header {
     position: sticky;
@@ -12,4 +16,35 @@
     z-index: 100;
     border: 1px solid var(--twitter-background);
     padding: 15px 20px;
+}
+.water_table_con{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+   align-items: center;
+   place-content: center;
+    /* border: 1px solid black; */
+}
+.water_table_con_h{
+    display:flex;
+    font-weight:bold;
+    font-size: 20px;
+    padding:10px;
+    align-items: center;
+}
+.water_h_icon{
+    display:flex;
+    margin-left: 10px;
+
+}
+.water_h_icon:hover {
+    cursor: pointer;
+
+}
+.water_table {
+    display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid black; */
 }
