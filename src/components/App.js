@@ -24,6 +24,7 @@ import ForgotPassword from "./auth/ForgotPassword";
 import Reset from "./auth/Reset";
 import WaterMain from "./water/WaterMain";
 // import Games from "./Games"
+import Home from "./Home";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -87,6 +88,12 @@ function App() {
           <Route path="/post/:nam/:tok">
             <Sidebar />
             <PostPop />
+            <Widgets />
+          </Route>
+
+          <Route path="/home">
+            <Sidebar />
+            <Home />
             <Widgets />
           </Route>
 

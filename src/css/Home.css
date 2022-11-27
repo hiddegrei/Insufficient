@@ -1,0 +1,73 @@
+.home{
+    flex: 0.5;
+    border-right: 1px solid var(--twitter-background);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    width:100%;
+    
+}
+.home::-webkit-scrollbar {
+    display: none;
+}
+
+.home__header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--twitter-background);
+    padding: 15px 20px;
+}
+.home_top{
+    display:flex;
+    align-items: center;
+    place-content: center;
+    height:20%;
+}
+.home_profile{
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+.home_middle{
+    display: flex;
+    height: 40%;
+   
+}
+.home_middle_img{
+    display:flex;
+    width:30%;
+    height:auto;
+    margin-left: auto;
+        margin-right: auto;
+}
+.home_middle_r{
+    display:flex;
+    width:30%;
+    margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+}
+.home_bottom {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    width:100%;
+
+}
+.home_bottom_row{
+    display: flex;
+    margin-left: auto;
+        margin-right: auto;
+        width:90%;
+        margin-top: 10px;
+
+}
+.home_bottom_row_elm {
+    display:flex;
+    width:25%;
+    height:100px;
+    font-weight: bold;
+}
