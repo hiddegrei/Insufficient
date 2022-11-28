@@ -78,14 +78,110 @@ exports.myFunction = functions.firestore.document("users/{userId}/calender/{year
   return 1;
 });
 
-exports.bigben = functions.https.onRequest((req, res) => {
-  const hours = (new Date().getHours() % 12) + 1; // London is UTC + 1hr;
-  res.status(200).send(`<!doctype html>
-    <head>
-      <title>Time</title>
-    </head>
-    <body>
-      ${"BONG ".repeat(hours)}
-    </body>
-  </html>`);
+exports.waterIntake = functions.https.onCall(async (data, context) => {
+  var today = new Date();
+  var day = today.getDate();
+  var month = today.getMonth();
+  var year = today.getFullYear();
+  let dataR = [];
+  console.log(data.type, data.username, year, month, day - 1);
+
+  // for (let i = 0; i < 7; i++) {
+  //   admin
+  //     .firestore()
+  //     .collection("users")
+  //     .doc("test")
+  //     .collection("calender")
+  //     .doc(`${year}`)
+  //     .collection(`${month}`)
+  //     .doc(`${day - i}`)
+  //     .get()
+  //     .then((doc) => {
+  //       dataR[dataR.length] = doc.data();
+  //       if (dataR.length === 7) {
+  //         return { data: data };
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
+  admin
+    .firestore()
+    .collection("users")
+    .doc("test")
+    .collection("calender")
+    .doc(`${year}`)
+    .collection(`${month}`)
+    .doc(`${day}`)
+    .get()
+    .then((doc) => {
+      return { data: doc.data() };
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
+
+// exports.paypalCreateOrder = functions.https.onCall(async (data, context) => {
+//   let bookDays = data.bookDays;
+//   let total = 50 + 2 * (bookDays.length - 1) * (data.guestInfo.adults + data.guestInfo.kids);
+//   function resolveAfterEnd() {
+//     return new Promise((resolve) => {
+//       bookDays.forEach((doc, i) => {
+//         admin
+//           .firestore()
+//           .collection("calender")
+//           .doc(`${doc.data.year}`)
+//           .collection(doc.data.month)
+//           .doc(`${doc.data.day}`)
+//           .get()
+//           .then((doc2) => {
+//             total += doc2.data().price;
+
+//             if (i === bookDays.length - 1) {
+//               resolve(`${total} succes`);
+//             }
+//           })
+//           .catch((err) => {
+//             console.log(err);
+//           });
+//       });
+//       // for (let i = 0; i < bookDays.length - 1; i++) {
+//       //   total += bookDays[i].data.price;
+//       //   if (i === bookDays.length - 2) {
+//       //     resolve(`${total} succes`);
+//       //   }
+//       // }
+//     });
+//   }
+
+//   async function f1() {
+//     const x = await resolveAfterEnd();
+//   }
+
+//   let result1 = f1().then(() => {
+//     let result2 = f2().then((res) => {
+//       console.log(res);
+//       return res;
+//     });
+//     return result2;
+//   });
+//   return result1;
+
+//   async function f2() {
+//     request.requestBody({
+//       intent: "CAPTURE",
+//       purchase_units: [
+//         {
+//           amount: {
+//             currency_code: "EUR",
+//             value: `${total}.00`,
+//           },
+//         },
+//       ],
+//     });
+//     const response = await client.execute(request);
+//     return response.result;
+//   }
+// });

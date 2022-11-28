@@ -5,7 +5,7 @@ import { Chart } from "react-google-charts";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import { useStateValue } from "../../Stateprovider";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { db } from "../../firebase";
+import { db, functions } from "../../firebase";
 import firebase from "firebase";
 
 function WaterMain(props) {
@@ -19,7 +19,9 @@ function WaterMain(props) {
   const [dataApi, setDataApi] = useState([]);
   const [dataToday, setDataToday] = useState([]);
 
+  const waterIntake = functions.httpsCallable("waterIntake");
   useEffect(() => {
+    waterIntake({ type: 0, username: "test" }).then((doc) => console.log(doc));
     var today = new Date();
     var day = today.getDate();
     var month = today.getMonth();

@@ -34,6 +34,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
 const storage = firebase.storage();
+const functions = firebase.functions();
 
-export { db, auth, storage };
+export { db, auth, storage, functions };
 //  https://mediaapp-d96d1-default-rtdb.europe-west1.firebasedatabase.app
