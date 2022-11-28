@@ -27,7 +27,7 @@ import WaterMain from "./water/WaterMain";
 import Home from "./Home";
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, profile }, dispatch] = useStateValue();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function App() {
       });
     }
     return () => (isSubscribed = false);
-  }, [user]);
+  }, [user, profile]);
 
   useEffect(() => {
     if (user) {

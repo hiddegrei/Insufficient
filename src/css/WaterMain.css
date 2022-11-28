@@ -48,3 +48,32 @@
     margin-right: auto;
     /* border: 1px solid black; */
 }
+.water_today{
+display:flex;
+flex-direction: column;
+margin-top: 20px;
+}
+.water_today_h{
+    display:flex;
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+}
+.water_today_con{
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+    width:fit-content;
+}
+.water_today_con_val{
+    display:flex;
+    margin-right: 5px;
+}
+.water_today_con_plus{
+    display:flex;
+}
+.water_today_con_plus:hover {
+    cursor: pointer;
+}
