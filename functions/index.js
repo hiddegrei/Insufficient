@@ -106,21 +106,58 @@ exports.waterIntake = functions.https.onCall(async (data, context) => {
   //       console.log(err);
   //     });
   // }
-  admin
-    .firestore()
-    .collection("users")
-    .doc("test")
-    .collection("calender")
-    .doc(`${year}`)
-    .collection(`${month}`)
-    .doc(`${day}`)
-    .get()
-    .then((doc) => {
-      return { data: doc.data() };
-    })
-    .catch((err) => {
-      console.log(err);
+  // let result = admin
+  //   .firestore()
+  //   .collection("users")
+  //   .doc("test")
+  //   .collection("calender")
+  //   .doc(`${year}`)
+  //   .collection(`${month}`)
+  //   .doc(`${day}`)
+  //   .get()
+  //   .then((doc) => {
+  //     console.log(doc.data());
+  //     return { data: doc.data() };
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+  // return result;
+
+  function resolveAfterEnd() {
+    return new Promise((resolve) => {
+      for (let i = 0; i < 7; i++) {
+        admin
+          .firestore()
+          .collection("users")
+          .doc("test")
+          .collection("calender")
+          .doc(`${year}`)
+          .collection(`${month}`)
+          .doc(`${day - i}`)
+          .get()
+          .then((doc) => {
+            dataR[dataR.length] = doc.data();
+            console.log(dataR);
+            if (dataR.length === 7) {
+              resolve("succes");
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     });
+  }
+  async function f1() {
+    const x = await resolveAfterEnd();
+  }
+  let result1 = f1().then(() => {
+    console.log(dataR);
+    return dataR;
+  });
+
+  return result1;
 });
 
 // exports.paypalCreateOrder = functions.https.onCall(async (data, context) => {
