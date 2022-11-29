@@ -59,21 +59,20 @@ function WaterMain(props) {
       });
   }, [profile]);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/test/waterintake/lastweek", {
-  //     method: "GET", // or 'PUT',
+  useEffect(() => {
+    fetch("https://ms-waterintake.web.app/api", {
+      method: "GET", // or 'PUT',
 
-  //     headers: {
-  //       accept: "text/html,application/json",
-  //       Connection: "keep - alive",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       console.log(json);
-  //       setDataApi(json);
-  //     });
-  // }, []);
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+      });
+  }, []);
 
   useEffect(() => {
     console.log(dataToday[0]);
