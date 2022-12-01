@@ -40,38 +40,18 @@ function Register() {
                   streak: 0,
                 });
 
-                var today = new Date();
-                let avaiTrue = false;
-                for (let j = 0; j < 12; j++) {
-                  let months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
+                fetch(`https://ms-waterintake.web.app/api/users/${username}/create`, {
+                  method: "POST", // or 'PUT',
 
-                  var year = today.getFullYear();
-                  var month = j;
-                  var newDate = new Date(year, j, 0);
-                  var newDays = newDate.getDate();
-                  console.log(year, month, newDays);
-
-                  var today2 = new Date();
-                  var day2 = today.getDate();
-                  var month2 = today.getMonth();
-                  var year2 = today.getFullYear();
-
-                  for (let i = 1; i < newDays + 1; i++) {
-                    if (year === year2 && month === month2 && i === day2) {
-                      avaiTrue = true;
-                    }
-                    if (avaiTrue) {
-                      db.collection("users")
-                        .doc(username)
-                        .collection("calender")
-                        .doc(`${year}`)
-                        .collection(`${month}`)
-                        .doc(`${i}`)
-                        .set({ waterIntake: 0, goal: 2000, date: new Date(year, j, i), achieved: false, available: true })
-                        .catch((err) => console.log(err));
-                    }
-                  }
-                }
+                  headers: {
+                    accept: "text/html,application/json",
+                    Connection: "keep - alive",
+                  },
+                })
+                  .then((res) => res.json())
+                  .then((json) => {
+                    console.log(json);
+                  });
 
                 db.collection("users")
                   .doc(username)
@@ -123,7 +103,6 @@ function Register() {
     <div className="login">
       <Link to="/">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
-        
       </Link>
       <div className="login__container">
         <h1>Register</h1>

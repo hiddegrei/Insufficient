@@ -7,6 +7,7 @@ import { useStateValue } from "../../Stateprovider";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { db, functions } from "../../firebase";
 import firebase from "firebase";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 function WaterMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -21,7 +22,7 @@ function WaterMain(props) {
   const [waterToday, setWaterToday] = useState([]);
   const [show, setShow] = useState(false);
 
-  const waterIntake = functions.httpsCallable("waterIntake");
+  // const waterIntake = functions.httpsCallable("waterIntake");
 
   const [dataTable, setDataTable] = useState([
     ["Day of week", "Water Intake (ml)", { role: "style" }],
@@ -34,79 +35,97 @@ function WaterMain(props) {
     ["sun", 2300, "green"],
   ]);
   useEffect(() => {
-    waterIntake({ type: 0, username: "test" }).then((doc) => {
-      console.log(doc.data);
-      setDataToday([doc.data]);
-    });
+    // waterIntake({ type: 0, username: "test" }).then((doc) => {
+    //   console.log(doc.data);
+    //   setDataToday([doc.data]);
+    // });
     var today = new Date();
     var day = today.getDate();
     var month = today.getMonth();
     var year = today.getFullYear();
     console.log(year, month, day, profile?.username);
 
-    db.collection("users")
-      .doc(profile?.username)
-      .collection("calender")
-      .doc(`${year}`)
-      .collection(`${month}`)
-      .onSnapshot((docs) => {
-        docs.forEach((doc) => {
-          if (doc.id === `${day}`) {
-            console.log(doc.data());
-            setWaterToday(doc.data().waterIntake);
-          }
-        });
-      });
+    // db.collection("users")
+    //   .doc(profile?.username)
+    //   .collection("calender")
+    //   .doc(`${year}`)
+    //   .collection(`${month}`)
+    //   .onSnapshot((docs) => {
+    //     docs.forEach((doc) => {
+    //       if (doc.id === `${day}`) {
+    //         console.log(doc.data());
+    //         setWaterToday(doc.data().waterIntake);
+    //       }
+    //     });
+    //   });
   }, [profile]);
 
   useEffect(() => {
-    fetch("https://ms-waterintake.web.app/api", {
-      method: "GET", // or 'PUT',
+    console.log(profile.username);
+    if (profile.username) {
+      fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake`, {
+        method: "GET", // or 'PUT',
 
-      headers: {
-        accept: "text/html,application/json",
-        Connection: "keep - alive",
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-      });
-  }, []);
+        headers: {
+          accept: "text/html,application/json",
+          Connection: "keep - alive",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          setDataToday(json.data);
+        });
+
+      fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
+        method: "GET", // or 'PUT',
+
+        headers: {
+          accept: "text/html,application/json",
+          Connection: "keep - alive",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          setWaterToday(json.data);
+        });
+    }
+  }, [profile]);
 
   useEffect(() => {
     console.log(dataToday[0]);
-    if (dataToday[0]?.length === 7) {
+    if (dataToday?.length === 7) {
       setDataTable([
         ["Day of week", "Water Intake (ml)", { role: "style" }],
-        ["mo", dataToday[0][0].waterIntake, "red"], // RGB value
-        ["tue", dataToday[0][1].waterIntake, "red"], // English color name
-        ["wed", dataToday[0][2].waterIntake, "yellow"],
-        ["thu", dataToday[0][3].waterIntake, "green"], // CSS-style declaration
-        ["fri", dataToday[0][4].waterIntake, "green"],
-        ["sat", dataToday[0][5].waterIntake, "green"],
-        ["sun", dataToday[0][6].waterIntake, "green"],
+        ["mo", dataToday[0].waterIntake, "red"], // RGB value
+        ["tue", dataToday[1].waterIntake, "red"], // English color name
+        ["wed", dataToday[2].waterIntake, "yellow"],
+        ["thu", dataToday[3].waterIntake, "green"], // CSS-style declaration
+        ["fri", dataToday[4].waterIntake, "green"],
+        ["sat", dataToday[5].waterIntake, "green"],
+        ["sun", dataToday[6].waterIntake, "green"],
       ]);
       setShow(true);
     }
   }, [dataToday]);
 
   function addWater() {
-    var today = new Date();
-    var day = today.getDate();
-    var month = today.getMonth();
-    var year = today.getFullYear();
-    db.collection("users")
-      .doc(profile?.username)
-      .collection("calender")
-      .doc(`${year}`)
-      .collection(`${month}`)
-      .doc(`${day}`)
-      .update({
-        waterIntake: firebase.firestore.FieldValue.increment(100),
-      })
-      .catch((err) => {
-        console.log(err);
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today/update/${waterToday.waterIntake}`, {
+      method: "POST", // or 'PUT',
+
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      },
+      body: {
+        amount: 100,
+        oldAmount: waterToday.waterIntake,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
       });
   }
   return (
@@ -134,9 +153,11 @@ function WaterMain(props) {
       </div>
       <div className="water_today">
         <div className="water_today_h">Today</div>
-        <div className="water_today_h">{profile?.streak} streak</div>
+        <div className="water_today_h">
+          <LocalFireDepartmentIcon /> {profile?.streak}
+        </div>
         <div className="water_today_con">
-          <div className="water_today_con_val">{waterToday}</div>
+          <div className="water_today_con_val">{waterToday.waterIntake}</div>
           <div className="water_today_con_plus">
             <AddCircleIcon onClick={() => addWater()} />
           </div>
