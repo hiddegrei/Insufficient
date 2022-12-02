@@ -111,21 +111,29 @@ function WaterMain(props) {
   }, [dataToday]);
 
   function addWater() {
-    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today/update/${waterToday.waterIntake}`, {
+    var details = {
+      oldAmount: waterToday.waterIntake,
+      amount: 100,
+    };
+    var formBody = [];
+    for (var property in details) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(details[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today/update/`, {
       method: "POST", // or 'PUT',
 
       headers: {
-        accept: "text/html,application/json",
-        Connection: "keep - alive",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
       },
-      body: {
-        amount: 100,
-        oldAmount: waterToday.waterIntake,
-      },
+      body: formBody,
     })
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
+        setWaterToday(json.data);
       });
   }
   return (
