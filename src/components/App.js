@@ -23,6 +23,7 @@ import PostPop from "./post/PostPop";
 import ForgotPassword from "./auth/ForgotPassword";
 import Reset from "./auth/Reset";
 import WaterMain from "./water/WaterMain";
+import GroupMain from "./groups/GroupMain";
 // import Games from "./Games"
 import Home from "./Home";
 
@@ -112,6 +113,12 @@ function App() {
           <Route path="/water">
             <Sidebar />
             <WaterMain />
+            <Widgets />
+          </Route>
+
+          <Route path="/groups">
+            <Sidebar />
+            <GroupMain />
             <Widgets />
           </Route>
 

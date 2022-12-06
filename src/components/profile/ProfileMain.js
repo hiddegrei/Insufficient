@@ -41,23 +41,34 @@ function ProfileMain() {
     let isSubscribed = true;
 
     if (profile && pName !== "undefined" && isSubscribed && user) {
-      db.collection("users")
-        .doc(`/${profile.username}/following/${pName}`)
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            setFollow(true);
-            setFloading(true);
-            console.log("following found");
-          } else {
-            setFollow(false);
-            setFloading(true);
-            console.log("following not");
-          }
-        })
-        .catch((error) => console.log(error));
-    } else {
-      console.log("no profile");
+      // db.collection("users")
+      //   .doc(`/${profile.username}/following/${pName}`)
+      //   .get()
+      //   .then((doc) => {
+      //     if (doc.exists) {
+      //       setFollow(true);
+      //       setFloading(true);
+      //       console.log("following found");
+      //     } else {
+      //       setFollow(false);
+      //       setFloading(true);
+      //       console.log("following not");
+      //     }
+      //   })
+      //   .catch((error) => console.log(error));
+      fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile?.username}/following/${pName}`, {
+        method: "GET", // or 'PUT',
+
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          setFollow(json.exists);
+          setFloading(true);
+        });
     }
 
     return () => (isSubscribed = false);
@@ -70,23 +81,16 @@ function ProfileMain() {
       setPoster({ ...poster, followers: 1 });
       //setPosterfollowers(posterfollowers-1)
       setUserfollowing(userfollowing - 1);
-      db.collection("users")
-        .doc(`${profile?.username}/following/${pName}`)
-        .delete()
-        .then(() => {
-          console.log("Document successfully deleted!");
-        })
-        .catch((error) => {
-          console.error("Error removing document: ", error);
-        });
-      db.collection("users")
-        .doc(`/${pName}/followers/${profile.username}`)
-        .delete()
-        .then(() => {
-          console.log("Document successfully added!");
-        })
-        .catch((error) => {
-          console.error("Error adding document: ", error);
+      fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile?.username}/following/${pName}/delete`, {
+        method: "POST", // or 'PUT',
+
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
         });
 
       db.collection("users")
@@ -100,7 +104,6 @@ function ProfileMain() {
           console.log("followers succesfully updated");
         })
         .catch((error) => console.log(error));
-
       db.collection("users")
         .doc(profile.username)
         .collection("followingNUM")
@@ -112,102 +115,46 @@ function ProfileMain() {
           console.log("followers succesfully updated");
         })
         .catch((error) => console.log(error));
-
-      db.collection("users")
-        .doc(pName)
-        .collection("notifications")
-        .where("followUsername", "==", profile.username)
-        .get()
-        .then((query) => {
-          query.forEach((doc) => {
-            db.collection("users")
-              .doc(pName)
-              .collection("notifications")
-              .doc(doc.id)
-              .delete()
-              .then(() => {
-                console.log();
-              })
-              .catch((error) => {
-                console.error("Error removing document: ", error);
-              });
-          });
-        });
     }
     if (!follow && pName != "undefined") {
       setFollow(true);
       setPoster({ ...poster, followers: 1 });
       setUserfollowing(userfollowing + 1);
 
-      db.collection("users")
-        .doc(`/${profile?.username}/following/${pName}`)
-        .set({
-          userId: profileMain.userId,
-          username: pName,
-          timestamp: new Date().getTime().toString(),
-          imageUrl: profileMain.imageUrl,
-          fuserId: profile.userId,
-        })
-        .then(() => {
-          console.log("Document successfully added!");
-        })
-        .catch((error) => {
-          console.error("Error adding document: ", error);
-        });
+      fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile?.username}/following/${pName}/add`, {
+        method: "POST", // or 'PUT',
 
-      db.collection("users")
-        .doc(`/${pName}/followers/${profile.username}`)
-        .set({
-          userId: profile.userId,
-          username: profile.username,
-          timestamp: new Date().getTime().toString(),
-          imageUrl: profileMain.imageUrl,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
         })
-        .then(() => {
-          console.log("Document successfully added!");
-        })
-        .catch((error) => {
-          console.error("Error adding document: ", error);
+        .catch((err) => {
+          console.log(err);
         });
-
       db.collection("users")
         .doc(pName)
         .collection("followersNUM")
         .doc(pName)
         .update({
-          followers: firebase.firestore.FieldValue.increment(1),
+          followers: followersNUM + 1,
         })
         .then(() => {
           console.log("followers succesfully updated");
         })
         .catch((error) => console.log(error));
-
       db.collection("users")
         .doc(profile.username)
         .collection("followingNUM")
         .doc(profile.username)
         .update({
-          following: firebase.firestore.FieldValue.increment(1),
+          following: followingNUM + 1,
         })
         .then(() => {
           console.log("followers succesfully updated");
-        })
-        .catch((error) => console.log(error));
-
-      db.collection("users")
-        .doc(pName)
-        .collection("notifications")
-        .add({
-          follow: true,
-          followUsername: profile.username,
-          avatar: profile.imageUrl,
-          timestamp: new Date().getTime().toString(),
-          key: Math.random().toString(36),
-          seen: false,
-          token: "",
-        })
-        .then((docRef) => {
-          db.collection("users").doc(pName).collection("notifications").doc(docRef.id).update({ token: docRef.id });
         })
         .catch((error) => console.log(error));
     }
