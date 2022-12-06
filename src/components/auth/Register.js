@@ -17,7 +17,7 @@ function Register() {
 
     var newemail = email.replace(/\s+/g, "");
 
-    if (username && username != "undefined") {
+    if (username && username !== "undefined") {
       db.collection("users")
         .where("username", "==", username)
         .get()
@@ -72,7 +72,7 @@ function Register() {
 
                 newuser
                   .sendEmailVerification()
-                  .then(function () {})
+                  .then(function () { })
                   .catch(function (error) {
                     // An error happened.
                   });
