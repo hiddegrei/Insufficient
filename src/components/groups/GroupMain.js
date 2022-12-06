@@ -3,6 +3,7 @@ import { db } from "../../firebase";
 import { useStateValue } from "../../Stateprovider";
 import "../../css/GroupMain.css";
 import AddIcon from "@mui/icons-material/Add";
+import { Avatar } from "@material-ui/core";
 
 function GroupMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -11,12 +12,45 @@ function GroupMain(props) {
   const [newGroupName, setNewGroupName] = useState("");
   const [members, setMembers] = useState([]);
   const [showAddGroup, setShowAddGroup] = useState(false);
+  const [searchContent, setSearchContent] = useState("");
+  const [output, setOutput] = useState([]);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (profile?.username) {
       getGroups();
     }
   }, [profile]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+    if (searchContent && profile.username != "undefined") {
+      db.collection("users")
+        .where("username", ">=", searchContent)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) =>
+            isSubscribed
+              ? setOutput((dat) => {
+                  const newdata = { data: doc.data(), key: doc.data().userId };
+                  const olddata = dat.filter((dat) => dat.key !== newdata.key);
+
+                  return [...olddata, newdata];
+                })
+              : null
+          );
+        });
+    } else {
+      setShow(false);
+      setOutput([]);
+
+      console.log("empty");
+    }
+    if (output.length > 0) {
+      setShow(true);
+    }
+    return () => (isSubscribed = false);
+  }, [searchContent]);
 
   function getFollowing() {
     fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile?.username}/following/`, {
@@ -35,16 +69,24 @@ function GroupMain(props) {
 
   function addGroup() {
     console.log(profile.username, newGroupName);
+    var details = {
+      groupName: newGroupName,
+      members: members,
+    };
+    var formBody = [];
+    for (var property in details) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(details[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
     fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups/add`, {
       method: "POST", // or 'PUT',
 
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
       },
-      body: {
-        groupName: newGroupName,
-        members: members,
-      },
+      body: formBody,
     })
       .then((res) => res.json())
       .then((json) => {
@@ -102,6 +144,32 @@ function GroupMain(props) {
               <input onChange={(e) => setNewGroupName(e.target.value)} value={newGroupName}></input>
             </div>
           </div>
+
+          <div className="groups_elm_inputCon">
+            <div className="groups_elm_inputCon_title">GroupMembers</div>
+            <div className="groups_elm_inputCon_input">
+              <input onChange={(e) => setSearchContent(e.target.value)} value={searchContent} placeholder="search for users" className="searchWidget" type="text"></input>
+            </div>
+          </div>
+          {show && (
+            <div>
+              {output.map((doc, index) => (
+                <div
+                  key={index + 10}
+                  onClick={() => {
+                    setMembers([...members, doc.data.username]);
+                    setSearchContent("");
+                  }}
+                  className="group__optie"
+                >
+                  <Avatar src={doc.data.imageUrl || ""} />
+                  <div className="group__optie__info">
+                    <h2>{doc.data.username}</h2>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div
             className="groups_elm_add"
