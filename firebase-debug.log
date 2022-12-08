@@ -1,0 +1,154 @@
+[debug] [2022-12-06T10:03:34.023Z] ----------------------------------------------------------------------
+[debug] [2022-12-06T10:03:34.026Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Greydanus\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-12-06T10:03:34.027Z] CLI Version:   11.16.1
+[debug] [2022-12-06T10:03:34.027Z] Platform:      win32
+[debug] [2022-12-06T10:03:34.027Z] Node Version:  v16.14.2
+[debug] [2022-12-06T10:03:34.036Z] Time:          Tue Dec 06 2022 11:03:34 GMT+0100 (Central European Standard Time)
+[debug] [2022-12-06T10:03:34.036Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-06T10:03:34.158Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-06T10:03:34.159Z] > authorizing via signed-in user (hiddegre@gmail.com)
+[debug] [2022-12-06T10:03:34.159Z] [iam] checking project insufficient-8211b for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-06T10:03:34.162Z] > refreshing access token with scopes: []
+[debug] [2022-12-06T10:03:34.165Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-12-06T10:03:34.165Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-12-06T10:03:34.413Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-12-06T10:03:34.414Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-12-06T10:03:34.428Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/insufficient-8211b:testIamPermissions [none]
+[debug] [2022-12-06T10:03:34.428Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/insufficient-8211b:testIamPermissions x-goog-quota-user=projects/insufficient-8211b
+[debug] [2022-12-06T10:03:34.429Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/insufficient-8211b:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-06T10:03:34.669Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/insufficient-8211b:testIamPermissions 200
+[debug] [2022-12-06T10:03:34.669Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/insufficient-8211b:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-06T10:03:34.671Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/insufficient-8211b/serviceAccounts/insufficient-8211b@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2022-12-06T10:03:34.672Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/insufficient-8211b/serviceAccounts/insufficient-8211b@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2022-12-06T10:03:34.897Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/insufficient-8211b/serviceAccounts/insufficient-8211b@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2022-12-06T10:03:34.897Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/insufficient-8211b/serviceAccounts/insufficient-8211b@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2022-12-06T10:03:34.898Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b [none]
+[debug] [2022-12-06T10:03:35.198Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b 200
+[debug] [2022-12-06T10:03:35.198Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b {"projectId":"insufficient-8211b","projectNumber":"428337373599","displayName":"insufficient","name":"projects/insufficient-8211b","resources":{"hostingSite":"insufficient-8211b","storageBucket":"insufficient-8211b.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_17f635cb-2c68-4cab-a507-b29bea18e276"}
+[info] 
+[info] === Deploying to 'insufficient-8211b'...
+[info] 
+[info] i  deploying firestore, functions, hosting 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2022-12-06T10:03:35.228Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/insufficient-8211b:test [none]
+[debug] [2022-12-06T10:03:35.228Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/insufficient-8211b:test [omitted]
+[debug] [2022-12-06T10:03:36.049Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/insufficient-8211b:test 200
+[debug] [2022-12-06T10:03:36.050Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/insufficient-8211b:test {"issues":[{"sourcePosition":{"fileName":"firestore.rules","line":2,"column":10,"currentOffset":31,"endOffset":39},"description":"Unused function: isComment.","severity":"WARNING"},{"sourcePosition":{"fileName":"firestore.rules","line":12,"column":10,"currentOffset":293,"endOffset":303},"description":"Unused function: isValidPost.","severity":"WARNING"},{"sourcePosition":{"fileName":"firestore.rules","line":42,"column":10,"currentOffset":983,"endOffset":996},"description":"Unused function: isValidMessage.","severity":"WARNING"},{"sourcePosition":{"fileName":"firestore.rules","line":43,"column":10,"currentOffset":1011,"endOffset":1017},"description":"Invalid variable name: request.","severity":"WARNING"},{"sourcePosition":{"fileName":"firestore.rules","line":43,"column":40,"currentOffset":1041,"endOffset":1047},"description":"Invalid variable name: request.","severity":"WARNING"}]}
+[warn] !  [W] 2:10 - Unused function: isComment. 
+[warn] !  [W] 12:10 - Unused function: isValidPost. 
+[warn] !  [W] 42:10 - Unused function: isValidMessage. 
+[warn] !  [W] 43:10 - Invalid variable name: request. 
+[warn] !  [W] 43:40 - Invalid variable name: request. 
+[info] +  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2022-12-06T10:03:36.057Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b [none]
+[debug] [2022-12-06T10:03:36.454Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b 200
+[debug] [2022-12-06T10:03:36.455Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b {"projectId":"insufficient-8211b","projectNumber":"428337373599","displayName":"insufficient","name":"projects/insufficient-8211b","resources":{"hostingSite":"insufficient-8211b","storageBucket":"insufficient-8211b.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_17f635cb-2c68-4cab-a507-b29bea18e276"}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2022-12-06T10:03:36.471Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudfunctions.googleapis.com [none]
+[debug] [2022-12-06T10:03:36.472Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/insufficient-8211b
+[debug] [2022-12-06T10:03:36.478Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/runtimeconfig.googleapis.com [none]
+[debug] [2022-12-06T10:03:36.479Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/insufficient-8211b
+[debug] [2022-12-06T10:03:36.482Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudbuild.googleapis.com [none]
+[debug] [2022-12-06T10:03:36.483Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudbuild.googleapis.com x-goog-quota-user=projects/insufficient-8211b
+[debug] [2022-12-06T10:03:36.486Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/artifactregistry.googleapis.com [none]
+[debug] [2022-12-06T10:03:36.487Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/artifactregistry.googleapis.com x-goog-quota-user=projects/insufficient-8211b
+[debug] [2022-12-06T10:03:37.367Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/artifactregistry.googleapis.com 200
+[debug] [2022-12-06T10:03:37.368Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2022-12-06T10:03:37.375Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/runtimeconfig.googleapis.com 200
+[debug] [2022-12-06T10:03:37.376Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2022-12-06T10:03:37.395Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudfunctions.googleapis.com 200
+[debug] [2022-12-06T10:03:37.395Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2022-12-06T10:03:37.404Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudbuild.googleapis.com 200
+[debug] [2022-12-06T10:03:37.405Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2022-12-06T10:03:37.407Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b/adminSdkConfig [none]
+[debug] [2022-12-06T10:03:37.693Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b/adminSdkConfig 200
+[debug] [2022-12-06T10:03:37.694Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b/adminSdkConfig {"projectId":"insufficient-8211b","storageBucket":"insufficient-8211b.appspot.com","locationId":"europe-west"}
+[debug] [2022-12-06T10:03:37.697Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/insufficient-8211b/configs [none]
+[debug] [2022-12-06T10:03:37.965Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/insufficient-8211b/configs 200
+[debug] [2022-12-06T10:03:37.965Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/insufficient-8211b/configs {}
+[info] i  functions: preparing codebase default for deployment 
+[debug] [2022-12-06T10:03:37.972Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2022-12-06T10:03:41.985Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-12-06T10:03:41.986Z] Building nodejs source
+[debug] [2022-12-06T10:03:41.989Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-12-06T10:03:42.597Z] Serving at port 9005
+
+[debug] [2022-12-06T10:03:42.785Z] Got response from /__/functions.yaml {"endpoints":{"scheduledFunctionEndDay":{"platform":"gcfv1","scheduleTrigger":{"schedule":"59 23 * * *","timeZone":"Europe/Paris"},"labels":{},"entryPoint":"scheduledFunctionEndDay"},"myFunction":{"platform":"gcfv1","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.update","eventFilters":{"resource":"projects/insufficient-8211b/databases/(default)/documents/users/{userId}/calender/{yearId}/{monthId}/{dayId}"},"retry":false},"labels":{},"entryPoint":"myFunction"},"waterIntake":{"platform":"gcfv1","labels":{},"callableTrigger":{},"entryPoint":"waterIntake"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}]}
+[debug] [2022-12-06T10:03:42.803Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\Greydanus\Documents\insufficient\insufficient\functions (30.45 KB) for uploading 
+[debug] [2022-12-06T10:03:42.914Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/insufficient-8211b/locations/-/functions [none]
+[debug] [2022-12-06T10:03:43.447Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/insufficient-8211b/locations/-/functions 200
+[debug] [2022-12-06T10:03:43.447Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/insufficient-8211b/locations/-/functions {"functions":[{"name":"projects/insufficient-8211b/locations/us-central1/functions/myFunction","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.update","resource":"projects/insufficient-8211b/databases/(default)/documents/users/{userId}/calender/{yearId}/{monthId}/{dayId}","service":"firestore.googleapis.com","failurePolicy":{}},"status":"ACTIVE","entryPoint":"myFunction","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"insufficient-8211b@appspot.gserviceaccount.com","updateTime":"2022-12-05T18:34:38.719Z","versionId":"6","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"faf15029548b65a7610f64f110faf26c252b7c5c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-447454920220.us-central1.cloudfunctions.appspot.com/659c07ef-caa2-4b72-a78d-2b295d3733f7.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"insufficient-8211b\",\"storageBucket\":\"insufficient-8211b.appspot.com\",\"locationId\":\"europe-west\"}","GCLOUD_PROJECT":"insufficient-8211b","EVENTARC_CLOUD_EVENT_SOURCE":"projects/insufficient-8211b/locations/us-central1/functions/waterIntake"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"68ccfcd4-cca5-4c4c-aabf-c14ba9f9ed7d","buildName":"projects/428337373599/locations/us-central1/builds/68ccfcd4-cca5-4c4c-aabf-c14ba9f9ed7d","dockerRegistry":"ARTIFACT_REGISTRY"},{"name":"projects/insufficient-8211b/locations/us-central1/functions/scheduledFunctionEndDay","eventTrigger":{"eventType":"google.pubsub.topic.publish","resource":"projects/insufficient-8211b/topics/firebase-schedule-scheduledFunctionEndDay-us-central1","service":"pubsub.googleapis.com","failurePolicy":{}},"status":"ACTIVE","entryPoint":"scheduledFunctionEndDay","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"insufficient-8211b@appspot.gserviceaccount.com","updateTime":"2022-12-05T18:34:37.965Z","versionId":"6","labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"faf15029548b65a7610f64f110faf26c252b7c5c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-447454920220.us-central1.cloudfunctions.appspot.com/659c07ef-caa2-4b72-a78d-2b295d3733f7.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"insufficient-8211b\",\"storageBucket\":\"insufficient-8211b.appspot.com\",\"locationId\":\"europe-west\"}","GCLOUD_PROJECT":"insufficient-8211b","EVENTARC_CLOUD_EVENT_SOURCE":"projects/insufficient-8211b/locations/us-central1/functions/waterIntake"},"runtime":"nodejs16","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"68ccfcd4-cca5-4c4c-aabf-c14ba9f9ed7d","buildName":"projects/428337373599/locations/us-central1/builds/68ccfcd4-cca5-4c4c-aabf-c14ba9f9ed7d","dockerRegistry":"ARTIFACT_REGISTRY"},{"name":"projects/insufficient-8211b/locations/us-central1/functions/waterIntake","httpsTrigger":{"url":"https://us-central1-insufficient-8211b.cloudfunctions.net/waterIntake","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"waterIntake","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"insufficient-8211b@appspot.gserviceaccount.com","updateTime":"2022-12-05T18:34:30.904Z","versionId":"14","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true","firebase-functions-hash":"faf15029548b65a7610f64f110faf26c252b7c5c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-447454920220.us-central1.cloudfunctions.appspot.com/659c07ef-caa2-4b72-a78d-2b295d3733f7.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"insufficient-8211b\",\"storageBucket\":\"insufficient-8211b.appspot.com\",\"locationId\":\"europe-west\"}","GCLOUD_PROJECT":"insufficient-8211b","EVENTARC_CLOUD_EVENT_SOURCE":"projects/insufficient-8211b/locations/us-central1/functions/waterIntake"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"68ccfcd4-cca5-4c4c-aabf-c14ba9f9ed7d","buildName":"projects/428337373599/locations/us-central1/builds/68ccfcd4-cca5-4c4c-aabf-c14ba9f9ed7d","dockerRegistry":"ARTIFACT_REGISTRY"}]}
+[debug] [2022-12-06T10:03:43.450Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/insufficient-8211b/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2022-12-06T10:03:44.522Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/insufficient-8211b/locations/-/functions 200
+[debug] [2022-12-06T10:03:44.523Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/insufficient-8211b/locations/-/functions {}
+[info] i  functions: ensuring required API cloudscheduler.googleapis.com is enabled... 
+[debug] [2022-12-06T10:03:44.546Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudscheduler.googleapis.com [none]
+[debug] [2022-12-06T10:03:44.546Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudscheduler.googleapis.com x-goog-quota-user=projects/insufficient-8211b
+[debug] [2022-12-06T10:03:45.387Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudscheduler.googleapis.com 200
+[debug] [2022-12-06T10:03:45.388Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/insufficient-8211b/services/cloudscheduler.googleapis.com [omitted]
+[info] +  functions: required API cloudscheduler.googleapis.com is enabled 
+[debug] [2022-12-06T10:03:45.392Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b [none]
+[debug] [2022-12-06T10:03:45.754Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b 200
+[debug] [2022-12-06T10:03:45.754Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b {"projectId":"insufficient-8211b","projectNumber":"428337373599","displayName":"insufficient","name":"projects/insufficient-8211b","resources":{"hostingSite":"insufficient-8211b","storageBucket":"insufficient-8211b.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_17f635cb-2c68-4cab-a507-b29bea18e276"}
+[debug] [2022-12-06T10:03:45.756Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b [none]
+[debug] [2022-12-06T10:03:46.017Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b 200
+[debug] [2022-12-06T10:03:46.017Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b {"projectId":"insufficient-8211b","projectNumber":"428337373599","displayName":"insufficient","name":"projects/insufficient-8211b","resources":{"hostingSite":"insufficient-8211b","storageBucket":"insufficient-8211b.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_17f635cb-2c68-4cab-a507-b29bea18e276"}
+[debug] [2022-12-06T10:03:46.018Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b [none]
+[debug] [2022-12-06T10:03:46.260Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b 200
+[debug] [2022-12-06T10:03:46.260Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/insufficient-8211b {"projectId":"insufficient-8211b","projectNumber":"428337373599","displayName":"insufficient","name":"projects/insufficient-8211b","resources":{"hostingSite":"insufficient-8211b","storageBucket":"insufficient-8211b.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_17f635cb-2c68-4cab-a507-b29bea18e276"}
+[debug] [2022-12-06T10:03:46.265Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/insufficient-8211b/versions [none]
+[debug] [2022-12-06T10:03:46.265Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/insufficient-8211b/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-12-06T10:03:47.573Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/insufficient-8211b/versions 200
+[debug] [2022-12-06T10:03:47.574Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/insufficient-8211b/versions {"name":"projects/428337373599/sites/insufficient-8211b/versions/f12635d15a5e09c3","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-12-06T10:03:47.581Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/insufficient-8211b/releases pageSize=10&pageToken=
+[debug] [2022-12-06T10:03:47.586Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/insufficient-8211b/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2022-12-06T10:03:47.880Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/insufficient-8211b/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2022-12-06T10:03:47.881Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/insufficient-8211b/databases/(default)/collectionGroups/-/indexes {"indexes":[{"name":"projects/insufficient-8211b/databases/(default)/collectionGroups/posts/indexes/CICAgJim14AK","queryScope":"COLLECTION","fields":[{"fieldPath":"userId","order":"ASCENDING"},{"fieldPath":"createdAt","order":"DESCENDING"},{"fieldPath":"__name__","order":"DESCENDING"}],"state":"READY"},{"name":"projects/insufficient-8211b/databases/(default)/collectionGroups/comments/indexes/CICAgOjXh4EK","queryScope":"COLLECTION","fields":[{"fieldPath":"token","order":"ASCENDING"},{"fieldPath":"timestamp","order":"DESCENDING"},{"fieldPath":"__name__","order":"DESCENDING"}],"state":"READY"},{"name":"projects/insufficient-8211b/databases/(default)/collectionGroups/posts/indexes/CICAgJjF9oIK","queryScope":"COLLECTION","fields":[{"fieldPath":"token","order":"ASCENDING"},{"fieldPath":"createdAt","order":"DESCENDING"},{"fieldPath":"__name__","order":"DESCENDING"}],"state":"READY"},{"name":"projects/insufficient-8211b/databases/(default)/collectionGroups/posts/indexes/CICAgJiUpoMK","queryScope":"COLLECTION","fields":[{"fieldPath":"retweet","order":"ASCENDING"},{"fieldPath":"username","order":"ASCENDING"},{"fieldPath":"createdAt","order":"DESCENDING"},{"fieldPath":"__name__","order":"DESCENDING"}],"state":"READY"}]}
+[debug] [2022-12-06T10:03:47.881Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/insufficient-8211b/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false [none]
+[debug] [2022-12-06T10:03:48.055Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/insufficient-8211b/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false 200
+[debug] [2022-12-06T10:03:48.056Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/insufficient-8211b/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false {"fields":[{"name":"projects/insufficient-8211b/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] i  firestore: The following indexes are defined in your project but are not present in your firestore indexes file:
+	(posts) -- (userId,ASCENDING) (createdAt,DESCENDING) 
+	(comments) -- (token,ASCENDING) (timestamp,DESCENDING) 
+	(posts) -- (token,ASCENDING) (createdAt,DESCENDING) 
+	(posts) -- (retweet,ASCENDING) (username,ASCENDING) (createdAt,DESCENDING)  
+[debug] [2022-12-06T10:03:48.339Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/insufficient-8211b/releases 200
+[debug] [2022-12-06T10:03:48.340Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/insufficient-8211b/releases {"releases":[{"name":"projects/insufficient-8211b/releases/cloud.firestore","rulesetName":"projects/insufficient-8211b/rulesets/a8248320-a584-44d7-b039-1c804decee08","createTime":"2022-11-15T10:36:47.425069Z","updateTime":"2022-12-05T19:11:47.405394Z"},{"name":"projects/insufficient-8211b/releases/firebase.storage/insufficient-8211b.appspot.com","rulesetName":"projects/insufficient-8211b/rulesets/9235c853-272f-4925-b22a-4fd35ee92a79","createTime":"2022-11-21T09:22:35.026859Z","updateTime":"2022-11-21T09:24:00.432454Z"}]}
+[debug] [2022-12-06T10:03:48.381Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/insufficient-8211b/rulesets/a8248320-a584-44d7-b039-1c804decee08 [none]
+[debug] [2022-12-06T10:03:49.137Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/insufficient-8211b/rulesets/a8248320-a584-44d7-b039-1c804decee08 200
+[debug] [2022-12-06T10:03:49.137Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/insufficient-8211b/rulesets/a8248320-a584-44d7-b039-1c804decee08 [omitted]
+[info] i  firestore: latest version of firestore.rules already up to date, skipping upload... 
