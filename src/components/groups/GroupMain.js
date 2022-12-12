@@ -93,6 +93,7 @@ function GroupMain(props) {
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
+        getGroups()
       });
   }
 
@@ -136,6 +137,13 @@ function GroupMain(props) {
                 <div className="groups_elm_name">{doc.groupName}</div>
               </div>
             ))}
+            {groups.length===0&&
+            <div
+                
+                className="groups_elm"
+              >
+                <div className="groups_elm_name">Loading...</div>
+              </div>}
           </div>
           {!showAddGroup && (
             <div className="groups_elm">

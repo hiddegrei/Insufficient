@@ -20,6 +20,7 @@ function WaterMain(props) {
   const [dataApi, setDataApi] = useState([]);
   const [dataToday, setDataToday] = useState([]);
   const [waterToday, setWaterToday] = useState([]);
+  const [waterLastWeek, setWaterLastWeek] = useState([]);
   const [show, setShow] = useState(false);
 
   // const waterIntake = functions.httpsCallable("waterIntake");
@@ -63,7 +64,14 @@ function WaterMain(props) {
   useEffect(() => {
     console.log(profile.username);
     if (profile.username) {
-      fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake`, {
+      getWaterToday()
+      getWaterLastWeek()
+      
+    }
+  }, [profile]);
+
+  function getWaterToday(){
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake`, {
         method: "GET", // or 'PUT',
 
         headers: {
@@ -87,11 +95,30 @@ function WaterMain(props) {
       })
         .then((res) => res.json())
         .then((json) => {
-          console.log(json);
+         
           setWaterToday(json.data);
         });
-    }
-  }, [profile]);
+
+  }
+
+  function getWaterLastWeek(){
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/lastweek`, {
+        method: "GET", // or 'PUT',
+
+        headers: {
+          accept: "text/html,application/json",
+          Connection: "keep - alive",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json.data);
+          setWaterLastWeek(json.data);
+        }).catch((err)=>{
+          console.log(err)
+        });
+
+  }
 
   useEffect(() => {
     console.log(dataToday[0]);
@@ -134,6 +161,7 @@ function WaterMain(props) {
       .then((json) => {
         console.log(json);
         setWaterToday(json.data);
+        getWaterToday()
       });
   }
   return (
