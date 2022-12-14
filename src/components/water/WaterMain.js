@@ -147,13 +147,13 @@ function WaterMain(props) {
      
       setDataTable([
         ["Day of week", "Water Intake (ml)", { role: "style" }],
-        [days[new Date(waterLastWeek[0].data.date._seconds * 1000).getUTCDay()], waterLastWeek[0].data.waterIntake, "red"], // RGB value
-        [days[new Date(waterLastWeek[1].data.date._seconds * 1000).getUTCDay()], waterLastWeek[1].data.waterIntake, "red"], // English color name
-        [days[new Date(waterLastWeek[2].data.date._seconds*1000).getUTCDay()], waterLastWeek[2].data.waterIntake, "yellow"],
-        [days[new Date(waterLastWeek[3].data.date._seconds*1000).getUTCDay()], waterLastWeek[3].data.waterIntake, "green"], // CSS-style declaration
-        [days[new Date(waterLastWeek[4].data.date._seconds*1000).getUTCDay()], waterLastWeek[4].data.waterIntake, "green"],
-        [days[new Date(waterLastWeek[5].data.date._seconds*1000).getUTCDay()], waterLastWeek[5].data.waterIntake, "green"],
-        [days[new Date(waterLastWeek[6].data.date._seconds*1000).getUTCDay()], waterLastWeek[6].data.waterIntake, "green"],
+        [waterLastWeek[0].data?days[new Date(waterLastWeek[0].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastWeek[0].data?waterLastWeek[0].data?.waterIntake:0, "red"], // RGB value
+        [waterLastWeek[1].data?days[new Date(waterLastWeek[1].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastWeek[1].data?waterLastWeek[1].data?.waterIntake:0, "red"], // English color name
+        [waterLastWeek[2].data?days[new Date(waterLastWeek[2].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[2].data?waterLastWeek[2].data?.waterIntake:0, "yellow"],
+        [waterLastWeek[3].data?days[new Date(waterLastWeek[3].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[3].data?waterLastWeek[3].data?.waterIntake:0, "green"], // CSS-style declaration
+        [waterLastWeek[4].data?days[new Date(waterLastWeek[4].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[4].data?waterLastWeek[4].data?.waterIntake:0, "green"],
+        [waterLastWeek[5].data?days[new Date(waterLastWeek[5].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[5].data?waterLastWeek[5].data?.waterIntake:0, "green"],
+        [waterLastWeek[6].data?days[new Date(waterLastWeek[6].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[6].data?waterLastWeek[6].data?.waterIntake:0, "green"],
       ]);
       setShow(true);
     }

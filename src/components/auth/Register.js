@@ -43,9 +43,7 @@ function Register() {
                   username: username,
                   email: newuser.email,
                   userId: newuser.uid,
-                  // imageUrl: "",
-                  // bio: "",
-                  // streak: 0,
+                  
                 };
     var formBody = [];
     for (var property in details) {
@@ -65,9 +63,11 @@ function Register() {
                   .then((res) => res.json())
                   .then((json) => {
                     console.log(json);
+                  }).catch((err)=>{
+                    console.log(err)
                   });
 
-                fetch(`https://ms-waterintake.web.app/api/users/${username}/create`, {
+                fetch(`https://ms-waterintake.web.app/api/users/${username}`, {
                   method: "POST", // or 'PUT',
 
                   headers: {
