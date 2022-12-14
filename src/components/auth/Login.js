@@ -104,11 +104,11 @@ function Login() {
   }, [open]);
   return (
     <div className="login">
-      <Link to="/">
+      <Link to="/" className="header_logo_link">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
       </Link>
       <div className="login__container">
-        <h1>sign in</h1>
+        <h1>Log in</h1>
 
         <form>
           {/* <h5>Username</h5>
@@ -120,7 +120,7 @@ function Login() {
           <h5>Password</h5>
           <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
           <button type="submit" onClick={signin} className="login__button">
-            Sign in
+            Log in
           </button>
         </form>
         {/* <p>
