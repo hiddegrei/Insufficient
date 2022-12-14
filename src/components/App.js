@@ -164,7 +164,7 @@ function App() {
             <Widgets />
           </Route>
 
-          <Route path="/chat">
+          <Route path="/daily-intake">
             <Sidebar />
             <ChatPage />
             <Widgets />

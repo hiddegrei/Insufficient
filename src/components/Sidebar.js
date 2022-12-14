@@ -52,28 +52,28 @@ function Sidebar() {
   }, [user, profile]);
 
   useEffect(() => {
-    if (profile.username != "undefined") {
-      if (getUrl.href == "https://socialhit.nl/explore") {
+    if (profile.username !== "undefined") {
+      if (getUrl.href === "https://socialhit.nl/explore") {
         setExplore1(true);
       } else {
         setExplore1(false);
       }
-      if (getUrl.href == "https://socialhit.nl/") {
+      if (getUrl.href === "https://socialhit.nl/") {
         setFollow1(true);
       } else {
         setFollow1(false);
       }
-      if (getUrl.href == "https://socialhit.nl/chat") {
+      if (getUrl.href === "https://socialhit.nl/chat") {
         setChat1(true);
       } else {
         setChat1(false);
       }
-      if (getUrl.href == `https://socialhit.nl/profile/${profile.username}`) {
+      if (getUrl.href === `https://socialhit.nl/profile/${profile.username}`) {
         setProfile1(true);
       } else {
         setProfile1(false);
       }
-      if (getUrl.href == "https://socialhit.nl/notifications") {
+      if (getUrl.href === "https://socialhit.nl/notifications") {
         setNotifi1(true);
       } else {
         setNotifi1(false);
@@ -106,14 +106,14 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <Link to="/">
-        <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
+        <img alt="" className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
         {/* <TwitterIcon className="sidebar__twitterIcon" /> */}
       </Link>
       <Link to="/">{follow1 ? <SidebarOption active Icon={HomeIcon} text="Following" /> : <SidebarOption Icon={HomeIcon} text="Following" />}</Link>
 
       <Link to="/explore">{explore1 ? <SidebarOption active Icon={SearchIcon} text="Explore" /> : <SidebarOption Icon={SearchIcon} text="Explore" />}</Link>
       <Link to="/notifications">{notify ? <div>{notifi1 ? <SidebarOption active alert Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div> : <div>{notifi1 ? <SidebarOption active Icon={NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div>}</Link>
-      <Link to="/chat">{chat1 ? <SidebarOption Icon={MailOutlineIcon} active text="Chat" /> : <SidebarOption Icon={MailOutlineIcon} text="Chat" />}</Link>
+      <Link to="/daily-intake">{chat1 ? <SidebarOption Icon={MailOutlineIcon} active text="Daily Intake" /> : <SidebarOption Icon={MailOutlineIcon} text="Daily Intake" />}</Link>
       <Link to="/groups">{profile1 ? <SidebarOption Icon={InvertColorsIcon} active text="Groups" /> : <SidebarOption Icon={GroupsIcon} text="Groups" />}</Link>
       <Link to="/water">{profile1 ? <SidebarOption Icon={InvertColorsIcon} active text="Water" /> : <SidebarOption Icon={InvertColorsIcon} text="Water" />}</Link>
       <Link to={`/profile/${profile?.username}`}>{profile1 ? <SidebarOption Icon={AccountCircleIcon} active text="Profile" /> : <SidebarOption Icon={AccountCircleIcon} text="Profile" />}</Link>
@@ -136,7 +136,7 @@ function Sidebar() {
             {/* <Avatar onClick={()=>{click?setClick(false):setClick(true)}} src={profile.imageUrl}></Avatar> */}
             {
               profile.imageUrl ? (
-                <img
+                <img alt=""
                   onClick={() => {
                     click ? setClick(false) : setClick(true);
                   }}
@@ -144,7 +144,7 @@ function Sidebar() {
                   className="profile__aa"
                 />
               ) : (
-                <img
+                <img alt=""
                   onClick={() => {
                     click ? setClick(false) : setClick(true);
                   }}
