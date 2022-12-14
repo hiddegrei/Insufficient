@@ -5,8 +5,7 @@ import { Chart } from "react-google-charts";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import { useStateValue } from "../../Stateprovider";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-// import { db, functions } from "../../firebase";
-// import firebase from "firebase";
+
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 function WaterMain(props) {
@@ -22,7 +21,7 @@ function WaterMain(props) {
   const [waterToday, setWaterToday] = useState([]);
   const [waterLastWeek, setWaterLastWeek] = useState([]);
   const [show, setShow] = useState(false);
-  const [streak,setStreak]=useState()
+  const [streak, setStreak] = useState()
 
   // const waterIntake = functions.httpsCallable("waterIntake");
 
@@ -67,60 +66,60 @@ function WaterMain(props) {
     if (profile.username) {
       getWaterToday()
       getWaterLastWeek()
-  getStreak()
-      
+      getStreak()
+
     }
   }, [profile]);
 
-  function getWaterToday(){
+  function getWaterToday() {
     fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
-        method: "GET", // or 'PUT',
+      method: "GET", // or 'PUT',
 
-        headers: {
-          accept: "text/html,application/json",
-          Connection: "keep - alive",
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-          setDataToday(json.data);
-        });
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        setDataToday(json.data);
+      });
 
-      fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
-        method: "GET", // or 'PUT',
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
+      method: "GET", // or 'PUT',
 
-        headers: {
-          accept: "text/html,application/json",
-          Connection: "keep - alive",
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-         
-          setWaterToday(json.data);
-        }).catch((err)=>{
-          console.log(err)
-        });
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+
+        setWaterToday(json.data);
+      }).catch((err) => {
+        console.log(err)
+      });
 
   }
-  function getStreak(){
-     fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile.username}/streak`, {
-       method: "GET", // or 'PUT',
+  function getStreak() {
+    fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile.username}/streak`, {
+      method: "GET", // or 'PUT',
 
-       headers: {
-         accept: "text/html,application/json",
-          Connection: "keep - alive",
-       }
-     })
-       .then((res) => res.json())
-       .then((json) => {
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      }
+    })
+      .then((res) => res.json())
+      .then((json) => {
         //  console.log(json.streak);
-          setStreak(json.streak)
-       });
+        setStreak(json.streak)
+      });
   }
 
-  function getWaterLastWeek(){
+  function getWaterLastWeek() {
     console.log("hi")
     fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/lastweek`, {
       method: "GET", // or 'PUT',
@@ -142,19 +141,19 @@ function WaterMain(props) {
   }
 
   useEffect(() => {
-    let days=["mon","tue","wed","thu","fri","sat","sun"]
-    
+    let days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+
     if (waterLastWeek?.length === 7) {
-      console.log(new Date(waterLastWeek[0].data.date._seconds*1000).getUTCDay());
+      console.log(new Date(waterLastWeek[0].data.date._seconds * 1000).getUTCDay());
       setDataTable([
         ["Day of week", "Water Intake (ml)", { role: "style" }],
         [days[new Date(waterLastWeek[0].data.date._seconds * 1000).getUTCDay()], waterLastWeek[0].data.waterIntake, "red"], // RGB value
         [days[new Date(waterLastWeek[1].data.date._seconds * 1000).getUTCDay()], waterLastWeek[1].data.waterIntake, "red"], // English color name
-        [days[new Date(waterLastWeek[2].data.date._seconds*1000).getUTCDay()], waterLastWeek[2].data.waterIntake, "yellow"],
-        [days[new Date(waterLastWeek[3].data.date._seconds*1000).getUTCDay()], waterLastWeek[3].data.waterIntake, "green"], // CSS-style declaration
-        [days[new Date(waterLastWeek[4].data.date._seconds*1000).getUTCDay()], waterLastWeek[4].data.waterIntake, "green"],
-        [days[new Date(waterLastWeek[5].data.date._seconds*1000).getUTCDay()], waterLastWeek[5].data.waterIntake, "green"],
-        [days[new Date(waterLastWeek[6].data.date._seconds*1000).getUTCDay()], waterLastWeek[6].data.waterIntake, "green"],
+        [days[new Date(waterLastWeek[2].data.date._seconds * 1000).getUTCDay()], waterLastWeek[2].data.waterIntake, "yellow"],
+        [days[new Date(waterLastWeek[3].data.date._seconds * 1000).getUTCDay()], waterLastWeek[3].data.waterIntake, "green"], // CSS-style declaration
+        [days[new Date(waterLastWeek[4].data.date._seconds * 1000).getUTCDay()], waterLastWeek[4].data.waterIntake, "green"],
+        [days[new Date(waterLastWeek[5].data.date._seconds * 1000).getUTCDay()], waterLastWeek[5].data.waterIntake, "green"],
+        [days[new Date(waterLastWeek[6].data.date._seconds * 1000).getUTCDay()], waterLastWeek[6].data.waterIntake, "green"],
       ]);
       setShow(true);
     }
@@ -225,14 +224,14 @@ function WaterMain(props) {
           </div>
           <div className="water_today_value">
             <div className="water_today_con">
-          <div className="water_today_con_val">{waterToday.waterIntake}</div>
-          <div className="water_today_con_plus">
-            <AddCircleIcon onClick={() => addWater()} />
+              <div className="water_today_con_val">{waterToday?.waterIntake}</div>
+              <div className="water_today_con_plus">
+                <AddCircleIcon onClick={() => addWater()} />
+              </div>
+            </div>
           </div>
         </div>
-          </div>
-        </div>
-        
+
       </div>
     </div>
   );
