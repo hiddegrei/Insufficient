@@ -5,8 +5,7 @@ import { Chart } from "react-google-charts";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import { useStateValue } from "../../Stateprovider";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { db, functions } from "../../firebase";
-import firebase from "firebase";
+
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 function WaterMain(props) {
