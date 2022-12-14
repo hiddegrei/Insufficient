@@ -31,14 +31,14 @@ function Register() {
                 // Signed in
                 var newuser = userCredential.user;
 
-                // db.collection("users").doc(username).set({
-                //   username: username,
-                //   email: newuser.email,
-                //   userId: newuser.uid,
-                //   imageUrl: "",
-                //   bio: "",
-                //   streak: 0,
-                // });
+                db.collection("users").doc(username).set({
+                  username: username,
+                  email: newuser.email,
+                  userId: newuser.uid,
+                  imageUrl: "",
+                  bio: "",
+                  streak: 0,
+                });
                 var details = {
                   username: username,
                   email: newuser.email,

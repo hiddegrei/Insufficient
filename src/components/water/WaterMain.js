@@ -144,7 +144,7 @@ function WaterMain(props) {
     let days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 
     if (waterLastWeek?.length === 7) {
-      console.log(new Date(waterLastWeek[0].data.date._seconds * 1000).getUTCDay());
+
       setDataTable([
         ["Day of week", "Water Intake (ml)", { role: "style" }],
         [days[new Date(waterLastWeek[0].data.date._seconds * 1000).getUTCDay()], waterLastWeek[0].data.waterIntake, "red"], // RGB value
@@ -229,9 +229,9 @@ function WaterMain(props) {
                 <AddCircleIcon onClick={() => addWater()} />
               </div>
             </div>
+
           </div>
         </div>
-
       </div>
     </div>
   );
