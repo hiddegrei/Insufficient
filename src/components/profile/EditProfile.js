@@ -17,7 +17,8 @@ function EditProfile() {
   const [nchar2, setNchar2] = useState(0);
   const [nchar3, setNchar3] = useState(0);
   const [weight,setWeight]=useState(profile.weight?profile.weight:0);
-  const [length,setLength]=useState(profile.length?profile.length:0)
+  const [length,setLength]=useState(profile.length?profile.length:0);
+  const [scope, setScope] = useState("profile:read_all,activity:read");
 
   useEffect(()=>{
     if(profile){
@@ -149,6 +150,10 @@ function EditProfile() {
       setLength(newLength);
     }
   }, [length]);
+
+  function handleConnect(){
+    window.open(`https://www.strava.com/oauth/authorize?client_id=74263&redirect_uri=http://localhost:3000/exchange_token&response_type=code&approval_prompt=force&scope=${scope}`, "_self");
+  }
   return (
     <div className="edit">
       <div className="edit__header">
@@ -205,6 +210,9 @@ function EditProfile() {
             <div className="maxchar2">{nchar3}/100</div>
           </div>
         </form>
+      </div>
+      <div onClick={()=>handleConnect()} className="edit_strava_con btn btn-warning">
+        connect to garmin
       </div>
     </div>
   );

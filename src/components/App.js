@@ -26,7 +26,8 @@ import WaterMain from "./water/WaterMain";
 import GroupMain from "./groups/GroupMain";
 // import Games from "./Games"
 import Home from "./Home";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import StravaMain from "./strava/StravaMain"
 
 function App() {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -84,6 +85,12 @@ function App() {
           <Route path="/messages/:roomId">
             <Sidebar />
             <Chat />
+            <Widgets />
+          </Route>
+
+          <Route path="/exchange_token">
+            <Sidebar />
+            <StravaMain />
             <Widgets />
           </Route>
 
