@@ -224,11 +224,18 @@ function WaterMain(props) {
           </div>
           <div className="water_today_value">
             <div className="water_today_con">
-          <div className="water_today_con_val">{waterToday?.waterIntake}</div>
+          <div className="water_today_con_val">{waterToday?.waterIntake}ml</div>
           <div className="water_today_con_plus">
             <AddCircleIcon onClick={() => addWater()} />
           </div>
         </div>
+        <div className="water_today_streak">
+          <div className="water_today_title">
+            This week
+          </div>
+          <div className="water_today_value">{streak}</div>
+        </div>
+        
           </div>
         </div>
         
