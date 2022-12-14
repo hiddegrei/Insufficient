@@ -54,7 +54,7 @@ function Register() {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-                fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${username}/create`, {
+                fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${username}`, {
                   method: "POST", // or 'PUT',
 
                   headers: {
