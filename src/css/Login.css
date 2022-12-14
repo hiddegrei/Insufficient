@@ -53,6 +53,9 @@
   border-color: #366162 #3b6465 #436c6d;
   color: #111;
   border-radius: 2px;
+  padding:10px;
+  align-items: center;
+  place-content: center;
 }
 .login__registerButton {
   background-color: darkgrey;

@@ -168,11 +168,11 @@ function Register() {
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-        <button onClick={register} className="login__registerButton">
+        <button onClick={register} className="btn btn-info login__registerButton">
           Create account
         </button>
 
-        <button type="submit" onClick={() => history.push("/login")} className="login__button">
+        <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__button">
           Back to Sign in
         </button>
       </div>
