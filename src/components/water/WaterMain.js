@@ -229,12 +229,7 @@ function WaterMain(props) {
             <AddCircleIcon onClick={() => addWater()} />
           </div>
         </div>
-        <div className="water_today_streak">
-          <div className="water_today_title">
-            This week
-          </div>
-          <div className="water_today_value">{streak}</div>
-        </div>
+        
         
           </div>
         </div>
