@@ -15,6 +15,8 @@ function GroupMain(props) {
   const [searchContent, setSearchContent] = useState("");
   const [output, setOutput] = useState([]);
   const [show, setShow] = useState(false);
+  const [showGroup, setShowGroup] = useState(false);
+  const [groupData, setGroupData] = useState([]);
 
   useEffect(() => {
     if (profile?.username) {
@@ -91,6 +93,7 @@ function GroupMain(props) {
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
+        getGroups()
       });
   }
 
@@ -118,67 +121,92 @@ function GroupMain(props) {
       <div className="group__header">
         <h1>Groups</h1>
       </div>
-      <div className="groups">
-        {groups.map((doc, index) => (
-          <div key={index} className="groups_elm">
-            <div className="groups_elm_name">{doc.groupName}</div>
+      {!showGroup ? (
+        <div className="group_con">
+          <div className="groups">
+            {groups.map((doc, index) => (
+              <div
+                onClick={() => {
+                  console.log(doc);
+                  setGroupData(doc);
+                  setShowGroup(true);
+                }}
+                key={index}
+                className="groups_elm"
+              >
+                <div className="groups_elm_name">{doc.groupName}</div>
+              </div>
+            ))}
+            {groups.length===0&&
+            <div
+                
+                className="groups_elm"
+              >
+                <div className="groups_elm_name">Loading...</div>
+              </div>}
           </div>
-        ))}
-      </div>
-      {!showAddGroup && (
-        <div className="groups_elm">
-          <AddIcon
-            fontSize="large"
-            className="groups_add_icon"
-            onClick={() => {
-              setShowAddGroup(true);
-            }}
-          />
-        </div>
-      )}
-      {showAddGroup && (
-        <div className="groups_elm">
-          <div className="groups_elm_inputCon">
-            <div className="groups_elm_inputCon_title">GroupName</div>
-            <div className="groups_elm_inputCon_input">
-              <input onChange={(e) => setNewGroupName(e.target.value)} value={newGroupName}></input>
-            </div>
-          </div>
-
-          <div className="groups_elm_inputCon">
-            <div className="groups_elm_inputCon_title">GroupMembers</div>
-            <div className="groups_elm_inputCon_input">
-              <input onChange={(e) => setSearchContent(e.target.value)} value={searchContent} placeholder="search for users" className="searchWidget" type="text"></input>
-            </div>
-          </div>
-          {show && (
-            <div>
-              {output.map((doc, index) => (
-                <div
-                  key={index + 10}
-                  onClick={() => {
-                    setMembers([...members, doc.data.username]);
-                    setSearchContent("");
-                  }}
-                  className="group__optie"
-                >
-                  <Avatar src={doc.data.imageUrl || ""} />
-                  <div className="group__optie__info">
-                    <h2>{doc.data.username}</h2>
-                  </div>
-                </div>
-              ))}
+          {!showAddGroup && (
+            <div className="groups_elm">
+              <AddIcon
+                fontSize="large"
+                className="groups_add_icon"
+                onClick={() => {
+                  setShowAddGroup(true);
+                }}
+              />
             </div>
           )}
+          {showAddGroup && (
+            <div className="groups_elm">
+              <div className="groups_elm_inputCon">
+                <div className="groups_elm_inputCon_title">GroupName</div>
+                <div className="groups_elm_inputCon_input">
+                  <input onChange={(e) => setNewGroupName(e.target.value)} value={newGroupName}></input>
+                </div>
+              </div>
 
-          <div
-            className="groups_elm_add"
-            onClick={() => {
-              addGroup();
-            }}
-          >
-            add group
-          </div>
+              <div className="groups_elm_inputCon">
+                <div className="groups_elm_inputCon_title">GroupMembers</div>
+                <div className="groups_elm_inputCon_input">
+                  <input onChange={(e) => setSearchContent(e.target.value)} value={searchContent} placeholder="search for users" className="searchWidget" type="text"></input>
+                </div>
+              </div>
+              {show && (
+                <div>
+                  {output.map((doc, index) => (
+                    <div
+                      key={index + 10}
+                      onClick={() => {
+                        setMembers([...members, doc.data.username]);
+                        setSearchContent("");
+                      }}
+                      className="group__optie"
+                    >
+                      <Avatar src={doc.data.imageUrl || ""} />
+                      <div className="group__optie__info">
+                        <h2>{doc.data.username}</h2>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div
+                className="groups_elm_add"
+                onClick={() => {
+                  addGroup();
+                }}
+              >
+                add group
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="group_con">
+          {groupData.membersData.map((doc) => (
+            <div>{doc.name}</div>
+          ))}
         </div>
       )}
     </div>

@@ -31,14 +31,41 @@ function Register() {
                 // Signed in
                 var newuser = userCredential.user;
 
-                db.collection("users").doc(username).set({
+                // db.collection("users").doc(username).set({
+                //   username: username,
+                //   email: newuser.email,
+                //   userId: newuser.uid,
+                //   imageUrl: "",
+                //   bio: "",
+                //   streak: 0,
+                // });
+                var details = {
                   username: username,
                   email: newuser.email,
                   userId: newuser.uid,
-                  imageUrl: "",
-                  bio: "",
-                  streak: 0,
-                });
+                  // imageUrl: "",
+                  // bio: "",
+                  // streak: 0,
+                };
+    var formBody = [];
+    for (var property in details) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(details[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+                fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${username}/create`, {
+                  method: "POST", // or 'PUT',
+
+                  headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+                  },
+                  body: formBody,
+                })
+                  .then((res) => res.json())
+                  .then((json) => {
+                    console.log(json);
+                  });
 
                 fetch(`https://ms-waterintake.web.app/api/users/${username}/create`, {
                   method: "POST", // or 'PUT',

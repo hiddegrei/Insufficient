@@ -32,6 +32,9 @@ flex: 0.5;
     
 
 }
+.groups_elm:hover{
+cursor: pointer;
+}
 .groups_elm_name {
     display: flex;
     margin-left:auto;
@@ -120,4 +123,10 @@ cursor: pointer;
 .group__optie__info>h2 {
     font-size: 16px;
     margin-bottom: 8px;
+}
+.group_con{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:fit-content;
 }

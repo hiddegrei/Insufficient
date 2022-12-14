@@ -20,7 +20,9 @@ function WaterMain(props) {
   const [dataApi, setDataApi] = useState([]);
   const [dataToday, setDataToday] = useState([]);
   const [waterToday, setWaterToday] = useState([]);
+  const [waterLastWeek, setWaterLastWeek] = useState([]);
   const [show, setShow] = useState(false);
+  const [streak,setStreak]=useState()
 
   // const waterIntake = functions.httpsCallable("waterIntake");
 
@@ -63,7 +65,15 @@ function WaterMain(props) {
   useEffect(() => {
     console.log(profile.username);
     if (profile.username) {
-      fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake`, {
+      getWaterToday()
+      getWaterLastWeek()
+  getStreak()
+      
+    }
+  }, [profile]);
+
+  function getWaterToday(){
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
         method: "GET", // or 'PUT',
 
         headers: {
@@ -87,28 +97,68 @@ function WaterMain(props) {
       })
         .then((res) => res.json())
         .then((json) => {
-          console.log(json);
+         
           setWaterToday(json.data);
+        }).catch((err)=>{
+          console.log(err)
         });
-    }
-  }, [profile]);
+
+  }
+  function getStreak(){
+     fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile.username}/streak`, {
+       method: "GET", // or 'PUT',
+
+       headers: {
+         accept: "text/html,application/json",
+          Connection: "keep - alive",
+       }
+     })
+       .then((res) => res.json())
+       .then((json) => {
+        //  console.log(json.streak);
+          setStreak(json.streak)
+       });
+  }
+
+  function getWaterLastWeek(){
+    console.log("hi")
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/lastweek`, {
+      method: "GET", // or 'PUT',
+
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json.data);
+        setWaterLastWeek(json.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  }
 
   useEffect(() => {
-    console.log(dataToday[0]);
-    if (dataToday?.length === 7) {
+    let days=["mon","tue","wed","thu","fri","sat","sun"]
+    
+    if (waterLastWeek?.length === 7) {
+      console.log(new Date(waterLastWeek[0].data.date._seconds*1000).getUTCDay());
       setDataTable([
         ["Day of week", "Water Intake (ml)", { role: "style" }],
-        ["mo", dataToday[0].waterIntake, "red"], // RGB value
-        ["tue", dataToday[1].waterIntake, "red"], // English color name
-        ["wed", dataToday[2].waterIntake, "yellow"],
-        ["thu", dataToday[3].waterIntake, "green"], // CSS-style declaration
-        ["fri", dataToday[4].waterIntake, "green"],
-        ["sat", dataToday[5].waterIntake, "green"],
-        ["sun", dataToday[6].waterIntake, "green"],
+        [days[new Date(waterLastWeek[0].data.date._seconds * 1000).getUTCDay()], waterLastWeek[0].data.waterIntake, "red"], // RGB value
+        [days[new Date(waterLastWeek[1].data.date._seconds * 1000).getUTCDay()], waterLastWeek[1].data.waterIntake, "red"], // English color name
+        [days[new Date(waterLastWeek[2].data.date._seconds*1000).getUTCDay()], waterLastWeek[2].data.waterIntake, "yellow"],
+        [days[new Date(waterLastWeek[3].data.date._seconds*1000).getUTCDay()], waterLastWeek[3].data.waterIntake, "green"], // CSS-style declaration
+        [days[new Date(waterLastWeek[4].data.date._seconds*1000).getUTCDay()], waterLastWeek[4].data.waterIntake, "green"],
+        [days[new Date(waterLastWeek[5].data.date._seconds*1000).getUTCDay()], waterLastWeek[5].data.waterIntake, "green"],
+        [days[new Date(waterLastWeek[6].data.date._seconds*1000).getUTCDay()], waterLastWeek[6].data.waterIntake, "green"],
       ]);
       setShow(true);
     }
-  }, [dataToday]);
+  }, [waterLastWeek]);
 
   function addWater() {
     var details = {
@@ -122,8 +172,8 @@ function WaterMain(props) {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today/update/`, {
-      method: "POST", // or 'PUT',
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
+      method: "PUT", // or 'PUT',
 
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -132,8 +182,10 @@ function WaterMain(props) {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
-        setWaterToday(json.data);
+        // console.log(json);
+        // setWaterToday(json.data);
+        getWaterToday()
+        getWaterLastWeek()
       });
   }
   return (
@@ -161,15 +213,26 @@ function WaterMain(props) {
       </div>
       <div className="water_today">
         <div className="water_today_h">Today</div>
-        <div className="water_today_h">
-          <LocalFireDepartmentIcon /> {profile?.streak}
+        <div className="water_today_streak">
+          <div className="water_today_title">
+            Streak <LocalFireDepartmentIcon />
+          </div>
+          <div className="water_today_value">{streak}</div>
         </div>
-        <div className="water_today_con">
+        <div className="water_today_streak">
+          <div className="water_today_title">
+            WaterIntake
+          </div>
+          <div className="water_today_value">
+            <div className="water_today_con">
           <div className="water_today_con_val">{waterToday.waterIntake}</div>
           <div className="water_today_con_plus">
             <AddCircleIcon onClick={() => addWater()} />
           </div>
         </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   );
