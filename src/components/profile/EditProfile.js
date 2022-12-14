@@ -14,6 +14,17 @@ function EditProfile() {
   const [image, setImage] = useState("");
   const childPath = `users/${profile.username}/${Math.random().toString(36)}`;
   const [nchar, setNchar] = useState(0);
+  const [nchar2, setNchar2] = useState(0);
+  const [nchar3, setNchar3] = useState(0);
+  const [weight,setWeight]=useState(profile.weight?profile.weight:0);
+  const [length,setLength]=useState(profile.length?profile.length:0)
+
+  useEffect(()=>{
+    if(profile){
+      setWeight(profile.weight)
+      setLength(profile.length)
+    }
+  },[profile])
 
   const handleBio = (e) => {
     e.preventDefault();
@@ -22,6 +33,30 @@ function EditProfile() {
         .doc(profile.username)
         .update({
           bio: bio,
+        })
+        .catch((error) => console.log(error));
+    }
+    setBio("");
+  };
+  const handleWeight = (e) => {
+    e.preventDefault();
+    if (user && profile.username != "undefined") {
+      db.collection("users")
+        .doc(profile.username)
+        .update({
+          weight: +weight,
+        })
+        .catch((error) => console.log(error));
+    }
+    setBio("");
+  };
+  const handleLength = (e) => {
+    e.preventDefault();
+    if (user && profile.username != "undefined") {
+      db.collection("users")
+        .doc(profile.username)
+        .update({
+          length: +length,
         })
         .catch((error) => console.log(error));
     }
@@ -80,6 +115,40 @@ function EditProfile() {
       setBio(newbio);
     }
   }, [bio]);
+  useEffect(() => {
+    //check length tweetmessage
+    let len = weight.toString().length;;
+    let ncharNew = 0;
+
+    for (let i = 0; i != len; i++) {
+      if (weight.toString()[i] != " ") {
+        ncharNew++;
+      }
+    }
+    setNchar2(ncharNew);
+    if (ncharNew > 100) {
+      let newWeight = weight;
+      newWeight = newWeight.replace(`${newWeight[newWeight.length - 1]}`, "");
+      setWeight(newWeight);
+    }
+  }, [weight]);
+  useEffect(() => {
+    //check length tweetmessage
+    let len = length.toString().length;;
+    let ncharNew = 0;
+
+    for (let i = 0; i != len; i++) {
+      if (length.toString()[i] != " ") {
+        ncharNew++;
+      }
+    }
+    setNchar3(ncharNew);
+    if (ncharNew > 100) {
+      let newLength = length;
+      newLength = newLength.replace(`${newLength[newLength.length - 1]}`, "");
+      setLength(newLength);
+    }
+  }, [length]);
   return (
     <div className="edit">
       <div className="edit__header">
@@ -111,6 +180,29 @@ function EditProfile() {
             <input className="bio__input" placeholder={bio} type="text" value={bio} onChange={(e) => setBio(e.target.value)}></input>
 
             <div className="maxchar2">{nchar}/100</div>
+          </div>
+        </form>
+      </div>
+
+      <div className="edit__bio">
+        <h3>Weight</h3>
+        <form onSubmit={handleWeight}>
+          <div className="edit__bio__input">
+            <input className="bio__input" placeholder={weight} type="text" value={weight} onChange={(e) =>{ 
+              if(!isNaN(e.target.value)||e.keyCode==8||e.keyCode==46){setWeight(e.target.value)}}}></input>
+
+            <div className="maxchar2">{nchar2}/100</div>
+          </div>
+        </form>
+      </div>
+      <div className="edit__bio">
+        <h3>Length</h3>
+        <form onSubmit={handleLength}>
+          <div className="edit__bio__input">
+            <input className="bio__input" placeholder={length} type="text" value={length} onChange={(e) =>{ 
+              if(!isNaN(e.target.value)||e.keyCode==8||e.keyCode==46){setLength(e.target.value)}}}></input>
+
+            <div className="maxchar2">{nchar3}/100</div>
           </div>
         </form>
       </div>
