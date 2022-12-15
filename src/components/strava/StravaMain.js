@@ -53,9 +53,9 @@ function StravaMain(props) {
             <div className="strava__header">
         <h1>Strava</h1>
       </div>
-      <div className='strava_succes'>
+      {show&&<div className='strava_succes'>
         Strava is connected
-      </div>
+      </div>}
             
         </div>
     );
