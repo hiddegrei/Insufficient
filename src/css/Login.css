@@ -65,9 +65,11 @@
 .login__button {
   background: linear-gradient( #00C2FF, #0085FF );
   border-radius: 25px;
-  height: 30px;
-  width: 200px;
-  
+  /* height: 30px;
+  width: 200px; */
+  width:100%;
+  margin-left:auto;
+  margin-right: auto;
   margin-top: 10px;
   color: #111;
 }

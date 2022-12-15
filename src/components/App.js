@@ -26,6 +26,7 @@ import WaterMain from "./water/WaterMain";
 import GroupMain from "./groups/GroupMain";
 // import Games from "./Games"
 import Home from "./Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [{ user, profile }, dispatch] = useStateValue();
