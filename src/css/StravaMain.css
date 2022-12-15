@@ -17,3 +17,11 @@
         border: 1px solid var(--twitter-background);
         padding: 15px 20px;
 }
+.strava_succes{
+    display:flex;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}

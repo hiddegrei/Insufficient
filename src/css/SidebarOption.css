@@ -26,6 +26,9 @@
 
 .sidebarOption--active {
   color: var(--twitter-color);
+background-color: #e8f5fe;
+  border-radius: 30px;
+  color: var(--twitter-color);
 }
 .alert {
   color: red;

@@ -50,6 +50,7 @@ function Register() {
                   streak: 0,
                   weight: weight,
                   length: length,
+                  strava:false
                 });
                 var details = {
                   username: username,

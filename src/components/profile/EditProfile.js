@@ -211,9 +211,12 @@ function EditProfile() {
           </div>
         </form>
       </div>
-      <div onClick={()=>handleConnect()} className="edit_strava_con btn btn-warning">
-        connect to garmin
-      </div>
+      {profile?.strava?<div onClick={()=>handleConnect()} className="edit_strava_con btn btn-warning">
+        connect to strava
+      </div>:
+      <div  className="edit_strava_con btn btn-warning">
+       strava is connected
+      </div>}
     </div>
   );
 }
