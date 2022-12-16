@@ -127,14 +127,6 @@ function Login() {
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-<<<<<<< Updated upstream
-        <button onClick={() => history.push("/forgotpassword")} className=" btn btn-info login__forgotpasswordbutton">
-          Forgot Password?
-        </button>
-        <button onClick={() => history.push("/register")} className="btn btn-info login__registerButton">
-          Create account
-        </button>
-=======
         <button onClick={() => history.push("/register")} className="login__registerButton">
           Register
         </button>
@@ -142,7 +134,7 @@ function Login() {
           Forgot Password?
         </button>
 
->>>>>>> Stashed changes
+
       </div>
       {/* {open&&<div className="login__popup">
              <h1>Thanks for signing up! You can Login now!</h1>
