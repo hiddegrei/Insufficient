@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../css/ChatPage.css";
+import "../css/DailyIntakePage.css";
 // import ChatOptie from "./ChatOptie";
 import { db } from "../firebase";
 import { useStateValue } from "../Stateprovider";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 // import AddnewChat from "./AddnewChat";
 
-function ChatPage() {
+function DailyIntakePage() {
   const [messages, setMessages] = useState([]);
 
   const [{ user, profile }, dispatch] = useStateValue();
@@ -63,20 +63,24 @@ function ChatPage() {
   }
 
   return (
-    <div className="chat">
+    <div className="dailyIntake">
       <div>
-        <div className="chat__header">
+        <div className="dailyIntake__header">
           <h2>Personal waterintake</h2>
         </div>
-        <div>
+
+        <div className="dailyIntake__title">
           <p>Calculate your personal daily waterintake</p>
         </div>
 
-        <div>
+        <div className="dailyIntake__form">
           <form>
             <input type="int" id="weightInput" placeholder="your bodyweight" />
             <button type="button" onClick={personalWaterIntake}>Calculate</button>
           </form>
+        </div>
+
+        <div className="dailyIntake__p">
           <p type="int" id="waterOutput"></p>
         </div>
 
@@ -88,4 +92,4 @@ function ChatPage() {
     </div>
   );
 }
-export default ChatPage;
+export default DailyIntakePage;

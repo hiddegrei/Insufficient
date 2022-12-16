@@ -11,7 +11,7 @@ import { db, auth } from "../firebase";
 import TweetBox from "./TweetBox";
 import { useParams } from "react-router-dom";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import EmojiFoodBeverageRoundedIcon from "@material-ui/icons/EmojiFoodBeverageRounded";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import InvertColorsIcon from "@mui/icons-material/InvertColors";
@@ -27,7 +27,7 @@ function Sidebar() {
   const [explore1, setExplore1] = useState(false);
   const [follow1, setFollow1] = useState(false);
   const [profile1, setProfile1] = useState(false);
-  const [chat1, setChat1] = useState(false);
+  const [dailyCalc1, setDailyCalc1] = useState(false);
   const [notifi1, setNotifi1] = useState(false);
   const [notiCounter, setNotiCounter] = useState([]);
   const [notify, setNotify] = useState(false);
@@ -63,10 +63,10 @@ function Sidebar() {
       } else {
         setFollow1(false);
       }
-      if (getUrl.href === "https://socialhit.nl/chat") {
-        setChat1(true);
+      if (getUrl.href === "https://socialhit.nl/daily-intake") {
+        setDailyCalc1(true);
       } else {
-        setChat1(false);
+        setDailyCalc1(false);
       }
       if (getUrl.href === `https://socialhit.nl/profile/${profile.username}`) {
         setProfile1(true);
@@ -113,7 +113,7 @@ function Sidebar() {
 
       <Link to="/explore">{explore1 ? <SidebarOption active Icon={SearchIcon} text="Explore" /> : <SidebarOption Icon={SearchIcon} text="Explore" />}</Link>
       <Link to="/notifications">{notify ? <div>{notifi1 ? <SidebarOption active alert Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div> : <div>{notifi1 ? <SidebarOption active Icon={NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div>}</Link>
-      <Link to="/daily-intake">{chat1 ? <SidebarOption Icon={MailOutlineIcon} active text="Daily Intake" /> : <SidebarOption Icon={MailOutlineIcon} text="Daily Intake" />}</Link>
+      <Link to="/daily-intake">{dailyCalc1 ? <SidebarOption Icon={EmojiFoodBeverageRoundedIcon} active text="Daily Intake" /> : <SidebarOption Icon={EmojiFoodBeverageRoundedIcon} text="Daily Intake" />}</Link>
       <Link to="/groups">{profile1 ? <SidebarOption Icon={InvertColorsIcon} active text="Groups" /> : <SidebarOption Icon={GroupsIcon} text="Groups" />}</Link>
       <Link to="/water">{profile1 ? <SidebarOption Icon={InvertColorsIcon} active text="Water" /> : <SidebarOption Icon={InvertColorsIcon} text="Water" />}</Link>
       <Link to={`/profile/${profile?.username}`}>{profile1 ? <SidebarOption Icon={AccountCircleIcon} active text="Profile" /> : <SidebarOption Icon={AccountCircleIcon} text="Profile" />}</Link>
