@@ -60,6 +60,7 @@
   border-radius: 10px;
   background-color: rgb(227, 227, 227);
   border-color: rgb(227, 227, 227);
+  font-size: 15px;
 }
 
 .login__container > p {
