@@ -48,9 +48,11 @@
 .login__container > form > h5 {
   margin-bottom: -10px;
   font-size: 13px;
+  /* display:flex; */
 }
 
 .login__container > form > input {
+  /* display:flex; */
   height: 30px;
   margin-bottom: 10px;
   background-color: white;
@@ -82,14 +84,23 @@
   background: linear-gradient(#0974d8, #0dafe0);
   border-color: #0974d8;
 }
+.login_form{
+  /* border:1px solid black; */
+  align-items: center;
+  place-content: center;
+  /* display:flex;
+  flex-direction: column; */
+}
 
 .login__button {
+  display:flex;
   background: linear-gradient(#0085FF, #00C2FF);
   border-radius: 25px;
   height: 50px;
   width: 120px;
   border-color: #0085FF;
-  margin-left: 84px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 10px;
   font-family: 'Comfortaa', serif;
   font-size: 25px;
@@ -99,13 +110,17 @@
 }
 
 .login__registerButton {
+  display:flex;
   background: linear-gradient(#edeff1, #e9eeef);
   border-radius: 25px;
   height: 35px;
   width: 100px;
   border-color: #0085FF;
-  margin-left: 94px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 10px;
+  align-items: center;
+  place-content: center;
   font-family: 'Comfortaa', serif;
   font-size: 15px;
   color: #000000;
@@ -115,18 +130,24 @@
 }
 
 .login__forgotpasswordbutton {
-  background: linear-gradient(#0085FF, #00C2FF);
-  border-radius: 25px;
+  /* background: linear-gradient(#0085FF, #00C2FF);
+  border-radius: 25px; */
+  display:flex;
   height: 30px;
   width: 100px;
-  border-color: #0085FF;
-  margin-left: 94px;
-  margin-top: 10px;
+  /* border-color: #0085FF; */
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 15px;
   font-family: 'Comfortaa', serif;
   font-size: 10px;
-  color: #fefefe;
-  transition-duration: 0.4s;
-  outline: none;
+  /* color: #fefefe; */
+  color:black;
+  /* transition-duration: 0.4s;
+  outline: none; */
+}
+.login__forgotpasswordbutton:hover {
+  cursor: pointer;
 }
 
 .login__popup {
