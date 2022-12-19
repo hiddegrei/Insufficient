@@ -120,28 +120,17 @@ function Login() {
           <h5>Password</h5>
           <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
           <button type="submit" onClick={signin} className="btn btn-info login__button">
-<<<<<<< HEAD
-            Sign in
-=======
             Log in
->>>>>>> origin/design
           </button>
         </form>
         {/* <p>
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-<<<<<<< HEAD
-        <button onClick={() => history.push("/forgotpassword")} className="btn btn-info login__forgotpasswordbutton">
-          Forgot Password?
-        </button>
-        <button onClick={() => history.push("/register")} className="btn btn-warning login__registerButton">
-=======
         <button onClick={() => history.push("/forgotpassword")} className=" btn btn-info login__forgotpasswordbutton">
           Forgot Password?
         </button>
         <button onClick={() => history.push("/register")} className="btn btn-info login__registerButton">
->>>>>>> origin/design
           Create account
         </button>
       </div>
