@@ -13,4 +13,35 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 0 10px;
+  -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.app::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+
+.app_navB{
+display:none !important;
+}
+
+}
+@media screen and (max-width: 899px) {
+  .app_comp {
+    display: none !important;
+
+  }
+  .app{
+    flex-direction: column !important;
+    /* height:100% !important; */
+  }
+  
+  .direc{
+    flex: 0.8 !important;
+
+  }
+    
+
+
 }

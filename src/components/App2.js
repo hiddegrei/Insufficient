@@ -81,63 +81,46 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
+      <div className="app2">
         <Switch>
           <Route path="/messages/:roomId">
-            <Sidebar />
             <Chat />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/exchange_token">
-            <Sidebar />
             <StravaMain />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/post/:nam/:tok">
-            <Sidebar />
             <PostPop />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/home">
-            <Sidebar />
             <Home />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/addnewchat">
-            <Sidebar />
             <AddnewChat />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/notifications">
-            <Sidebar />
             <Notifications />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/water">
-            <Sidebar />
             <WaterMain />
-             <Widgets/>
-             <NavBottom />
             <NavBottom />
           </Route>
 
           <Route path="/groups">
-            <Sidebar />
             <GroupMain />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route exact path="/login">
@@ -153,58 +136,44 @@ function App() {
           </Route>
 
           <Route path="/profile/followers/:pName">
-            <Sidebar />
             <Followers />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/profile/following/:pName">
-            <Sidebar />
             <Following />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/profile/:pName/edit">
-            <Sidebar />
             <EditProfile />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/profile/:pName">
-            <Sidebar />
             <ProfileMain />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/explore">
-            <Sidebar />
             <Explore />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           <Route path="/chat">
-            <Sidebar />
             <ChatPage />
-             <Widgets/>
-             <NavBottom />
+            <NavBottom />
           </Route>
 
           {/* <Route path="/games">
-        <Sidebar />
+        
         <Games />
         <Widgets/>
         </Route> */}
 
           <Route path="/">
-            <Sidebar />
-            <Feed />
-             <Widgets/>
-             <NavBottom />
+            <Feed mobile />
+            <NavBottom />
           </Route>
 
           <Route path="/__/auth/action">

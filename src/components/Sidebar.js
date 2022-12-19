@@ -117,7 +117,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="sidebar">
+    <div className="sidebar app_comp">
       <Link to="/">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
         {/* <TwitterIcon className="sidebar__twitterIcon" /> */}

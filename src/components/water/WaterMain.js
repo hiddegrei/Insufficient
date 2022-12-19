@@ -188,7 +188,7 @@ function WaterMain(props) {
       });
   }
   return (
-    <div className="water">
+    <div className="water direc">
       <div className="water__header">
         <h1>Water intake</h1>
       </div>
@@ -219,21 +219,16 @@ function WaterMain(props) {
           <div className="water_today_value">{streak}</div>
         </div>
         <div className="water_today_streak">
-          <div className="water_today_title">
-            WaterIntake
-          </div>
+          <div className="water_today_title">WaterIntake</div>
           <div className="water_today_value">
             <div className="water_today_con">
-          <div className="water_today_con_val">{waterToday?.waterIntake}ml</div>
-          <div className="water_today_con_plus">
-            <AddCircleIcon onClick={() => addWater()} />
+              <div className="water_today_con_val">{waterToday?.waterIntake}ml</div>
+              <div className="water_today_con_plus">
+                <AddCircleIcon onClick={() => addWater()} />
+              </div>
+            </div>
           </div>
         </div>
-        
-        
-          </div>
-        </div>
-        
       </div>
     </div>
   );

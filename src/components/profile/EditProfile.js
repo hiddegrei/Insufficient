@@ -155,7 +155,7 @@ function EditProfile() {
     window.open(`https://www.strava.com/oauth/authorize?client_id=74263&redirect_uri=http://localhost:3000/exchange_token&response_type=code&approval_prompt=force&scope=${scope}`, "_self");
   }
   return (
-    <div className="edit">
+    <div className="edit direc">
       <div className="edit__header">
         <h2>Edit Profile</h2>
       </div>
@@ -193,8 +193,17 @@ function EditProfile() {
         <h3>Weight</h3>
         <form onSubmit={handleWeight}>
           <div className="edit__bio__input">
-            <input className="bio__input" placeholder={weight} type="text" value={weight} onChange={(e) =>{ 
-              if(!isNaN(e.target.value)||e.keyCode==8||e.keyCode==46){setWeight(e.target.value)}}}></input>
+            <input
+              className="bio__input"
+              placeholder={weight}
+              type="text"
+              value={weight}
+              onChange={(e) => {
+                if (!isNaN(e.target.value) || e.keyCode == 8 || e.keyCode == 46) {
+                  setWeight(e.target.value);
+                }
+              }}
+            ></input>
 
             <div className="maxchar2">{nchar2}/100</div>
           </div>
@@ -204,19 +213,29 @@ function EditProfile() {
         <h3>Length</h3>
         <form onSubmit={handleLength}>
           <div className="edit__bio__input">
-            <input className="bio__input" placeholder={length} type="text" value={length} onChange={(e) =>{ 
-              if(!isNaN(e.target.value)||e.keyCode==8||e.keyCode==46){setLength(e.target.value)}}}></input>
+            <input
+              className="bio__input"
+              placeholder={length}
+              type="text"
+              value={length}
+              onChange={(e) => {
+                if (!isNaN(e.target.value) || e.keyCode == 8 || e.keyCode == 46) {
+                  setLength(e.target.value);
+                }
+              }}
+            ></input>
 
             <div className="maxchar2">{nchar3}/100</div>
           </div>
         </form>
       </div>
-      {profile?.strava?<div onClick={()=>handleConnect()} className="edit_strava_con btn btn-warning">
-        connect to strava
-      </div>:
-      <div  className="edit_strava_con btn btn-warning">
-       strava is connected
-      </div>}
+      {profile?.strava ? (
+        <div className="edit_strava_con btn btn-warning">strava is connected</div>
+      ) : (
+        <div onClick={() => handleConnect()} className="edit_strava_con btn btn-warning">
+          connect to strava
+        </div>
+      )}
     </div>
   );
 }

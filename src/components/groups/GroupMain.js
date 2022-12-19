@@ -117,7 +117,7 @@ function GroupMain(props) {
       });
   }
   return (
-    <div className="group">
+    <div className="group direc">
       <div className="group__header">
         <h1>Groups</h1>
       </div>
@@ -137,13 +137,11 @@ function GroupMain(props) {
                 <div className="groups_elm_name">{doc.groupName}</div>
               </div>
             ))}
-            {groups.length===0&&
-            <div
-                
-                className="groups_elm"
-              >
+            {groups.length === 0 && (
+              <div className="groups_elm">
                 <div className="groups_elm_name">Loading...</div>
-              </div>}
+              </div>
+            )}
           </div>
           {!showAddGroup && (
             <div className="groups_elm">
