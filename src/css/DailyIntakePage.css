@@ -48,6 +48,7 @@
   margin-left: 10px;
   max-width: fit-content;
   background-color: var(--twitter-background);
+  font-weight: bold;
 }
 
 .dailyIntake__form > form {

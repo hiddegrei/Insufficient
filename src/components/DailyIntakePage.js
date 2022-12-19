@@ -59,7 +59,7 @@ function DailyIntakePage() {
     const weightInput = document.getElementById("weightInput").value;
     const waterOutput = document.getElementById("waterOutput");
     const waterIntake = weightInput * 0.035;
-    waterOutput.innerHTML = waterIntake.toFixed(1) + "L";
+    waterOutput.innerHTML = waterIntake.toFixed(1) + "L per day";
   }
 
   return (
@@ -67,14 +67,12 @@ function DailyIntakePage() {
       <div>
         <div className="dailyIntake__header">
           <h2>Personal waterintake</h2>
-        </div>
-
-        <div className="dailyIntake__title">
-          <p>Calculate your personal daily waterintake</p>
+          <h3>Calculate your personal daily waterintake</h3>
         </div>
 
         <div className="dailyIntake__form">
           <form>
+            <label>Insert your bodyweight in kg</label>
             <input type="int" id="weightInput" placeholder="your bodyweight" />
             <button type="button" onClick={personalWaterIntake}>Calculate</button>
           </form>
@@ -84,10 +82,6 @@ function DailyIntakePage() {
           <p type="int" id="waterOutput"></p>
         </div>
 
-        {/* <ChatOptie addNewChat />
-        {messages.map((message) => (
-          <ChatOptie key={message.id} id={message.id} name1={message.data.receiverUsername} name2={message.data.senderUsername} />
-        ))} */}
       </div>
     </div>
   );
