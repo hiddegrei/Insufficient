@@ -114,7 +114,7 @@ function WaterMain(props) {
      })
        .then((res) => res.json())
        .then((json) => {
-        //  console.log(json.streak);
+          console.log(json);
           setStreak(json.streak)
        });
   }
@@ -185,6 +185,9 @@ function WaterMain(props) {
         // setWaterToday(json.data);
         getWaterToday()
         getWaterLastWeek()
+        if(waterToday?.waterIntake>=waterToday?.goal){
+          getStreak()
+        }
       });
   }
   return (
@@ -214,9 +217,9 @@ function WaterMain(props) {
         <div className="water_today_h">Today</div>
         <div className="water_today_streak">
           <div className="water_today_title">
-            Streak <LocalFireDepartmentIcon />
+            Streak 
           </div>
-          <div className="water_today_value">{streak}</div>
+          <div className="water_today_value"><LocalFireDepartmentIcon /> {streak}</div>
         </div>
         <div className="water_today_streak">
           <div className="water_today_title">WaterIntake</div>
