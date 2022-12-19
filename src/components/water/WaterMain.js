@@ -138,6 +138,7 @@ getWaterLastWeek()
       .then((res) => res.json())
       .then((json) => {
         console.log(json.data);
+         setShow(false);
         setWaterLastWeek(json.data);
       })
       .catch((err) => {
@@ -172,17 +173,22 @@ getWaterLastWeek()
     let days=["sun","mon","tue","wed","thu","fri","sat"]
     
     if (waterLastWeek?.length === 7) {
+      let arr = [["Day of week", "Water Intake (ml)", { role: "style" }]];
+      waterLastWeek.map((doc, index) => {
+        arr.push([waterLastWeek[index] ? days[new Date(waterLastWeek[index]?.date._seconds * 1000).getUTCDay()] : "noData", waterLastWeek[index] ? waterLastWeek[index]?.waterIntake : 0, waterLastWeek[index]?.waterIntake >= waterLastWeek[index]?.goal ? "green" : "red"]);
+      });
+      setDataTable(arr);
      
-      setDataTable([
-        ["Day of week", "Water Intake (ml)", { role: "style" }],
-        [waterLastWeek[0].data?days[new Date(waterLastWeek[0].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastWeek[0].data?waterLastWeek[0].data?.waterIntake:0, "red"], // RGB value
-        [waterLastWeek[1].data?days[new Date(waterLastWeek[1].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastWeek[1].data?waterLastWeek[1].data?.waterIntake:0, "red"], // English color name
-        [waterLastWeek[2].data?days[new Date(waterLastWeek[2].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[2].data?waterLastWeek[2].data?.waterIntake:0, "yellow"],
-        [waterLastWeek[3].data?days[new Date(waterLastWeek[3].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[3].data?waterLastWeek[3].data?.waterIntake:0, "green"], // CSS-style declaration
-        [waterLastWeek[4].data?days[new Date(waterLastWeek[4].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[4].data?waterLastWeek[4].data?.waterIntake:0, "green"],
-        [waterLastWeek[5].data?days[new Date(waterLastWeek[5].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[5].data?waterLastWeek[5].data?.waterIntake:0, "green"],
-        [waterLastWeek[6].data?days[new Date(waterLastWeek[6].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[6].data?waterLastWeek[6].data?.waterIntake:0, "green"],
-      ]);
+      // setDataTable([
+      //   ["Day of week", "Water Intake (ml)", { role: "style" }],
+      //   [waterLastWeek[0].data?days[new Date(waterLastWeek[0].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastWeek[0].data?waterLastWeek[0].data?.waterIntake:0, "red"], // RGB value
+      //   [waterLastWeek[1].data?days[new Date(waterLastWeek[1].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastWeek[1].data?waterLastWeek[1].data?.waterIntake:0, "red"], // English color name
+      //   [waterLastWeek[2].data?days[new Date(waterLastWeek[2].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[2].data?waterLastWeek[2].data?.waterIntake:0, "yellow"],
+      //   [waterLastWeek[3].data?days[new Date(waterLastWeek[3].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[3].data?waterLastWeek[3].data?.waterIntake:0, "green"], // CSS-style declaration
+      //   [waterLastWeek[4].data?days[new Date(waterLastWeek[4].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[4].data?waterLastWeek[4].data?.waterIntake:0, "green"],
+      //   [waterLastWeek[5].data?days[new Date(waterLastWeek[5].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[5].data?waterLastWeek[5].data?.waterIntake:0, "green"],
+      //   [waterLastWeek[6].data?days[new Date(waterLastWeek[6].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastWeek[6].data?waterLastWeek[6].data?.waterIntake:0, "green"],
+      // ]);
       setShow(true);
     }
   }, [waterLastWeek]);
@@ -193,7 +199,7 @@ getWaterLastWeek()
     
       let arr=[["Day of week", "Water Intake (ml)", { role: "style" }]]
       waterLastMonth.map((doc,index)=>{
-        arr.push([waterLastMonth[index]?days[new Date(waterLastMonth[index]?.date._seconds * 1000).getUTCDay()]:"noData", waterLastMonth[index]?waterLastMonth[index]?.waterIntake:0, "red"])
+        arr.push([waterLastMonth[index]?days[new Date(waterLastMonth[index]?.date._seconds * 1000).getUTCDay()]:"noData", waterLastMonth[index]?waterLastMonth[index]?.waterIntake:0, waterLastMonth[index]?.waterIntake>=waterLastMonth[index]?.goal?"green":"red"])
 
       })
       setDataTable(arr)
@@ -264,7 +270,7 @@ getWaterLastWeek()
             }}
           />
         </div>
-        {show && <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={dataTable} />}
+        {show&&(waterLastWeek.length>1||waterLastMonth.length>1) && <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={dataTable} />}
         {/* <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={data} /> */}
       </div>
       <div className="water_today">
