@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Component } from "react";
 import Sidebar from "./Sidebar";
 import "../css/App.css";
+import "../css/Login.css";
 import Feed from "./Feed";
 import Widgets from "./Widgets";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
