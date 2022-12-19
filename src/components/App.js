@@ -30,6 +30,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import StravaMain from "./strava/StravaMain";
 import NavBottom from "./NavBottom"
 
+
 function App() {
   const [{ user, profile }, dispatch] = useStateValue();
   const [loaded, setLoaded] = useState(false);
