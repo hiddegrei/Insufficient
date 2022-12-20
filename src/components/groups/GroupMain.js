@@ -4,6 +4,7 @@ import { useStateValue } from "../../Stateprovider";
 import "../../css/GroupMain.css";
 import AddIcon from "@mui/icons-material/Add";
 import { Avatar } from "@material-ui/core";
+import Group from "./Group"
 
 function GroupMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -203,9 +204,13 @@ function GroupMain(props) {
         </div>
       ) : (
         <div className="group_con">
-          {groupData.membersData.map((doc) => (
-            <div>{doc.name}</div>
-          ))}
+          {/* {groupData.membersData.map((doc) => (
+            <div>
+              <div>{doc.name}</div>
+              <div>{doc.waterIntakeToday}</div>
+            </div>
+          ))} */}
+          <Group group={groupData}/>
         </div>
       )}
     </div>
