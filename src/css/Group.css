@@ -1,0 +1,56 @@
+.group2{
+    display:flex;
+    flex-direction: column;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    height:100%;
+}
+.group2_header{
+    display:flex;
+    font-weight: bold;
+    font-size: 25px;
+    margin-right: auto;
+    border-bottom: 1px solid black;
+    width:100%;
+
+
+}
+.group2_con{
+    display:flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+}
+.group2_con_elm{
+    display:flex;
+    width:100%;
+    height:50px;
+    border:1px solid black;
+}
+.group2_con_elm_rank {
+    display: flex;
+    width: 25%;
+    height: 100%;
+}
+.group2_con_elm_name {
+    display: flex;
+    width: 25%;
+    height: 100%;
+    font-weight: bold;
+}
+.group2_con_elm_name:hover {
+    cursor: pointer;
+}
+.group2_con_elm_water {
+    display: flex;
+    width: 12.5%;
+    height: 100%;
+    font-weight: bold;
+
+}
+.group2_con_elm_streak{
+    display: flex;
+    width: 12.5%;
+    height: 100%;
+}
