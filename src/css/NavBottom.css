@@ -1,0 +1,23 @@
+.nav{
+    position: absolute;
+    bottom: 0;
+    /* background-color: var(--twitter-color); */
+    z-index: 100;
+    width:100%;
+    height:20%;
+    flex:0.2;
+    /* border:1px solid black; */
+
+}
+.nav_item{
+    display:flex;
+    width:25%;
+    height:100%;
+    align-items: center;
+    place-content: center;
+}
+.nav_item:hover{
+    cursor: pointer;
+    /* scale:1.2; */
+    border:1px solid black;
+}

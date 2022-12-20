@@ -81,62 +81,45 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
+      <div className="app2">
         <Switch>
           <Route path="/messages/:roomId">
-            <Sidebar />
             <Chat />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/exchange_token">
-            <Sidebar />
             <StravaMain />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/post/:nam/:tok">
-            <Sidebar />
             <PostPop />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/home">
-            <Sidebar />
             <Home />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/addnewchat">
-            <Sidebar />
             <AddnewChat />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/notifications">
-            <Sidebar />
             <Notifications />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/water">
-            <Sidebar />
             <WaterMain />
-            <Widgets />
-            <NavBottom />
             <NavBottom />
           </Route>
 
           <Route path="/groups">
-            <Sidebar />
             <GroupMain />
-            <Widgets />
             <NavBottom />
           </Route>
 
@@ -153,57 +136,43 @@ function App() {
           </Route>
 
           <Route path="/profile/followers/:pName">
-            <Sidebar />
             <Followers />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/profile/following/:pName">
-            <Sidebar />
             <Following />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/profile/:pName/edit">
-            <Sidebar />
             <EditProfile />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/profile/:pName">
-            <Sidebar />
             <ProfileMain />
-            <Widgets />
             <NavBottom />
           </Route>
 
           <Route path="/explore">
-            <Sidebar />
             <Explore />
-            <Widgets />
             <NavBottom />
           </Route>
 
-          <Route path="/daily-intake">
-            <Sidebar />
+          <Route path="/dailyCalc">
             <DailyIntakePage />
-            <Widgets />
             <NavBottom />
           </Route>
 
           {/* <Route path="/games">
-        <Sidebar />
+        
         <Games />
         <Widgets/>
         </Route> */}
 
           <Route path="/">
-            <Sidebar />
-            <Feed />
-            <Widgets />
+            <Feed mobile />
             <NavBottom />
           </Route>
 

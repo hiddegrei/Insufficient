@@ -46,7 +46,7 @@ function GroupMain(props) {
       setShow(false);
       setOutput([]);
 
-      console.log("empty");
+      
     }
     if (output.length > 0) {
       setShow(true);
@@ -100,11 +100,12 @@ function GroupMain(props) {
   function getGroups() {
     console.log("hi");
     console.log(profile?.username);
-    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups/`, {
+    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups`, {
       method: "GET", // or 'PUT',
 
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
       },
     })
       .then((res) => res.json())
@@ -117,7 +118,7 @@ function GroupMain(props) {
       });
   }
   return (
-    <div className="group">
+    <div className="group direc">
       <div className="group__header">
         <h1>Groups</h1>
       </div>
@@ -137,13 +138,11 @@ function GroupMain(props) {
                 <div className="groups_elm_name">{doc.groupName}</div>
               </div>
             ))}
-            {groups.length===0&&
-            <div
-                
-                className="groups_elm"
-              >
+            {groups.length === 0 && (
+              <div className="groups_elm">
                 <div className="groups_elm_name">Loading...</div>
-              </div>}
+              </div>
+            )}
           </div>
           {!showAddGroup && (
             <div className="groups_elm">

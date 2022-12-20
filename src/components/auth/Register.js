@@ -11,6 +11,8 @@ function Register() {
   const [username, setUsername] = useState("");
   const [{ user, handle }, dispatch] = useStateValue();
   const [open, setOpen] = useState(false);
+  const [length,setLength]=useState()
+  const [weight,setWeight]=useState()
 
   const register = (e) => {
     e.preventDefault();
@@ -24,6 +26,14 @@ function Register() {
         .then((doc) => {
           if (doc.exists) {
             return alert(username + ":this username is already taken");
+          }else if (isNaN(length) || isNaN(weight)) {
+            if (!isNaN(length)){
+              return alert("weight is not a number");
+
+            }
+            else {
+              return alert("length is not a number");
+            } 
           } else {
             auth
               .createUserWithEmailAndPassword(newemail, password)
@@ -38,22 +48,24 @@ function Register() {
                   imageUrl: "",
                   bio: "",
                   streak: 0,
+                  weight: weight,
+                  length: length,
+                  strava:false
                 });
                 var details = {
                   username: username,
                   email: newuser.email,
                   userId: newuser.uid,
-                  // imageUrl: "",
-                  // bio: "",
-                  // streak: 0,
+                  weight: weight,
+                  length: length,
                 };
-    var formBody = [];
-    for (var property in details) {
-      var encodedKey = encodeURIComponent(property);
-      var encodedValue = encodeURIComponent(details[property]);
-      formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
+                var formBody = [];
+                for (var property in details) {
+                  var encodedKey = encodeURIComponent(property);
+                  var encodedValue = encodeURIComponent(details[property]);
+                  formBody.push(encodedKey + "=" + encodedValue);
+                }
+                formBody = formBody.join("&");
                 fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${username}`, {
                   method: "POST", // or 'PUT',
 
@@ -65,9 +77,12 @@ function Register() {
                   .then((res) => res.json())
                   .then((json) => {
                     console.log(json);
+                  })
+                  .catch((err) => {
+                    console.log(err);
                   });
 
-                fetch(`https://ms-waterintake.web.app/api/users/${username}/create`, {
+                fetch(`https://ms-waterintake.web.app/api/users/${username}`, {
                   method: "POST", // or 'PUT',
 
                   headers: {
@@ -141,6 +156,12 @@ function Register() {
           <h5>Email</h5>
           <input onChange={(e) => setEmail(e.target.value)} value={email} type="text"></input>
 
+          <h5>Length(cm)</h5>
+          <input onChange={(e) => setLength(e.target.value)} value={length} type="text"></input>
+
+          <h5>Weight(kg)</h5>
+          <input onChange={(e) => setWeight(e.target.value)} value={weight} type="text"></input>
+
           <h5>Password</h5>
           <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
         </form>
@@ -148,11 +169,11 @@ function Register() {
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-        <button onClick={register} className="login__registerButton">
+        <button onClick={register} className="btn btn-info login__registerButton">
           Create account
         </button>
 
-        <button type="submit" onClick={() => history.push("/login")} className="login__button">
+        <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__button">
           Back to Sign in
         </button>
       </div>

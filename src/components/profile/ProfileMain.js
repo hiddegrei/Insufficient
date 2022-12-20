@@ -231,7 +231,7 @@ function ProfileMain() {
   }
 
   return (
-    <div className="profile">
+    <div className="profile direc">
       <div className="profile__header">
         <h1>Profile</h1>
       </div>
