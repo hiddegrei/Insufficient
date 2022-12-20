@@ -4,6 +4,7 @@ import { useStateValue } from "../../Stateprovider";
 import "../../css/GroupMain.css";
 import AddIcon from "@mui/icons-material/Add";
 import { Avatar } from "@material-ui/core";
+import Group from "./Group"
 
 function GroupMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -46,7 +47,7 @@ function GroupMain(props) {
       setShow(false);
       setOutput([]);
 
-      console.log("empty");
+      
     }
     if (output.length > 0) {
       setShow(true);
@@ -70,7 +71,7 @@ function GroupMain(props) {
   }
 
   function addGroup() {
-    console.log(profile.username, newGroupName);
+    console.log(members);
     var details = {
       groupName: newGroupName,
       members: members,
@@ -82,7 +83,8 @@ function GroupMain(props) {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups/add`, {
+    console.log(formBody)
+    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups`, {
       method: "POST", // or 'PUT',
 
       headers: {
@@ -100,11 +102,12 @@ function GroupMain(props) {
   function getGroups() {
     console.log("hi");
     console.log(profile?.username);
-    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups/`, {
+    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups`, {
       method: "GET", // or 'PUT',
 
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
       },
     })
       .then((res) => res.json())
@@ -134,7 +137,7 @@ function GroupMain(props) {
                 key={index}
                 className="groups_elm"
               >
-                <div className="groups_elm_name">{doc.groupName}</div>
+                <div className="groups_elm_name">{doc.data.groupName}</div>
               </div>
             ))}
             {groups.length === 0 && (
@@ -202,9 +205,13 @@ function GroupMain(props) {
         </div>
       ) : (
         <div className="group_con">
-          {groupData.membersData.map((doc) => (
-            <div>{doc.name}</div>
-          ))}
+          {/* {groupData.membersData.map((doc) => (
+            <div>
+              <div>{doc.name}</div>
+              <div>{doc.waterIntakeToday}</div>
+            </div>
+          ))} */}
+          <Group group={groupData}/>
         </div>
       )}
     </div>
