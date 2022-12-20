@@ -46,9 +46,9 @@
 }
 
 .login__container > form > h5 {
-  margin-bottom: -10px;
+  margin-bottom: -28px;
   font-size: 13px;
-  /* display:flex; */
+  font-weight: bolder;
 }
 
 .login__container > form > input {
@@ -107,7 +107,7 @@
   font-size: 25px;
   color: #fefefe;
   transition-duration: 0.4s;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .login__registerButton {
@@ -126,8 +126,8 @@
   font-size: 15px;
   color: #000000;
   transition-duration: 0.4s;
-  outline: none;
   font-weight: 2000px;
+  border-width: 4px;
 }
 
 .login__forgotpasswordbutton {

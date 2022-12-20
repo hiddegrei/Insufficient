@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../css/Login.css";
+import "../../css/Register.css";
 import { Link, useHistory } from "react-router-dom";
 import { db, auth, storage } from "../../firebase";
 import { useStateValue } from "../../Stateprovider";
@@ -143,12 +144,10 @@ function Register() {
   }, [open]);
   return (
     <div className="login">
-      <Link to="/">
+      <Link to="/"className="header_logo_link">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
       </Link>
-      <div className="login__container">
-        <h1>Register</h1>
-
+      <div className="login__container rounded-5">
         <form>
           <h5>Username</h5>
           <input onChange={(e) => setUsername(e.target.value)} value={username} type="text"></input>
@@ -169,12 +168,12 @@ function Register() {
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-        <button onClick={register} className="btn btn-info login__registerButton">
+        <button onClick={register} className="btn btn-info login__button rounded-5" style={{fontSize: "14px", fontWeight: "bolder"}}>
           Create account
         </button>
 
-        <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__button">
-          Back to Sign in
+        <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__registerButton rounded-5">
+          Back
         </button>
       </div>
       {open && (

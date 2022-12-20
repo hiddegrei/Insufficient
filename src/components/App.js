@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Component } from "react";
 import Sidebar from "./Sidebar";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/App.css";
 import Feed from "./Feed";
 import Widgets from "./Widgets";
@@ -26,7 +27,6 @@ import WaterMain from "./water/WaterMain";
 import GroupMain from "./groups/GroupMain";
 // import Games from "./Games"
 import Home from "./Home";
-import "bootstrap/dist/css/bootstrap.min.css";
 import StravaMain from "./strava/StravaMain";
 import NavBottom from "./NavBottom"
 
