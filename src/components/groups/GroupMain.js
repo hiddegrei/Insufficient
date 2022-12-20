@@ -84,7 +84,7 @@ function GroupMain(props) {
     }
     formBody = formBody.join("&");
     console.log(formBody)
-    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups/add`, {
+    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups`, {
       method: "POST", // or 'PUT',
 
       headers: {
