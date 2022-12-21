@@ -71,7 +71,7 @@ function GroupMain(props) {
   }
 
   function addGroup() {
-    console.log(profile.username, newGroupName);
+    console.log(members);
     var details = {
       groupName: newGroupName,
       members: members,
@@ -83,7 +83,8 @@ function GroupMain(props) {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups/add`, {
+    console.log(formBody)
+    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups`, {
       method: "POST", // or 'PUT',
 
       headers: {
@@ -136,7 +137,7 @@ function GroupMain(props) {
                 key={index}
                 className="groups_elm"
               >
-                <div className="groups_elm_name">{doc.groupName}</div>
+                <div className="groups_elm_name">{doc.data.groupName}</div>
               </div>
             ))}
             {groups.length === 0 && (
