@@ -5,7 +5,7 @@ import App from "./components/App";
 import App2 from "./components/App2";
 import { StateProvider } from "./Stateprovider";
 import reducer, { initialState } from "./reducer";
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+
 
 ReactDOM.render(
   <React.StrictMode>
