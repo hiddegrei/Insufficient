@@ -6,6 +6,9 @@
   scrollbar-width: none;
   z-index: 1;
 }
+.feed2 {
+  flex: 1 !important;
+}
 .feed::-webkit-scrollbar {
   display: none;
 }

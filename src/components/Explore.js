@@ -125,7 +125,7 @@ function Explore() {
   }, [searchContent]);
 
   return (
-    <div className="explore">
+    <div className="explore direc">
       <div className="explore__header">
         <div className="explore__header__left">
           {user ? <h2>Explore</h2> : <h2>Please Sign In to post and interact with other users</h2>}

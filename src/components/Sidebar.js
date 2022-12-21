@@ -18,7 +18,7 @@ import InvertColorsIcon from "@mui/icons-material/InvertColors";
 import GroupsIcon from "@mui/icons-material/Groups";
 
 function Sidebar() {
-  var getUrl = window.location;
+  var getUrl = window.location.pathname;
   const [{ user, profile, handle, windowstate }, dispatch] = useStateValue();
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
@@ -31,6 +31,8 @@ function Sidebar() {
   const [notifi1, setNotifi1] = useState(false);
   const [notiCounter, setNotiCounter] = useState([]);
   const [notify, setNotify] = useState(false);
+  const [water, setWater] = useState(false);
+  const [group, setGroup] = useState(false);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -52,36 +54,47 @@ function Sidebar() {
   }, [user, profile]);
 
   useEffect(() => {
+    console.log(getUrl)
     if (profile.username != "undefined") {
-      if (getUrl.href == "https://socialhit.nl/explore") {
+      if (getUrl == "/explore") {
         setExplore1(true);
       } else {
         setExplore1(false);
       }
-      if (getUrl.href == "https://socialhit.nl/") {
+      if (getUrl == "/") {
         setFollow1(true);
       } else {
         setFollow1(false);
       }
-      if (getUrl.href == "https://socialhit.nl/chat") {
+      if (getUrl == "/chat") {
         setChat1(true);
       } else {
         setChat1(false);
       }
-      if (getUrl.href == `https://socialhit.nl/profile/${profile.username}`) {
+      if (getUrl == `/profile/${profile.username}`) {
         setProfile1(true);
       } else {
         setProfile1(false);
       }
-      if (getUrl.href == "https://socialhit.nl/notifications") {
+      if (getUrl == "/notifications") {
         setNotifi1(true);
       } else {
         setNotifi1(false);
       }
+      if (getUrl == "/water") {
+        setWater(true);
+      } else {
+        setWater(false);
+      }
+      if (getUrl == "/groups") {
+        setGroup(true);
+      } else {
+        setGroup(false);
+      }
     } else {
       console.log("no profile");
     }
-  }, [getUrl.href, user]);
+  }, [getUrl, user]);
   //console.log(getUrl.href)
 
   const handletweet = (e) => {
@@ -104,7 +117,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="sidebar">
+    <div className="sidebar app_comp">
       <Link to="/">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
         {/* <TwitterIcon className="sidebar__twitterIcon" /> */}
@@ -114,8 +127,8 @@ function Sidebar() {
       <Link to="/explore">{explore1 ? <SidebarOption active Icon={SearchIcon} text="Explore" /> : <SidebarOption Icon={SearchIcon} text="Explore" />}</Link>
       <Link to="/notifications">{notify ? <div>{notifi1 ? <SidebarOption active alert Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div> : <div>{notifi1 ? <SidebarOption active Icon={NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div>}</Link>
       <Link to="/chat">{chat1 ? <SidebarOption Icon={MailOutlineIcon} active text="Chat" /> : <SidebarOption Icon={MailOutlineIcon} text="Chat" />}</Link>
-      <Link to="/groups">{profile1 ? <SidebarOption Icon={InvertColorsIcon} active text="Groups" /> : <SidebarOption Icon={GroupsIcon} text="Groups" />}</Link>
-      <Link to="/water">{profile1 ? <SidebarOption Icon={InvertColorsIcon} active text="Water" /> : <SidebarOption Icon={InvertColorsIcon} text="Water" />}</Link>
+      <Link to="/groups">{group ? <SidebarOption Icon={InvertColorsIcon} active text="Groups" /> : <SidebarOption Icon={GroupsIcon} text="Groups" />}</Link>
+      <Link to="/water">{water ? <SidebarOption Icon={InvertColorsIcon} active text="Water" /> : <SidebarOption Icon={InvertColorsIcon} text="Water" />}</Link>
       <Link to={`/profile/${profile?.username}`}>{profile1 ? <SidebarOption Icon={AccountCircleIcon} active text="Profile" /> : <SidebarOption Icon={AccountCircleIcon} text="Profile" />}</Link>
 
       {/* <Link to="/games">

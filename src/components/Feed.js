@@ -7,7 +7,7 @@ import FlipMove from "react-flip-move";
 import { useStateValue } from "../Stateprovider";
 import { Link } from "react-router-dom";
 
-function Feed() {
+function Feed({mobile}) {
   const [posts, setPosts] = useState([]);
   const [{ user, profile }, dispatch] = useStateValue();
   const [feedData, setFeedData] = useState([]);
@@ -259,7 +259,7 @@ function Feed() {
   //console.log(doubleposts)
 
   return (
-    <div className="feed">
+    <div className={`feed ${mobile&&"feed2"}`}>
       <div className="feed__header">
         <h2>Following</h2>
       </div>

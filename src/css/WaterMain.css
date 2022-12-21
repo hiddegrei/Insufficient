@@ -4,7 +4,8 @@
         overflow-y: scroll;
         -ms-overflow-style: none;
         scrollbar-width: none;
-        /* border:1px solid black; */
+       
+        height:100%;
 }
 .water::-webkit-scrollbar {
     display: none;
@@ -52,28 +53,61 @@
 display:flex;
 flex-direction: column;
 margin-top: 20px;
+width:80%;
+margin-left: auto;
+    margin-right: auto;
 }
 .water_today_h{
     display:flex;
     font-weight: bold;
     font-size: 22px;
-    margin-left: auto;
-        margin-right: auto;
+    margin-right: auto;
+        width:100%;
         margin-bottom: 10px;
+        border-bottom: 1px solid black;
 }
 .water_today_con{
     display:flex;
+    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
     width:fit-content;
+    /* border: 1px solid black; */
+    align-items: center;
+        place-content: center;
 }
 .water_today_con_val{
     display:flex;
     margin-right: 5px;
+    
+   
 }
 .water_today_con_plus{
     display:flex;
 }
 .water_today_con_plus:hover {
     cursor: pointer;
+}
+.water_today_streak{
+    display: flex;
+        /* font-weight: bold;
+        font-size: 22px; */
+       
+        width: 100%;
+        margin-bottom: 10px;
+        border-bottom: 1px solid black;
+}
+.water_today_title{
+    display:flex;
+    font-weight: bold;
+    font-size: 22px;
+    margin-right: auto;
+    align-items: center;
+}
+.water_today_value {
+    display: flex;
+    font-weight: 500;
+    font-size: 22px;
+    margin-left: auto;
+    align-items: center;
 }

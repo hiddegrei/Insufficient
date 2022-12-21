@@ -121,7 +121,7 @@ function Widgets() {
   }, []);
 
   return (
-    <div className="widgets">
+    <div className="widgets app_comp">
       <div className="widgets__input">
         <SearchIcon />
 

@@ -110,7 +110,7 @@ function Login() {
       <div className="login__container rounded-5">
         {/* <h1>Log in</h1> */}
 
-        <form>
+        <form className="login_form">
           {/* <h5>Username</h5>
                 <input onChange={(e)=>setUsername(e.target.value)}value={username} type="text"></input> */}
 
@@ -119,10 +119,11 @@ function Login() {
 
           <h5>Password</h5>
           <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
-          <button type="submit" onClick={signin} className="btn btn-info login__button rounded-5 fs-2">
-            Log in
-          </button>
+          
         </form>
+        <button type="submit" onClick={signin} className="btn btn-info login__button">
+          Log in
+        </button>
         {/* <p>
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
@@ -130,11 +131,9 @@ function Login() {
         <button onClick={() => history.push("/register")} className="btn btn-info login__registerButton rounded-5" style={{border: "none"}}>
           Register
         </button>
-        <button onClick={() => history.push("/forgotpassword")} className="btn login__forgotpasswordbutton" style={{fontSize: "13px"}}>
+        <div onClick={() => history.push("/forgotpassword")} className="login__forgotpasswordbutton">
           Forgot Password?
-        </button>
-
-
+        </div>
       </div>
       {/* {open&&<div className="login__popup">
              <h1>Thanks for signing up! You can Login now!</h1>
