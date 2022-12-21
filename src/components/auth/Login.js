@@ -107,8 +107,8 @@ function Login() {
       <Link to="/" className="header_logo_link">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
       </Link>
-      <div className="login__container">
-        <h1>Log in</h1>
+      <div className="login__container rounded-5">
+        {/* <h1>Log in</h1> */}
 
         <form className="login_form">
           {/* <h5>Username</h5>
@@ -119,6 +119,7 @@ function Login() {
 
           <h5>Password</h5>
           <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
+          
         </form>
         <button type="submit" onClick={signin} className="btn btn-info login__button">
           Log in
@@ -127,7 +128,7 @@ function Login() {
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-        <button onClick={() => history.push("/register")} className="login__registerButton">
+        <button onClick={() => history.push("/register")} className="btn btn-info login__registerButton rounded-5" style={{border: "none"}}>
           Register
         </button>
         <div onClick={() => history.push("/forgotpassword")} className="login__forgotpasswordbutton">
