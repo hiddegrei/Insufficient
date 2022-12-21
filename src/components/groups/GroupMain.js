@@ -27,7 +27,7 @@ function GroupMain(props) {
 
   useEffect(() => {
     let isSubscribed = true;
-    if (searchContent && profile.username != "undefined") {
+    if (searchContent && profile.username !== "undefined") {
       db.collection("users")
         .where("username", ">=", searchContent)
         .get()
@@ -35,11 +35,11 @@ function GroupMain(props) {
           querySnapshot.forEach((doc) =>
             isSubscribed
               ? setOutput((dat) => {
-                  const newdata = { data: doc.data(), key: doc.data().userId };
-                  const olddata = dat.filter((dat) => dat.key !== newdata.key);
+                const newdata = { data: doc.data(), key: doc.data().userId };
+                const olddata = dat.filter((dat) => dat.key !== newdata.key);
 
-                  return [...olddata, newdata];
-                })
+                return [...olddata, newdata];
+              })
               : null
           );
         });
@@ -47,7 +47,7 @@ function GroupMain(props) {
       setShow(false);
       setOutput([]);
 
-      
+
     }
     if (output.length > 0) {
       setShow(true);
@@ -210,7 +210,7 @@ function GroupMain(props) {
               <div>{doc.waterIntakeToday}</div>
             </div>
           ))} */}
-          <Group group={groupData}/>
+          <Group group={groupData} />
         </div>
       )}
     </div>
