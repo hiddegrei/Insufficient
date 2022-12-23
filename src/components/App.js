@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState, Component } from "react";
 import Sidebar from "./Sidebar";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Feed from "./Feed";
 import Widgets from "./Widgets";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
