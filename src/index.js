@@ -14,7 +14,6 @@ ReactDOM.render(
       {/* {window.innerWidth>=800?<StateProvider initialState={initialState} reducer={reducer}><App/> </StateProvider>:
    <StateProvider initialState={initialState} reducer={reducer}><App2/> </StateProvider>} */}
       <App />
-      <App2 />
 
     </StateProvider>
   </React.StrictMode>,
