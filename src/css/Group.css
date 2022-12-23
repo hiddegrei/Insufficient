@@ -11,8 +11,9 @@
     font-weight: bold;
     font-size: 25px;
     margin-right: auto;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #0085FF;
     width:100%;
+    color:#0085FF;
 
 
 }
@@ -38,6 +39,7 @@
     width: 25%;
     height: 100%;
     font-weight: bold;
+    color:#0085FF;
 }
 .group2_con_elm_name:hover {
     cursor: pointer;
@@ -48,6 +50,7 @@
     width: 12.5%;
     height: 100%;
     font-weight: bold;
+    color: #0085FF;
 
 }
 .group2_con_elm_streak{

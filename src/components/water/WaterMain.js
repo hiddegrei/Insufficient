@@ -22,7 +22,23 @@ function WaterMain(props) {
   const [waterLastWeek, setWaterLastWeek] = useState([]);
   const [waterLastMonth, setWaterLastMonth] = useState([]);
   const [show, setShow] = useState(false);
-  const [streak, setStreak] = useState()
+  const [streak, setStreak] = useState();
+  const [options, setOptions] = useState({
+    hAxis: {
+      textColor: "#0085FF",
+      gridlines: {
+        color: "#0085FF",
+      },
+      baselineColor: "#0085FF",
+    },
+    vAxis: {
+      textColor: "#0085FF",
+      gridlines: {
+        color: "#0085FF",
+      },
+      baselineColor: "#0085FF",
+    },
+  });
 
   // const waterIntake = functions.httpsCallable("waterIntake");
 
@@ -255,6 +271,18 @@ function WaterMain(props) {
       <div className="water__header">
         <h1>Water intake</h1>
       </div>
+      <div className="water_top">
+        <div className="water_top_elm">
+          <div className="water_top_elm_h">Today</div>
+          <div className="water_top_elm_val">{waterToday?.waterIntake}</div>
+          <AddCircleIcon onClick={() => addWater()} className="water_icon" />
+        </div>
+
+        <div className="water_top_elm">
+          <div className="water_top_elm_h">Streak</div>
+          <div className="water_top_elm_val">{streak}</div>
+        </div>
+      </div>
       <div className="water_table_con">
         <div className="water_table_con_h">
           {timeTypes[timeType].name}{" "}
@@ -270,16 +298,16 @@ function WaterMain(props) {
             }}
           />
         </div>
-        {show && (waterLastWeek.length > 1 || waterLastMonth.length > 1) && <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={dataTable} />}
+        {show && (waterLastWeek.length > 1 || waterLastMonth.length > 1) && <Chart options={options} className="water_table" chartType="ColumnChart" width="100%" height="400px" data={dataTable} />}
         {/* <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={data} /> */}
       </div>
       <div className="water_today">
         <div className="water_today_h">Today</div>
         <div className="water_today_streak">
-          <div className="water_today_title">
-            Streak
+          <div className="water_today_title">Streak</div>
+          <div className="water_today_value">
+            <LocalFireDepartmentIcon /> {streak}
           </div>
-          <div className="water_today_value"><LocalFireDepartmentIcon /> {streak}</div>
         </div>
         <div className="water_today_streak">
           <div className="water_today_title">WaterIntake</div>
