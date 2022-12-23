@@ -18,17 +18,25 @@ flex: 0.5;
     z-index: 100;
     border: 1px solid var(--twitter-background);
     padding: 15px 20px;
+    width: 80%;
+    margin-left: auto;
+        margin-right: auto;
 }
 .groups_elm{
     display:flex;
     flex-direction: column;
     width:80%;
-    height:200px;
-    border:1px solid black;
+    height:140px;
+    /* border:1px solid black; */
     margin-left: auto;
         margin-right: auto;
         border-radius: 10px;
         margin-top: 20px;
+        align-items: center;
+        place-content: center;
+        background-color: #00385A;
+        border: 1px solid #ddd;
+        color:white;
     
 
 }
@@ -37,13 +45,18 @@ cursor: pointer;
 }
 .groups_elm_name {
     display: flex;
-    margin-left:auto;
+    /* margin-left:auto;
     margin-right: auto;
     margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: auto; */
     font-size: 20px;
     font-weight: bold;
+    margin-right: 10px;
 
+}
+.groups_member{
+    display:flex;
+    margin-right: 7px;
 }
 .groups_elm_add{
     display: flex;
@@ -54,12 +67,13 @@ cursor: pointer;
         margin-top: auto;
         margin-bottom: auto;
         font-weight: bold;
-        border:1px solid black;
+        border:1px solid white;
         border-radius: 10px;
         align-items: center;
         place-content: center;
 
 }
+
 .groups_elm_add:hover{
     cursor: pointer;
 }
@@ -70,12 +84,14 @@ cursor: pointer;
     margin-left: auto;
     margin-right:auto;
     align-items: center;
+    margin-bottom: 10px;
 
 }
 .groups_elm_inputCon_title{
     display:flex;
     font-size: 18px;
     font-weight: bold;
+    margin-right: 10px;
 
 }
 .groups_elm_inputCon_input{
@@ -88,7 +104,7 @@ cursor: pointer;
         flex-direction: column;
         width: 50%;
         height: 100px;
-        border: 1px solid black;
+        /* border: 1px solid white; */
         margin-left: auto;
         margin-right: auto;
         background-color: aqua;
@@ -104,9 +120,17 @@ cursor: pointer;
         margin-right: auto;
         margin-top: auto;
             margin-bottom: auto;
+            
 }
 .groups_add_icon:hover {
 cursor: pointer;
+}
+.groups_users {
+    background-color: white;
+    border: 1px solid black;
+    z-index: 10;
+    width: fit-content;
+    height: fit-content;
 }
 .group__optie {
     display: flex;
@@ -114,6 +138,7 @@ cursor: pointer;
 
     cursor: pointer;
     border-bottom: 2px solid gray;
+    color:black;
 }
 
 .group_optie:hover {

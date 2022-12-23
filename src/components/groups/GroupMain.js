@@ -6,6 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Avatar } from "@material-ui/core";
 import Group from "./Group";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ClearIcon from "@mui/icons-material/Clear";
 
 function GroupMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -123,7 +124,7 @@ function GroupMain(props) {
   return (
     <div className="group direc">
       <div className="group__header">
-        <h1>{showGroup&&<ArrowBackIosIcon className="group_icon" onClick={()=>setShowGroup(!showGroup)}/>} Groups</h1>
+        <h1>{showGroup && <ArrowBackIosIcon className="group_icon" onClick={() => setShowGroup(!showGroup)} />} Groups</h1>
       </div>
       {!showGroup ? (
         <div className="group_con">
@@ -168,13 +169,24 @@ function GroupMain(props) {
               </div>
 
               <div className="groups_elm_inputCon">
-                <div className="groups_elm_inputCon_title">GroupMembers</div>
+                <div className="groups_elm_inputCon_title">Search Members</div>
                 <div className="groups_elm_inputCon_input">
                   <input onChange={(e) => setSearchContent(e.target.value)} value={searchContent} placeholder="search for users" className="searchWidget" type="text"></input>
                 </div>
               </div>
+              
+                {members.length>0&&
+                <div className="groups_elm_inputCon">
+                 <div className="groups_elm_inputCon_title">Group Members:</div>
+
+                {members.map((doc)=>(
+                  <div className="groups_member">@{doc}</div>
+                ))}
+                </div>
+                }
+              
               {show && (
-                <div>
+                <div className="groups_users">
                   {output.map((doc, index) => (
                     <div
                       key={index + 10}
