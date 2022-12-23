@@ -13,11 +13,12 @@ flex: 0.5;
 }
 .group__header {
     position: sticky;
-    top: 0;
-    background-color: white;
+    top: 20px;
     z-index: 100;
     border: 1px solid var(--twitter-background);
+    border-radius: 50px;
     padding: 15px 20px;
+    background-image: linear-gradient(90deg ,rgba(0, 194, 255, 1), rgba(0, 133, 255, 1));
 }
 .groups_elm{
     display:flex;

@@ -267,7 +267,7 @@ function Feed({mobile}) {
         <TweetBox />
       ) : (
         <Link to="/login">
-          <div className="feed__tweetbox">Please Sign In to post</div>
+          <div className="feed__tweetbox">Today</div>
         </Link>
       )}
 
