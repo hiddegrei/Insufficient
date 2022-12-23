@@ -121,7 +121,7 @@ function Login() {
           <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
           
         </form>
-        <button type="submit" onClick={signin} className="btn btn-info login__button">
+        <button type="submit" onClick={signin} className="btn btn-info login__button rounded-5">
           Log in
         </button>
         {/* <p>

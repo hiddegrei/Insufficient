@@ -1,7 +1,6 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState, Component } from "react";
 import Sidebar from "./Sidebar";
-import "../css/App.css";
-import "../css/Login.css";
 import Feed from "./Feed";
 import Widgets from "./Widgets";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -27,9 +26,10 @@ import WaterMain from "./water/WaterMain";
 import GroupMain from "./groups/GroupMain";
 // import Games from "./Games"
 import Home from "./Home";
-import "bootstrap/dist/css/bootstrap.min.css";
 import StravaMain from "./strava/StravaMain";
 import NavBottom from "./NavBottom"
+import "../css/App.css";
+import "../css/Login.css";
 
 
 function App() {

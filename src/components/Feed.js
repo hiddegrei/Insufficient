@@ -261,7 +261,7 @@ function Feed({mobile}) {
   return (
     <div className={`feed ${mobile&&"feed2"}`}>
       <div className="feed__header">
-        <h2>Following</h2>
+        <h2>Home</h2>
       </div>
       {user ? (
         <TweetBox />
