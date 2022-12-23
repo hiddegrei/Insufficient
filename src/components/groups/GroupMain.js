@@ -4,7 +4,8 @@ import { useStateValue } from "../../Stateprovider";
 import "../../css/GroupMain.css";
 import AddIcon from "@mui/icons-material/Add";
 import { Avatar } from "@material-ui/core";
-import Group from "./Group"
+import Group from "./Group";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 function GroupMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -122,7 +123,7 @@ function GroupMain(props) {
   return (
     <div className="group direc">
       <div className="group__header">
-        <h1>Groups</h1>
+        <h1>{showGroup&&<ArrowBackIosIcon className="group_icon" onClick={()=>setShowGroup(!showGroup)}/>} Groups</h1>
       </div>
       {!showGroup ? (
         <div className="group_con">

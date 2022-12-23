@@ -130,3 +130,6 @@ cursor: pointer;
     width:100%;
     height:fit-content;
 }
+.group_icon:hover{
+    cursor:pointer
+}
