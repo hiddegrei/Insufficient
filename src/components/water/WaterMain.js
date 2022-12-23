@@ -301,7 +301,7 @@ function WaterMain(props) {
         {show && (waterLastWeek.length > 1 || waterLastMonth.length > 1) && <Chart options={options} className="water_table" chartType="ColumnChart" width="100%" height="400px" data={dataTable} />}
         {/* <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={data} /> */}
       </div>
-      <div className="water_today">
+      {/* <div className="water_today">
         <div className="water_today_h">Today</div>
         <div className="water_today_streak">
           <div className="water_today_title">Streak</div>
@@ -320,7 +320,7 @@ function WaterMain(props) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
