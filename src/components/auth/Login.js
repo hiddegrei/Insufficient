@@ -120,6 +120,7 @@ function Login() {
 
           <h5>Password</h5>
           <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
+          
         </form>
         <button type="submit" onClick={signin} className="btn btn-info login__button">
           Log in
@@ -128,7 +129,7 @@ function Login() {
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-        <button onClick={() => history.push("/register")} className="btn btn-info login__registerButton">
+        <button onClick={() => history.push("/register")} className="login__registerButton">
           Register
         </button>
         <div onClick={() => history.push("/forgotpassword")} className="login__forgotpasswordbutton">

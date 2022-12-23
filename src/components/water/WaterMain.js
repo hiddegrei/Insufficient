@@ -11,8 +11,8 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 function WaterMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
   const [timeTypes, setTimeTypes] = useState([
-    { name: "Last week", index: 0,path:"lastweek" },
-    { name: "Last month", index: 1,path:"lastmonth" },
+    { name: "Last week", index: 0, path: "lastweek" },
+    { name: "Last month", index: 1, path: "lastmonth" },
     { name: "Last year", index: 2 },
   ]);
   const [timeType, setTimeType] = useState(0);
@@ -22,7 +22,7 @@ function WaterMain(props) {
   const [waterLastWeek, setWaterLastWeek] = useState([]);
   const [waterLastMonth, setWaterLastMonth] = useState([]);
   const [show, setShow] = useState(false);
-  const [streak,setStreak]=useState()
+  const [streak, setStreak] = useState()
 
   // const waterIntake = functions.httpsCallable("waterIntake");
 
@@ -66,67 +66,67 @@ function WaterMain(props) {
     console.log(profile.username);
     if (profile.username) {
       getWaterToday()
-      if(timeType===0){
-getWaterLastWeek()
-      }else{
+      if (timeType === 0) {
+        getWaterLastWeek()
+      } else {
         getWaterLastMonth()
       }
-      
-  getStreak()
-      
+
+      getStreak()
+
     }
-  }, [profile,timeType]);
+  }, [profile, timeType]);
 
-  function getWaterToday(){
+  function getWaterToday() {
     fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
-        method: "GET", // or 'PUT',
+      method: "GET", // or 'PUT',
 
-        headers: {
-          accept: "text/html,application/json",
-          Connection: "keep - alive",
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-          setDataToday(json.data);
-        });
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        setDataToday(json.data);
+      });
 
-      fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
-        method: "GET", // or 'PUT',
+    fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/today`, {
+      method: "GET", // or 'PUT',
 
-        headers: {
-          accept: "text/html,application/json",
-          Connection: "keep - alive",
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-         
-          setWaterToday(json.data);
-        }).catch((err)=>{
-          console.log(err)
-        });
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+
+        setWaterToday(json.data);
+      }).catch((err) => {
+        console.log(err)
+      });
 
   }
-  function getStreak(){
-     fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile.username}/streak`, {
-       method: "GET", // or 'PUT',
+  function getStreak() {
+    fetch(`https://us-central1-ms-users.cloudfunctions.net/app/api/users/${profile.username}/streak`, {
+      method: "GET", // or 'PUT',
 
-       headers: {
-         accept: "text/html,application/json",
-          Connection: "keep - alive",
-       }
-     })
-       .then((res) => res.json())
-       .then((json) => {
-          console.log(json);
-          setStreak(json.streak)
-       });
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+      }
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        setStreak(json.streak)
+      });
   }
 
-  function getWaterLastWeek(){
-    
+  function getWaterLastWeek() {
+
     fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/lastweek`, {
       method: "GET", // or 'PUT',
 
@@ -138,7 +138,7 @@ getWaterLastWeek()
       .then((res) => res.json())
       .then((json) => {
         console.log(json.data);
-         setShow(false);
+        setShow(false);
         setWaterLastWeek(json.data);
       })
       .catch((err) => {
@@ -146,8 +146,8 @@ getWaterLastWeek()
       });
 
   }
-  function getWaterLastMonth(){
-   
+  function getWaterLastMonth() {
+
     fetch(`https://ms-waterintake.web.app/api/users/${profile.username}/waterintake/lastmonth`, {
       method: "GET", // or 'PUT',
 
@@ -159,9 +159,9 @@ getWaterLastWeek()
       .then((res) => res.json())
       .then((json) => {
         console.log(json.data);
-         setShow(false);
+        setShow(false);
         setWaterLastMonth(json.data);
-        
+
       })
       .catch((err) => {
         console.log(err);
@@ -170,15 +170,15 @@ getWaterLastWeek()
   }
 
   useEffect(() => {
-    let days=["sun","mon","tue","wed","thu","fri","sat"]
-    
+    let days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+
     if (waterLastWeek?.length === 7) {
       let arr = [["Day of week", "Water Intake (ml)", { role: "style" }]];
       waterLastWeek.map((doc, index) => {
         arr.push([waterLastWeek[index] ? days[new Date(waterLastWeek[index]?.date._seconds * 1000).getUTCDay()] : "noData", waterLastWeek[index] ? waterLastWeek[index]?.waterIntake : 0, waterLastWeek[index]?.waterIntake >= waterLastWeek[index]?.goal ? "green" : "red"]);
       });
       setDataTable(arr);
-     
+
       // setDataTable([
       //   ["Day of week", "Water Intake (ml)", { role: "style" }],
       //   [waterLastWeek[0].data?days[new Date(waterLastWeek[0].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastWeek[0].data?waterLastWeek[0].data?.waterIntake:0, "red"], // RGB value
@@ -193,30 +193,30 @@ getWaterLastWeek()
     }
   }, [waterLastWeek]);
 
-   useEffect(() => {
-    let days=["sun","mon","tue","wed","thu","fri","sat"]
-    
-    
-      let arr=[["Day of week", "Water Intake (ml)", { role: "style" }]]
-      waterLastMonth.map((doc,index)=>{
-        arr.push([waterLastMonth[index]?days[new Date(waterLastMonth[index]?.date._seconds * 1000).getUTCDay()]:"noData", waterLastMonth[index]?waterLastMonth[index]?.waterIntake:0, waterLastMonth[index]?.waterIntake>=waterLastMonth[index]?.goal?"green":"red"])
+  useEffect(() => {
+    let days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
 
-      })
-      setDataTable(arr)
-     
-      // setDataTable([
-      //   ["Day of week", "Water Intake (ml)", { role: "style" }],
-      //   [waterLastMonth[0].data?days[new Date(waterLastMonth[0].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastMonth[0].data?waterLastMonth[0].data?.waterIntake:0, "red"], // RGB value
-      //   [waterLastMonth[1].data?days[new Date(waterLastMonth[1].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastMonth[1].data?waterLastMonth[1].data?.waterIntake:0, "red"], // English color name
-      //   [waterLastMonth[2].data?days[new Date(waterLastMonth[2].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[2].data?waterLastMonth[2].data?.waterIntake:0, "yellow"],
-      //   [waterLastMonth[3].data?days[new Date(waterLastMonth[3].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[3].data?waterLastMonth[3].data?.waterIntake:0, "green"], // CSS-style declaration
-      //   [waterLastMonth[4].data?days[new Date(waterLastMonth[4].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[4].data?waterLastMonth[4].data?.waterIntake:0, "green"],
-      //   [waterLastMonth[5].data?days[new Date(waterLastMonth[5].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[5].data?waterLastMonth[5].data?.waterIntake:0, "green"],
-      //   [waterLastMonth[6].data?days[new Date(waterLastMonth[6].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[6].data?waterLastMonth[6].data?.waterIntake:0, "green"],
-      // ]);
-      console.log("lastmonth")
-      setShow(true);
-    
+
+    let arr = [["Day of week", "Water Intake (ml)", { role: "style" }]]
+    waterLastMonth.map((doc, index) => {
+      arr.push([waterLastMonth[index] ? days[new Date(waterLastMonth[index]?.date._seconds * 1000).getUTCDay()] : "noData", waterLastMonth[index] ? waterLastMonth[index]?.waterIntake : 0, waterLastMonth[index]?.waterIntake >= waterLastMonth[index]?.goal ? "green" : "red"])
+
+    })
+    setDataTable(arr)
+
+    // setDataTable([
+    //   ["Day of week", "Water Intake (ml)", { role: "style" }],
+    //   [waterLastMonth[0].data?days[new Date(waterLastMonth[0].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastMonth[0].data?waterLastMonth[0].data?.waterIntake:0, "red"], // RGB value
+    //   [waterLastMonth[1].data?days[new Date(waterLastMonth[1].data?.date._seconds * 1000).getUTCDay()]:"noData", waterLastMonth[1].data?waterLastMonth[1].data?.waterIntake:0, "red"], // English color name
+    //   [waterLastMonth[2].data?days[new Date(waterLastMonth[2].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[2].data?waterLastMonth[2].data?.waterIntake:0, "yellow"],
+    //   [waterLastMonth[3].data?days[new Date(waterLastMonth[3].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[3].data?waterLastMonth[3].data?.waterIntake:0, "green"], // CSS-style declaration
+    //   [waterLastMonth[4].data?days[new Date(waterLastMonth[4].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[4].data?waterLastMonth[4].data?.waterIntake:0, "green"],
+    //   [waterLastMonth[5].data?days[new Date(waterLastMonth[5].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[5].data?waterLastMonth[5].data?.waterIntake:0, "green"],
+    //   [waterLastMonth[6].data?days[new Date(waterLastMonth[6].data?.date._seconds*1000).getUTCDay()]:"noData", waterLastMonth[6].data?waterLastMonth[6].data?.waterIntake:0, "green"],
+    // ]);
+    console.log("lastmonth")
+    setShow(true);
+
   }, [waterLastMonth]);
 
   function addWater() {
@@ -245,7 +245,7 @@ getWaterLastWeek()
         // setWaterToday(json.data);
         getWaterToday()
         getWaterLastWeek()
-        if(waterToday?.waterIntake>=waterToday?.goal){
+        if (waterToday?.waterIntake >= waterToday?.goal) {
           getStreak()
         }
       });
@@ -270,14 +270,14 @@ getWaterLastWeek()
             }}
           />
         </div>
-        {show&&(waterLastWeek.length>1||waterLastMonth.length>1) && <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={dataTable} />}
+        {show && (waterLastWeek.length > 1 || waterLastMonth.length > 1) && <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={dataTable} />}
         {/* <Chart className="water_table" chartType="ColumnChart" width="100%" height="400px" data={data} /> */}
       </div>
       <div className="water_today">
         <div className="water_today_h">Today</div>
         <div className="water_today_streak">
           <div className="water_today_title">
-            Streak 
+            Streak
           </div>
           <div className="water_today_value"><LocalFireDepartmentIcon /> {streak}</div>
         </div>

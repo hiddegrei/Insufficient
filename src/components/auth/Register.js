@@ -20,7 +20,7 @@ function Register() {
 
     var newemail = email.replace(/\s+/g, "");
 
-    if (username && username != "undefined") {
+    if (username && username !== "undefined") {
       db.collection("users")
         .where("username", "==", username)
         .get()
@@ -115,7 +115,7 @@ function Register() {
 
                 newuser
                   .sendEmailVerification()
-                  .then(function () {})
+                  .then(function () { })
                   .catch(function (error) {
                     // An error happened.
                   });
@@ -148,6 +148,7 @@ function Register() {
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
       </Link>
       <div className="login__container rounded-5">
+      <div className="login__container rounded-5">
         <form>
           <h5>Username</h5>
           <input onChange={(e) => setUsername(e.target.value)} value={username} type="text"></input>
@@ -168,12 +169,12 @@ function Register() {
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-        <button onClick={register} className="btn btn-info login__button rounded-5" style={{fontSize: "14px", fontWeight: "bolder"}}>
+        <button onClick={register} className="btn btn-info login__registerButton">
           Create account
         </button>
 
-        <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__registerButton rounded-5">
-          Back
+        <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__button">
+          Back to Sign in
         </button>
       </div>
       {open && (

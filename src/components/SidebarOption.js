@@ -8,7 +8,7 @@ function SidebarOption({ active, alert, text, Icon }) {
     if (alert) {
       setAlertje(true);
     }
-  }, []);
+  }, [alert]);
 
   return (
     <div className={`sidebarOption ${active && "sidebarOption--active"}`}>

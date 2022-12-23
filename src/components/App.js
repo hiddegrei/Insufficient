@@ -2,6 +2,7 @@ import React, { useEffect, useState, Component } from "react";
 import Sidebar from "./Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/App.css";
+import "../css/Login.css";
 import Feed from "./Feed";
 import Widgets from "./Widgets";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,7 +11,7 @@ import { auth } from "../firebase";
 import { useStateValue } from "../Stateprovider";
 import Profile from "./profile/Profile";
 import Explore from "./Explore";
-import ChatPage from "./ChatPage";
+import DailyIntakePage from "./DailyIntakePage";
 import Chat from "./Chat";
 import Followers from "./Followers";
 import Following from "./Following";
@@ -29,7 +30,6 @@ import GroupMain from "./groups/GroupMain";
 import Home from "./Home";
 import StravaMain from "./strava/StravaMain";
 import NavBottom from "./NavBottom"
-
 
 function App() {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -94,51 +94,51 @@ function App() {
           <Route path="/exchange_token">
             <Sidebar />
             <StravaMain />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/post/:nam/:tok">
             <Sidebar />
             <PostPop />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/home">
             <Sidebar />
             <Home />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/addnewchat">
             <Sidebar />
             <AddnewChat />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/notifications">
             <Sidebar />
             <Notifications />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/water">
             <Sidebar />
             <WaterMain />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
             <NavBottom />
           </Route>
 
           <Route path="/groups">
             <Sidebar />
             <GroupMain />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route exact path="/login">
@@ -156,43 +156,43 @@ function App() {
           <Route path="/profile/followers/:pName">
             <Sidebar />
             <Followers />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/profile/following/:pName">
             <Sidebar />
             <Following />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/profile/:pName/edit">
             <Sidebar />
             <EditProfile />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/profile/:pName">
             <Sidebar />
             <ProfileMain />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/explore">
             <Sidebar />
             <Explore />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
-          <Route path="/chat">
+          <Route path="/daily-intake">
             <Sidebar />
-            <ChatPage />
-             <Widgets/>
-             <NavBottom />
+            <DailyIntakePage />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           {/* <Route path="/games">
@@ -204,8 +204,8 @@ function App() {
           <Route path="/">
             <Sidebar />
             <Feed />
-             <Widgets/>
-             <NavBottom />
+            <Widgets />
+            <NavBottom />
           </Route>
 
           <Route path="/__/auth/action">

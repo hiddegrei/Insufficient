@@ -4,7 +4,9 @@ import { useStateValue } from "../../Stateprovider";
 import "../../css/GroupMain.css";
 import AddIcon from "@mui/icons-material/Add";
 import { Avatar } from "@material-ui/core";
-import Group from "./Group"
+import Group from "./Group";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ClearIcon from "@mui/icons-material/Clear";
 
 function GroupMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -27,7 +29,7 @@ function GroupMain(props) {
 
   useEffect(() => {
     let isSubscribed = true;
-    if (searchContent && profile.username != "undefined") {
+    if (searchContent && profile.username !== "undefined") {
       db.collection("users")
         .where("username", ">=", searchContent)
         .get()
@@ -35,11 +37,11 @@ function GroupMain(props) {
           querySnapshot.forEach((doc) =>
             isSubscribed
               ? setOutput((dat) => {
-                  const newdata = { data: doc.data(), key: doc.data().userId };
-                  const olddata = dat.filter((dat) => dat.key !== newdata.key);
+                const newdata = { data: doc.data(), key: doc.data().userId };
+                const olddata = dat.filter((dat) => dat.key !== newdata.key);
 
-                  return [...olddata, newdata];
-                })
+                return [...olddata, newdata];
+              })
               : null
           );
         });
@@ -47,7 +49,7 @@ function GroupMain(props) {
       setShow(false);
       setOutput([]);
 
-      
+
     }
     if (output.length > 0) {
       setShow(true);
@@ -122,7 +124,7 @@ function GroupMain(props) {
   return (
     <div className="group direc">
       <div className="group__header">
-        <h1>Groups</h1>
+        <h1>{showGroup && <ArrowBackIosIcon className="group_icon" onClick={() => setShowGroup(!showGroup)} />} Groups</h1>
       </div>
       {!showGroup ? (
         <div className="group_con">
@@ -167,13 +169,24 @@ function GroupMain(props) {
               </div>
 
               <div className="groups_elm_inputCon">
-                <div className="groups_elm_inputCon_title">GroupMembers</div>
+                <div className="groups_elm_inputCon_title">Search Members</div>
                 <div className="groups_elm_inputCon_input">
                   <input onChange={(e) => setSearchContent(e.target.value)} value={searchContent} placeholder="search for users" className="searchWidget" type="text"></input>
                 </div>
               </div>
+              
+                {members.length>0&&
+                <div className="groups_elm_inputCon">
+                 <div className="groups_elm_inputCon_title">Group Members:</div>
+
+                {members.map((doc)=>(
+                  <div className="groups_member">@{doc}</div>
+                ))}
+                </div>
+                }
+              
               {show && (
-                <div>
+                <div className="groups_users">
                   {output.map((doc, index) => (
                     <div
                       key={index + 10}
@@ -211,7 +224,7 @@ function GroupMain(props) {
               <div>{doc.waterIntakeToday}</div>
             </div>
           ))} */}
-          <Group group={groupData}/>
+          <Group group={groupData} />
         </div>
       )}
     </div>

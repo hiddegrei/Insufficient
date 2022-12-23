@@ -9,7 +9,7 @@ import { auth } from "../firebase";
 import { useStateValue } from "../Stateprovider";
 import Profile from "./profile/Profile";
 import Explore from "./Explore";
-import ChatPage from "./ChatPage";
+import DailyIntakePage from "./DailyIntakePage";
 import Chat from "./Chat";
 import Followers from "./Followers";
 import Following from "./Following";
@@ -160,8 +160,8 @@ function App() {
             <NavBottom />
           </Route>
 
-          <Route path="/chat">
-            <ChatPage />
+          <Route path="/dailyCalc">
+            <DailyIntakePage />
             <NavBottom />
           </Route>
 

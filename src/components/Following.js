@@ -13,7 +13,7 @@ function Following() {
   const [volgend, setVolgend] = useState([]);
 
   useEffect(() => {
-    if (pName != "undefined") {
+    if (pName !== "undefined") {
       db.collection("users")
         .doc(pName)
         .collection("following")

@@ -23,16 +23,17 @@
 }
 
 .login__container {
-  font-family: 'Comfortaa', serif;
-  font-size: 48px;
-  text-shadow: 4px 4px 4px #aaa;
   width: 300px;
   height: fit-content;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
   border: 1px solid lightgray;
+  box-shadow: 2px 6px 10px rgb(138, 138, 138);
   padding: 20px;
+  margin-right: 13px;
+  justify-content: center;
+  padding-top: 30px;
 }
 
 .login__container > h1 {
@@ -89,84 +90,24 @@
   margin-right: auto;
   margin-left: auto;
 }
-
-.header_logo_link .header__logo {
-  width: 100%;
-  height: 100%;
-}
-
-.login_form{
-  align-items: center;
-  place-content: center;
-}
-
-.login__button:hover {
-  background: linear-gradient(#0974d8, #0dafe0);
-  border-color: #0974d8;
-  color: #d0cdcd;
-}
-
 .login__button {
-  display:flex;
-  background: linear-gradient(#0085FF, #00C2FF);
-  border-radius: 25px;
-  height: 50px;
-  width: 120px;
-  border-color: #0085FF;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #81dfe1;
+  border: 1px solid;
+  height: 30px;
+  width: 100%;
   margin-top: 10px;
-  font-family: 'Comfortaa', serif;
-  font-size: 25px;
-  color: #fefefe;
-  transition-duration: 0.3s;
-  font-weight: 700;
-  align-items: center;
-  place-content: center;
-}
-
-.login__registerButton:hover {
-  background: linear-gradient(#acaeb0, #afb1b2);
-  border-color: #0b61b0;
-  color: #000000;
+  border-color: #366162 #3b6465 #436c6d;
+  color: #111;
+  border-radius: 2px;
 }
 
 .login__registerButton {
-  display:flex;
-  background: linear-gradient(#edeff1, #e3e7e9);
-  border-radius: 25px;
-  height: 35px;
-  width: 100px;
-  border-color: #0085FF;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: darkgrey;
+  border: 1px solid black;
   margin-top: 10px;
-  align-items: center;
-  place-content: center;
-  font-family: 'Comfortaa', serif;
-  font-size: 17px;
-  color: #636363;
-  transition-duration: 0.4s;
-  border-width: 4px;
-  font-weight: bold;
-}
-
-.login__forgotpasswordbutton {
-  display:flex;
-  height: 30px;
-  width: 120px;
-  margin-left: auto;
-  margin-right:auto;
-  margin-top: 15px;
-  font-family: 'Comfortaa', serif;
-  font-size: 12px;
-  color:black;
-  align-items: center;
-  place-content: center;
-}
-.login__forgotpasswordbutton:hover {
-  cursor: pointer;
-  font-weight: 700;
+  color: #111;
+  width: 100%;
+  border-radius: 2px;
 }
 
 .login__popup {

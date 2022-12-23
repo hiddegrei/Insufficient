@@ -4,7 +4,10 @@
 
 body {
   --twitter-color: #50b7f5;
-  --twitter-background: #e6ecf0;
+  /* --twitter-background: #e6ecf0; */
+  background-image: url("/src/images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .app {
   display: flex;
@@ -15,6 +18,8 @@ body {
   padding: 0 10px;
   -ms-overflow-style: none;
     scrollbar-width: none;
+    background-color: white;
+    
 }
 .app::-webkit-scrollbar {
   display: none;

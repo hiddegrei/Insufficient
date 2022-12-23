@@ -26,7 +26,7 @@
     display:flex;
     width:100%;
     height:50px;
-    border:1px solid black;
+    /* border:1px solid black; */
 }
 .group2_con_elm_rank {
     display: flex;
@@ -41,6 +41,7 @@
 }
 .group2_con_elm_name:hover {
     cursor: pointer;
+   opacity: 0.7;
 }
 .group2_con_elm_water {
     display: flex;
