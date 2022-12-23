@@ -13,8 +13,7 @@ flex: 0.5;
 }
 .group__header {
     position: sticky;
-    top: 0;
-    background-color: white;
+    top: 20px;
     z-index: 100;
     /* border: 1px solid var(--twitter-background); */
     padding: 15px 20px;
