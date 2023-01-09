@@ -168,11 +168,11 @@ function Register() {
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
 
-        <button onClick={register} className="btn btn-info login__button rounded-5">
+        <button id="register_button" onClick={register} className="btn btn-info login__button rounded-5">
           Create account
         </button>
 
-        <button type="submit" onClick={() => history.push("/login")} className="btn btn-info login__registerButton rounded-5">
+        <button id="back_button" type="submit" onClick={() => history.push("/login")} className="btn btn-info login__registerButton rounded-5">
 
           Back to Sign in
         </button>

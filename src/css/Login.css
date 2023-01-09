@@ -27,14 +27,13 @@ body {
   font-size: 48px;
   text-shadow: 4px 4px 4px #aaa;
   width: 99%;
-  height: 55%;
+  height: auto;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
   border: 1px solid lightgray;
   box-shadow: 2px 6px 10px rgb(138, 138, 138);
   padding: 20px;
-  margin-right: 13px;
   justify-content: center;
   padding-top: 30px;
 }
@@ -56,9 +55,14 @@ body {
 }
 
 .login__container > form > h5 {
-  margin-bottom: -10px;
+  margin-bottom: -25px;
   font-size: 13px;
+
   /* display:flex; */
+}
+
+.login__container > form > input:hover {
+  background-color: #c8c7c7;
 }
 
 .login__container > form > input {
@@ -78,29 +82,22 @@ body {
   font-size: 12px;
   font-weight: bold;
   outline: none;
-
 }
 
 .header__logo {
-  margin-top: 20px;
-  margin-bottom: 20px;
   object-fit: contain;
   width: 100px;
   height: 100px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .login__button:hover {
   background: linear-gradient(#0974d8, #0dafe0);
-  border-color: #0974d8;
+  color: #edeff1;
 }
 .login_form{
-  /* border:1px solid black; */
   align-items: center;
   place-content: center;
-  /* display:flex;
-  flex-direction: column; */
+
 }
 
 .login__button {
@@ -110,13 +107,19 @@ body {
   height: 50px;
   width: 140px;
   border-color: #0085FF;
-  margin-left: 21%;
+  margin-left: 22%;
   font-family: 'Comfortaa', serif;
   font-size: 25px ;
   color: #fefefe;
   transition-duration: 0.4s;
   font-weight: bold;
   justify-content: center;
+  margin-top: 10px;
+}
+
+.login__registerButton:hover {
+  background: linear-gradient(#e7e7e7, #d4d4d4);
+  color: rgb(77, 77, 77);
 }
 
 .login__registerButton {
@@ -132,10 +135,13 @@ body {
   place-content: center;
   font-family: 'Comfortaa', serif;
   font-size: 15px;
-  color: #000000;
+  color: #666666;
   transition-duration: 0.4s;
   outline: none;
-  font-weight: 2000px;
+}
+
+.login__forgotpasswordbutton:hover {
+  font-weight: bolder;
 }
 
 .login__forgotpasswordbutton {
@@ -144,13 +150,15 @@ body {
   height: 30px;
   width: 150px;
   border-color: #ffffff;
-  margin-left: 20%;
   margin-top: 10px;
   font-family: 'Comfortaa', serif;
   font-size: 0.8rem;
   color: #000000;
-  transition-duration: 0.4s;
+  transition-duration: 0.1s;
   outline: none;
+  justify-content: center;
+  margin-left: 25%;
+  cursor: pointer;
 }
  
 .login__popup {
@@ -165,3 +173,19 @@ body {
   border: 1px solid white;
 }
 
+.app {
+  background-image: url("/src/images/GradientDots_Background.png");
+  background-repeat: no-repeat;
+}
+
+#register_button {
+  width: 120px;
+  margin-left: 14%;
+  font-size: medium;
+}
+
+#back_button {
+  margin-left: 15%;
+  height: 50px;
+  width: 120px;
+}

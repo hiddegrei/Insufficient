@@ -32,12 +32,13 @@
   color: #111;
   border-radius: 2px;
 }
+
 .header__logo {
   margin-top: 20px;
   margin-bottom: 20px;
   object-fit: contain;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   margin-right: auto;
   margin-left: auto;
 }
