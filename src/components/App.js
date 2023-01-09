@@ -30,6 +30,7 @@ import StravaMain from "./strava/StravaMain";
 import NavBottom from "./NavBottom"
 import "../css/App.css";
 import "../css/Login.css";
+import WaterSensor from  "./water/WaterSensor"
 
 function App() {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -84,6 +85,12 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
+        <Route path="/watersensor">
+            <Sidebar />
+            <WaterSensor/>
+            <NavBottom />
+          </Route>
+
           <Route path="/messages/:roomId">
             <Sidebar />
             <Chat />

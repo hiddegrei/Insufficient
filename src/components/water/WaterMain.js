@@ -76,6 +76,16 @@ function WaterMain(props) {
     //       }
     //     });
     //   });
+    // fetch(`https://ms-waterintake.web.app/api/users/newyear`, {
+    //   method: "POST", // or 'PUT',
+
+    //   headers: {
+    //     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    //   }
+    // }).catch((err)=>{
+    //   console.log(err)
+    // })
+    
   }, [profile]);
 
   useEffect(() => {
