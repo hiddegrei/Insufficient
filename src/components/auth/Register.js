@@ -12,8 +12,8 @@ function Register() {
   const [username, setUsername] = useState("");
   const [{ user, handle }, dispatch] = useStateValue();
   const [open, setOpen] = useState(false);
-  const [length,setLength]=useState()
-  const [weight,setWeight]=useState()
+  const [length, setLength] = useState()
+  const [weight, setWeight] = useState()
 
   const register = (e) => {
     e.preventDefault();
@@ -27,14 +27,14 @@ function Register() {
         .then((doc) => {
           if (doc.exists) {
             return alert(username + ":this username is already taken");
-          }else if (isNaN(length) || isNaN(weight)) {
-            if (!isNaN(length)){
+          } else if (isNaN(length) || isNaN(weight)) {
+            if (!isNaN(length)) {
               return alert("weight is not a number");
 
             }
             else {
               return alert("length is not a number");
-            } 
+            }
           } else {
             auth
               .createUserWithEmailAndPassword(newemail, password)
@@ -51,7 +51,7 @@ function Register() {
                   streak: 0,
                   weight: weight,
                   length: length,
-                  strava:false
+                  strava: false
                 });
                 var details = {
                   username: username,
@@ -144,44 +144,45 @@ function Register() {
   }, [open]);
   return (
     <div className="login">
-      <Link to="/"className="header_logo_link">
+      <Link to="/" className="header_logo_link">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
       </Link>
       <div className="login__container rounded-5">
-      <div className="login__container rounded-5">
-        <form>
-          <h5>Username</h5>
-          <input onChange={(e) => setUsername(e.target.value)} value={username} type="text"></input>
+        <div className="login__container rounded-5">
+          <form>
+            <h5>Username</h5>
+            <input onChange={(e) => setUsername(e.target.value)} value={username} type="text"></input>
 
-          <h5>Email</h5>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} type="text"></input>
+            <h5>Email</h5>
+            <input onChange={(e) => setEmail(e.target.value)} value={email} type="text"></input>
 
-          <h5>Length(cm)</h5>
-          <input onChange={(e) => setLength(e.target.value)} value={length} type="text"></input>
+            <h5>Length(cm)</h5>
+            <input onChange={(e) => setLength(e.target.value)} value={length} type="text"></input>
 
-          <h5>Weight(kg)</h5>
-          <input onChange={(e) => setWeight(e.target.value)} value={weight} type="text"></input>
+            <h5>Weight(kg)</h5>
+            <input onChange={(e) => setWeight(e.target.value)} value={weight} type="text"></input>
 
-          <h5>Password</h5>
-          <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
-        </form>
-        {/* <p>
+            <h5>Password</h5>
+            <input onChange={(e) => setPassword(e.target.value)} value={password} type="password"></input>
+          </form>
+          {/* <p>
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-        <button onClick={register} className="btn btn-info login__registerButton">
-          Create account
-        </button>
+          <button onClick={register} className="btn btn-info login__registerButton">
+            Create account
+          </button>
 
-        <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__button">
-          Back to Sign in
-        </button>
-      </div>
-      {open && (
-        <div className="login__popup">
-          <h1>Thanks for signing up! You can Login now!</h1>
+          <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__button">
+            Back to Sign in
+          </button>
         </div>
-      )}
+        {open && (
+          <div className="login__popup">
+            <h1>Thanks for signing up! You can Login now!</h1>
+          </div>
+        )}
+      </div>
     </div>
     </div>
   );
