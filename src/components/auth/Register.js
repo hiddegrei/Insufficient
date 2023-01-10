@@ -147,7 +147,6 @@ function Register() {
       <Link to="/" className="header_logo_link">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
       </Link>
-      <div className="login__container rounded-5">
         <div className="login__container rounded-5">
           <form>
             <h5>Username</h5>
@@ -169,9 +168,6 @@ function Register() {
                 By signing-in you agree to the <strong>SocialX</strong> conditions of Use & Sale.
                 Please see our Privacy Notice,our Cookies Notice and our Interest-Based Ads Notice.
             </p> */}
-          <button onClick={register} className="btn btn-info login__registerButton">
-            Create account
-          </button>
 
         <button id="register_button" onClick={register} className="btn btn-info login__button rounded-5">
           Create account
@@ -189,7 +185,6 @@ function Register() {
           </div>
         )}
       </div>
-    </div>
     
   );
 }
