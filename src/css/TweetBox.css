@@ -1,8 +1,10 @@
 .tweetbox {
   padding-bottom: 10px;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   padding-right: 10px;
   height: 150px;
+  background-color: white;
+  
 }
 .tweetBox__extend {
   height: 450px !important;

@@ -5,6 +5,7 @@ flex: 0.5;
     -ms-overflow-style: none;
     scrollbar-width: none;
     width: 100%;
+    background-color: white;
 
 }
 
@@ -20,8 +21,8 @@ flex: 0.5;
     width: 80%;
     margin-left: auto;
         margin-right: auto;
-        /* color:#0085FF; */
-        color:white;
+        color:#0085FF;
+        /* color:white; */
 }
 .groups_elm{
     display:flex;
