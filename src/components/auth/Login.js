@@ -130,7 +130,7 @@ function Login() {
         <button onClick={() => history.push("/register")} className="btn btn-info login__registerButton rounded-5" style={{ border: "none" }}>
           Register
         </button>
-        <div onClick={() => history.push("/forgotpassword")} className="login__forgotpasswordbutton">
+        <div id="forgot_password" onClick={() => history.push("/forgotpassword")} className="login__forgotpasswordbutton">
           Forgot Password?
         </div>
       </div>
