@@ -4,7 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 import { db, auth, storage } from "../../firebase";
 import { useStateValue } from "../../Stateprovider";
 
+
 function ForgotPassword() {
+  const history = useHistory();
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
 
@@ -30,11 +32,11 @@ function ForgotPassword() {
   };
   return (
     <div className="login">
-       <Link to="/" className="header_logo_link">
+      <Link to="/" className="header_logo_link">
         <img className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
       </Link>
-      <div className="login__container">
-        <h1>Reset Password</h1>
+      <div className="login__container rounded-5">
+        <h6 id="reset">Reset Password</h6>
         <form>
           <h5>Email</h5>
           <input onChange={(e) => setEmail(e.target.value)} value={email} type="text"></input>
@@ -44,6 +46,10 @@ function ForgotPassword() {
             </button>
           )}
         </form>
+        <button id="back_button" type="submit" onClick={() => history.push("/login")} className="btn btn-info login__registerButton rounded-5">
+
+          Back
+        </button>
       </div>
 
       {open && (

@@ -174,7 +174,7 @@ function Register() {
 
         <button id="back_button" type="submit" onClick={() => history.push("/login")} className="btn btn-info login__registerButton rounded-5">
 
-          Back to Sign in
+          Back
         </button>
       </div>
       {open && (

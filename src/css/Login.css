@@ -26,7 +26,7 @@ body {
   font-family: 'Comfortaa', serif;
   font-size: 48px;
   text-shadow: 4px 4px 4px #aaa;
-  width: 99%;
+  width: 300px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ body {
 
 .login__container > form > h5 {
   margin-bottom: -25px;
-  font-size: 13px;
+  font-size: 20px;
 
   /* display:flex; */
 }
@@ -178,13 +178,18 @@ body {
 }
 
 #register_button {
-  width: 120px;
-  margin-left: 14%;
+  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: medium;
+  height: 60px;
 }
 
 #back_button {
-  margin-left: 15%;
-  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
   width: 120px;
+  font-size: large;
 }
+
