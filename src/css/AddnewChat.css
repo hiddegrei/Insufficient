@@ -19,11 +19,17 @@
   margin-left: 20px;
 }
 .widgets__input > input {
-  border: none;
-  background-color: var(--twitter-background);
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 98%;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+  font-size: 15px;
 }
 .widgets__searchIcon {
-  color: grey;
+  color: rgb(255, 255, 255);
 }
 .widgets__widgetContainer {
   margin-top: 15px;

@@ -5,6 +5,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   z-index: 1;
+  background-color: white;
 }
 .explore_box{
   position: sticky;
@@ -16,11 +17,12 @@
 .explore__header {
   position: sticky;
   top: 0;
-  /* background-color: white; */
+  background: linear-gradient(145deg, #0085FF, #00C2FF);
   z-index: 100;
-  display: flex;
-  border: 1px solid var(--twitter-background);
+  
   padding: 15px 20px;
+  color:white;
+      /* color:white; */
 }
 .explore__header__left {
   display: flex;

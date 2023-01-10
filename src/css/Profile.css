@@ -4,6 +4,7 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  background-color: white;
 }
 .feed::-webkit-scrollbar {
   display: none;
@@ -11,10 +12,12 @@
 .profile__header {
   position: sticky;
   top: 0;
-  background-color: white;
+  background: linear-gradient(145deg, #0085FF, #00C2FF);
   z-index: 100;
-  border: 1px solid var(--twitter-background);
+  
   padding: 15px 20px;
+  color:white;
+      /* color:white; */
 }
 .profile__header > h1 {
   font-size: 20px;

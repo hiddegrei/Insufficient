@@ -55,7 +55,7 @@ cursor: pointer;
 .water__header {
     position: sticky;
     top: 0;
-    background-color: #0085FF;
+    background: linear-gradient(145deg, #0085FF, #00C2FF);
     z-index: 100;
     
     padding: 15px 20px;
