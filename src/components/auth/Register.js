@@ -173,10 +173,16 @@ function Register() {
             Create account
           </button>
 
-          <button type="submit" onClick={() => history.push("/login")} className="btn btn-warning login__button">
-            Back to Sign in
-          </button>
-        </div>
+        <button id="register_button" onClick={register} className="btn btn-info login__button rounded-5">
+          Create account
+        </button>
+
+        <button id="back_button" type="submit" onClick={() => history.push("/login")} className="btn btn-info login__registerButton rounded-5">
+
+          Back
+        </button>
+      </div>
+      
         {open && (
           <div className="login__popup">
             <h1>Thanks for signing up! You can Login now!</h1>
