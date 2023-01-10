@@ -7,8 +7,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import { Avatar, IconButton } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import { useHistory } from "react-router-dom";
 
 function Explore() {
+  const history = useHistory();
   const [posts, setPosts] = useState([]);
   const [{ user, hashTrends, dataTrendsExplore, OpenTrendExplore }, dispatch] = useStateValue();
   const [moreMore, setMoreMore] = useState(false);
@@ -128,7 +130,7 @@ function Explore() {
     <div className="explore direc">
       <div className="explore__header">
         <div className="explore__header__left">
-          {user ? <h2>Explore</h2> : <h2>Please Sign In to post and interact with other users</h2>}
+          {user ? <h2>Explore</h2> : <h2 onClick={()=>history.push("/login")}>Please Sign In to post and interact with other users</h2>}
           <div>{OpenTrendExplore && <ArrowBackIosIcon className="explore__header__left__but" onClick={() => dispatch({ type: "OPEN_OPENTRENDEXPLORE", OpenTrendExplore: false })} />}</div>
         </div>
 

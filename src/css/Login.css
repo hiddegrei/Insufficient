@@ -54,18 +54,18 @@ body {
   height: 100%;
 }
 
-.login__container > form > h5 {
+.login__container>form>h5 {
   margin-bottom: -25px;
   font-size: 20px;
 
   /* display:flex; */
 }
 
-.login__container > form > input:hover {
+.login__container>form>input:hover {
   background-color: #c8c7c7;
 }
 
-.login__container > form > input {
+.login__container>form>input {
   /* display:flex; */
   height: 30px;
   margin-bottom: 10px;
@@ -94,7 +94,8 @@ body {
   background: linear-gradient(#0974d8, #0dafe0);
   color: #edeff1;
 }
-.login_form{
+
+.login_form {
   align-items: center;
   place-content: center;
 }
