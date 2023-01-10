@@ -6,6 +6,9 @@
   scrollbar-width: none;
   z-index: 1;
 }
+.explore_box{
+  position: sticky;
+}
 .explore::-webkit-scrollbar {
   display: none;
 }
@@ -63,6 +66,6 @@
 .widget__optie__info {
   margin-left: 15px;
 }
-.SearchTwitter {
+.searchTwitter {
   height: 100%;
 }

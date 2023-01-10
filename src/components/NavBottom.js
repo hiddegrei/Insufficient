@@ -6,14 +6,15 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { v4 as uuidv4 } from "uuid";
 import { useStateValue } from "../Stateprovider";
 import { useHistory } from "react-router-dom";
-import "../css/NavBottom.css"
+import "../css/NavBottom.css";
+import ExploreIcon from "@mui/icons-material/Explore";
 function NavBottom(props) {
   const history=useHistory()
      const [{ profile }, dispatch] = useStateValue();
     const [items, setItems] = useState([
-      { title: "/explore", icon: <HomeIcon />, active: false },
-      { title: "/groups", icon: <GroupsIcon />, active: false },
       { title: "/", icon: <InvertColorsIcon />, active: true },
+      { title: "/explore", icon: <ExploreIcon />, active: false },
+      { title: "/groups", icon: <GroupsIcon />, active: false },
       { title: `/profile/${profile?.username}`, icon: <AccountCircleIcon />, active: false },
     ]);
     return (
