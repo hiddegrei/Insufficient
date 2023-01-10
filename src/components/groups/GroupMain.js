@@ -102,8 +102,7 @@ function GroupMain(props) {
   }
 
   function getGroups() {
-    console.log("hi");
-    console.log(profile?.username);
+   
     fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups`, {
       method: "GET", // or 'PUT',
 
@@ -121,6 +120,28 @@ function GroupMain(props) {
         console.log(err);
       });
   }
+  function getGroup(id) {
+   
+    fetch(`https://us-central1-ms-groups.cloudfunctions.net/app/api/users/${profile?.username}/groups/${id}`, {
+      method: "GET", // or 'PUT',
+
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+        
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+       console.log(json)
+       
+         setGroupData(json.data);
+        setShowGroup(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <div className="group direc">
       <div className="group__header">
@@ -133,8 +154,8 @@ function GroupMain(props) {
               <div
                 onClick={() => {
                   console.log(doc);
-                  setGroupData(doc);
-                  setShowGroup(true);
+                  getGroup(doc.data.docId)
+                  
                 }}
                 key={index}
                 className="groups_elm"

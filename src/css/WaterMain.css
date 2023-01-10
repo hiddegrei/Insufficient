@@ -13,10 +13,11 @@
 .water__header {
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: #0085FF;
     z-index: 100;
-    border: 1px solid var(--twitter-background);
+    
     padding: 15px 20px;
+    color:white;
 }
 .water_table_con{
     display:flex;
@@ -26,12 +27,19 @@
    place-content: center;
     /* border: 1px solid black; */
 }
+.water_icon{
+    color:#0085FF;
+}
+.water_icon:hover {
+   cursor: pointer;
+}
 .water_table_con_h{
     display:flex;
     font-weight:bold;
     font-size: 20px;
     padding:10px;
     align-items: center;
+    color:#0085FF;
 }
 .water_h_icon{
     display:flex;
@@ -110,4 +118,38 @@ margin-left: auto;
     font-size: 22px;
     margin-left: auto;
     align-items: center;
+}
+.water_top{
+    display:flex;
+    width: 100%;
+}
+.water_top_elm{
+    display:flex;
+    flex-direction: column;
+    width:30%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+   
+}
+.water_top_elm_h{
+    display:flex;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 5px;
+    color:#0085FF;
+}
+.water_top_elm_val {
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    border:1px solid #0085FF;
+    width: 100px;
+    height: 100px;
+    padding:20px;
+    align-items: center;
+    place-content: center;
+    color:#0085FF;
 }

@@ -15,15 +15,17 @@
 
 .feed__header {
   position: sticky;
-  top: 0;
-  background-color: white;
+  top: 20px;
   z-index: 100;
   border: 1px solid var(--twitter-background);
+  border-radius: 50px;
   padding: 15px 20px;
+  background-image: linear-gradient(90deg ,rgba(0, 194, 255, 1), rgba(0, 133, 255, 1));
 }
 .feed__header > h2 {
   font-size: 20px;
   font-weight: 800;
+  color: white;
 }
 .feed__tweetbox {
   padding-bottom: 10px;
@@ -34,6 +36,7 @@
   font-weight: bold;
   color: black;
   margin-left: 20px;
+  margin-top: 20px;
 }
 .loading {
   display: grid;

@@ -261,13 +261,13 @@ function Feed({mobile}) {
   return (
     <div className={`feed ${mobile&&"feed2"}`}>
       <div className="feed__header">
-        <h2>Following</h2>
+        <h2>Home</h2>
       </div>
       {user ? (
         <TweetBox />
       ) : (
         <Link to="/login">
-          <div className="feed__tweetbox">Please Sign In to post</div>
+          <div className="feed__tweetbox">Today</div>
         </Link>
       )}
 

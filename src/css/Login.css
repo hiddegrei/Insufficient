@@ -1,7 +1,12 @@
 @import "https://fonts.googleapis.com/css?family=Comfortaa";
 
-*{
+* {
   box-sizing: border-box;
+}
+
+body {
+  background-image: url("/src/images/GradientDots_Background.png");
+  background-repeat: no-repeat;
 }
 
 .login {
@@ -34,7 +39,7 @@
   padding-top: 30px;
 }
 
-.login__container > h1 {
+.login__container>h1 {
   font-weight: 500;
   margin-bottom: 20px;
   font-size: 60px;
@@ -50,13 +55,13 @@
   height: 100%;
 }
 
-.login__container > form > h5 {
-  margin-bottom: -28px;
+.login__container>form>h5 {
+  margin-bottom: -10px;
   font-size: 13px;
-  font-weight: bolder;
+  /* display:flex; */
 }
 
-.login__container > form > input {
+.login__container>form>input {
   /* display:flex; */
   height: 30px;
   margin-bottom: 10px;
@@ -68,7 +73,7 @@
   font-size: 15px;
 }
 
-.login__container > p {
+.login__container>p {
   margin-top: 15px;
   font-size: 12px;
   font-weight: bold;
@@ -90,7 +95,8 @@
   background: linear-gradient(#0974d8, #0dafe0);
   border-color: #0974d8;
 }
-.login_form{
+
+.login_form {
   /* border:1px solid black; */
   align-items: center;
   place-content: center;
@@ -99,7 +105,7 @@
 }
 
 .login__button {
-  display:flex;
+  display: flex;
   background: linear-gradient(#0085FF, #00C2FF);
   border-radius: 25px;
   height: 50px;
@@ -107,7 +113,7 @@
   border-color: #0085FF;
   margin-left: 21%;
   font-family: 'Comfortaa', serif;
-  font-size: 25px ;
+  font-size: 25px;
   color: #fefefe;
   transition-duration: 0.4s;
   font-weight: bold;
@@ -115,7 +121,7 @@
 }
 
 .login__registerButton {
-  display:flex;
+  display: flex;
   background: linear-gradient(#edeff1, #e9eeef);
   border-radius: 25px;
   height: 35px;
@@ -129,8 +135,8 @@
   font-size: 15px;
   color: #000000;
   transition-duration: 0.4s;
+  outline: none;
   font-weight: 2000px;
-  border-width: 4px;
 }
 
 .login__forgotpasswordbutton {
@@ -147,7 +153,7 @@
   transition-duration: 0.4s;
   outline: none;
 }
- 
+
 .login__popup {
   display: flex;
   margin-top: 10px;
