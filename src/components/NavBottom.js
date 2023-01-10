@@ -11,10 +11,10 @@ function NavBottom(props) {
   const history=useHistory()
      const [{ profile }, dispatch] = useStateValue();
     const [items, setItems] = useState([
-      { title: "/explore", icon: <HomeIcon /> },
-      { title: "/groups", icon: <GroupsIcon /> },
-      { title: "/water", icon: <InvertColorsIcon /> },
-      { title: `/profile/${profile?.username}`, icon: <AccountCircleIcon /> },
+      { title: "/explore", icon: <HomeIcon />, active: false },
+      { title: "/groups", icon: <GroupsIcon />, active: false },
+      { title: "/", icon: <InvertColorsIcon />, active: true },
+      { title: `/profile/${profile?.username}`, icon: <AccountCircleIcon />, active: false },
     ]);
     return (
       <div className="nav app_navB">
@@ -27,8 +27,16 @@ function NavBottom(props) {
               } else {
                 history.push(doc.title);
               }
+              let arr=[...items]
+             
+              arr[0].active=false
+              arr[1].active = false;
+              arr[2].active = false;
+              arr[3].active = false;
+               arr[index].active = true;
+              setItems(arr)
             }}
-            className="nav_item"
+            className={`nav_item ${doc.active&&"nav_item_active"}`}
           >
             {doc.icon}
 

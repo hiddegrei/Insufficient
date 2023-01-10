@@ -133,13 +133,7 @@ function App() {
             <NavBottom />
           </Route>
 
-          <Route path="/water">
-            <Sidebar />
-            <WaterMain />
-            <Widgets />
-            <NavBottom />
-            <NavBottom />
-          </Route>
+          
 
           <Route path="/groups">
             <Sidebar />
@@ -208,10 +202,18 @@ function App() {
         <Widgets/>
         </Route> */}
 
-          <Route path="/">
+          {/* <Route path="/">
             <Sidebar />
             <Feed />
             <Widgets />
+            <NavBottom />
+          </Route> */}
+
+          <Route path="/">
+            <Sidebar />
+            <WaterMain />
+            <Widgets />
+            <NavBottom />
             <NavBottom />
           </Route>
 

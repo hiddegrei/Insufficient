@@ -4,7 +4,7 @@
     /* background-color: var(--twitter-color); */
     z-index: 100;
     width:100%;
-    height:20%;
+    height:10%;
     flex:0.2;
     /* border:1px solid black; */
 
@@ -20,4 +20,7 @@
     cursor: pointer;
     /* scale:1.2; */
     border:1px solid black;
+}
+.nav_item_active{
+    background-color:var(--twitter-color);
 }

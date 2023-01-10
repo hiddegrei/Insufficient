@@ -122,13 +122,13 @@ function Sidebar() {
         <img alt="" className="header__logo" src="https://firebasestorage.googleapis.com/v0/b/insufficient-8211b.appspot.com/o/WaterdropLogo_NB.png?alt=media&token=136f050a-8947-4d0d-b783-2d3188103736"></img>
         {/* <TwitterIcon className="sidebar__twitterIcon" /> */}
       </Link>
-      <Link to="/">{follow1 ? <SidebarOption active Icon={HomeIcon} text="Following" /> : <SidebarOption Icon={HomeIcon} text="Following" />}</Link>
+      <Link to="/">{water ? <SidebarOption Icon={InvertColorsIcon} active text="Water" /> : <SidebarOption Icon={InvertColorsIcon} text="Water" />}</Link>
 
       <Link to="/explore">{explore1 ? <SidebarOption active Icon={SearchIcon} text="Explore" /> : <SidebarOption Icon={SearchIcon} text="Explore" />}</Link>
       <Link to="/notifications">{notify ? <div>{notifi1 ? <SidebarOption active alert Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div> : <div>{notifi1 ? <SidebarOption active Icon={NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div>}</Link>
       <Link to="/chat">{dailyCalc1 ? <SidebarOption Icon={EmojiFoodBeverageRoundedIcon} active text="Chat" /> : <SidebarOption Icon={EmojiFoodBeverageRoundedIcon} text="Chat" />}</Link>
       <Link to="/groups">{group ? <SidebarOption Icon={InvertColorsIcon} active text="Groups" /> : <SidebarOption Icon={GroupsIcon} text="Groups" />}</Link>
-      <Link to="/water">{water ? <SidebarOption Icon={InvertColorsIcon} active text="Water" /> : <SidebarOption Icon={InvertColorsIcon} text="Water" />}</Link>
+
       <Link to={`/profile/${profile?.username}`}>{profile1 ? <SidebarOption Icon={AccountCircleIcon} active text="Profile" /> : <SidebarOption Icon={AccountCircleIcon} text="Profile" />}</Link>
 
       {/* <Link to="/games">
@@ -149,7 +149,8 @@ function Sidebar() {
             {/* <Avatar onClick={()=>{click?setClick(false):setClick(true)}} src={profile.imageUrl}></Avatar> */}
             {
               profile.imageUrl ? (
-                <img alt=""
+                <img
+                  alt=""
                   onClick={() => {
                     click ? setClick(false) : setClick(true);
                   }}
@@ -157,7 +158,8 @@ function Sidebar() {
                   className="profile__aa"
                 />
               ) : (
-                <img alt=""
+                <img
+                  alt=""
                   onClick={() => {
                     click ? setClick(false) : setClick(true);
                   }}
@@ -177,17 +179,15 @@ function Sidebar() {
           </h3>
         </Link>
       </div>
-      {
-        user && windowstate ? (
-          <div className="open">
-            <TweetBox sidebar />
-          </div>
-        ) : (
-          <div></div>
-        )
-      }
+      {user && windowstate ? (
+        <div className="open">
+          <TweetBox sidebar />
+        </div>
+      ) : (
+        <div></div>
+      )}
       {!user ? <div>Please Sign In to post</div> : <div></div>}
-    </div >
+    </div>
   );
 }
 

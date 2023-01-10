@@ -8,6 +8,7 @@ function Group({group}) {
 
   useEffect(()=>{
     console.log(group)
+    let arr=[...group.membersData]
   },[])
   return (
     <div className="group2">

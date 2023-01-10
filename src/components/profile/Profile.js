@@ -241,69 +241,29 @@ function Profile() {
   if (doubleposts != undefined) {
     doubleposts.sort(compareValues("createdAt2", "desc"));
   }
+  useEffect(()=>{
+     fetch(`https://us-central1-ms-strava.cloudfunctions.net/app/api/users/${profile?.username}/activities`, {
+           method: "GET", // or 'PUT'
+           headers: {
+             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+           }
+         })
+           .then((res) => res.json())
+           .then((json) => {
+            console.log(json.data)
+            
+                
+             
+           })
+           .catch((err) => {
+             console.log(err);
+           });
+
+
+  },[])
 
   return (
-    //     <div className="profile">
-    //         <div className="profile__header">
-    //         <h1 >Profile</h1>
-    //         </div>
-
-    //         <div className="profile__body">
-    //             <div className="profile__avatar">
-    //             {profileMain.imageUrl?
-
-    //             <img src={profileMain.imageUrl} className="profile__a"/>
-    //             :<Avatar className="profile__a" src=''/>}
-
-    //            <h3 className="profile__option">{profileMain?`@ ${profileMain?.username}`:"@ "}</h3>
-    //            <Link to={`/profile/${pName}/edit`}>
-    //                {!allow&&user?
-
-    //                <div className="followbutton">
-    //                    <IconButton onClick={handleMessage} className="profile__followf"><EmailOutlinedIcon/></IconButton>
-    //                  {/* <button onClick={handleMessage} className="profile__followf">Message</button> */}
-    //                {!follow?
-    //  <button onClick={handleFollow} className="profile__followf">Follow</button>:
-    //  <button onClick={handleFollow} className="profile__2followf">Unfollow</button>}
-    //  </div>:<div></div>}
-    //            {allow&&
-    //            <div  className="profile__edit" > <EditIcon/> Edit Profile</div>}
-
-    //            </Link>
-    //              <div className="profile__commentsContainer">
-
-    //              </div>
-    //             </div>
-
-    //             <div className="profile__bio">
-    //             <h4>{profileMain.bio}</h4>
-
-    //         </div>
-    //         <div className="profile__follow">
-    //             <Link to={`/profile/followers/${pName}`}>
-    //             <div className="profile__num">followers : {profileMain?.followers}</div>
-    //             </Link>
-    //             <Link to={`/profile/following/${pName}`}>
-    //             <div className="profile__num">following : {profileMain?.following}</div>
-    //             </Link>
-    //         </div>
-
-    //         </div>
-    //         <div className="postOptions">
-    //             <div className="postOptions__optionA">
-    //                 <Link to={`/profile/${pName}`}>
-    //               <h3>Posts</h3>
-    //               </Link>
-    //             </div>
-    //             <div className="postOptions__option">
-    //                 <Link to={`/profile/${pName}/likes`}>
-    //                  <h3>Likes</h3>
-    //                  </Link>
-    //             </div>
-    //         </div>
-
-    //         <div className="profile__myposts">
-    //   {update?
+   
     <div>
       {doubleposts != undefined ? (
         <div>
