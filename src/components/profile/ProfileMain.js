@@ -233,7 +233,8 @@ function ProfileMain() {
   return (
     <div className="profile direc">
       <div className="profile__header">
-        <h1>Profile</h1>
+        <h1 className="profile_header_elm">Profile</h1>
+        <div className="profile_header_elm_logout" onClick={()=>history.push("/login")}>Logout</div>
       </div>
 
       <div className="profile__body">

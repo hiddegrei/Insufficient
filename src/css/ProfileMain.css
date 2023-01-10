@@ -15,6 +15,24 @@
   z-index: 100;
   border: 1px solid var(--twitter-background);
   padding: 15px 20px;
+  justify-content: space-between;
+  width: 100%;
+  border:1px solid black;
+  display:flex;
+}
+.profile_header_elm{
+  display:flex;
+  width:fit-content;
+}
+.profile_header_elm_logout {
+  display: flex;
+  font-weight: 500;
+  font-size:20px;
+  
+}
+.profile_header_elm_logout:hover {
+  cursor: pointer;
+
 }
 .profile__header > h1 {
   font-size: 20px;
