@@ -27,7 +27,8 @@
     display:flex;
     width:100%;
     height:50px;
-    /* border:1px solid black; */
+   
+    justify-content: space-between;
 }
 .group2_con_elm_rank {
     display: flex;
@@ -47,7 +48,7 @@
 }
 .group2_con_elm_water {
     display: flex;
-    width: 12.5%;
+    width: fit-content;
     height: 100%;
     font-weight: bold;
     color: #0085FF;
