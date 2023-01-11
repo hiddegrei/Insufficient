@@ -1,5 +1,5 @@
 .nav{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     /* background-color: var(--twitter-color); */
     z-index: 100;
@@ -8,7 +8,6 @@
     flex:0.2;
     /* border:1px solid black; */
     background-color: white;
-
 }
 .nav_item{
     display:flex;

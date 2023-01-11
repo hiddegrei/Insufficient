@@ -4,10 +4,10 @@
   /* max-height: 500px; */
   z-index: -1;
   align-items: flex-start;
-  border-bottom: 2px solid var(--twitter-background);
-  border-color: black;
   padding-bottom: 10px;
-  background-color: aliceblue;
+  background: linear-gradient(145deg, #00C2FF, #0085FF);
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 .post:hover {
   cursor: pointer;

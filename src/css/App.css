@@ -19,8 +19,7 @@ background: none;
   /* padding: 0 10px; */
   -ms-overflow-style: none;
     scrollbar-width: none;
-    background-color: white;
-    
+    background-color: white;  
 }
 .app::-webkit-scrollbar {
   display: none;

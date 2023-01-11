@@ -126,7 +126,6 @@ function Sidebar() {
 
       <Link to="/explore">{explore1 ? <SidebarOption active Icon={SearchIcon} text="Explore" /> : <SidebarOption Icon={SearchIcon} text="Explore" />}</Link>
       <Link to="/notifications">{notify ? <div>{notifi1 ? <SidebarOption active alert Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div> : <div>{notifi1 ? <SidebarOption active Icon={NotificationsIcon} text="Notifications" /> : <SidebarOption Icon={notify ? NotificationsActiveIcon : NotificationsIcon} text="Notifications" />}</div>}</Link>
-      <Link to="/chat">{dailyCalc1 ? <SidebarOption Icon={EmojiFoodBeverageRoundedIcon} active text="Chat" /> : <SidebarOption Icon={EmojiFoodBeverageRoundedIcon} text="Chat" />}</Link>
       <Link to="/groups">{group ? <SidebarOption Icon={InvertColorsIcon} active text="Groups" /> : <SidebarOption Icon={GroupsIcon} text="Groups" />}</Link>
 
       <Link to={`/profile/${profile?.username}`}>{profile1 ? <SidebarOption Icon={AccountCircleIcon} active text="Profile" /> : <SidebarOption Icon={AccountCircleIcon} text="Profile" />}</Link>

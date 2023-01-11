@@ -28,6 +28,7 @@
   flex-direction: column;
   place-items: center;
   padding: 20px;
+  background-color: white;
 }
 .profile__avatar {
   display: grid;
@@ -55,6 +56,9 @@
   padding: 20px;
   font-size: 25;
   font-weight: bold;
+  border-radius: 10px;
+  background-color: #00C2FF;
+  margin: 4px;
 }
 .profile__num:hover {
   background-color: lightgray;

@@ -19,7 +19,8 @@
   top: 0;
   background: linear-gradient(145deg, #0085FF, #00C2FF);
   z-index: 100;
-  
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
   padding: 15px 20px;
   color:white;
       /* color:white; */
