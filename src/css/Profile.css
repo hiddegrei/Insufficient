@@ -179,6 +179,7 @@
   font-weight: bold;
   margin-bottom: 5px;
 
+
 }
 .profile_stravaCon_con_row{
   display:flex;
@@ -191,10 +192,13 @@
 .profile_stravaCon_header{
   display:flex;
  
-  font-size: 15px;
+  font-size: 11px;
   font-weight: 800;
   margin-left: auto;
   margin-right: auto;
+  /* border: 1px solid black; */
+  align-items: center;
+  place-content: center;
 
 }
 .profile_stravaCon_elm{
@@ -204,5 +208,6 @@
   font-weight: 500;
   margin-left: auto;
   margin-right: auto;
+  /* border: 1px solid black; */
 
 }

@@ -274,7 +274,7 @@ function WaterMain(props) {
       <div className="water_top">
         <div className="water_top_elm">
           <div className="water_top_elm_h">Today</div>
-          <div className="water_top_elm_val">{waterToday?.waterIntake}</div>
+          <div className="water_top_elm_val">{waterToday?.waterIntake}ml</div>
           {/* <AddCircleIcon onClick={() => addWater()} className="water_icon" />
           <AddCircleIcon onClick={() => addWater()} className="water_icon" /> */}
         </div>
