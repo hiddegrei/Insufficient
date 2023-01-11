@@ -8,6 +8,7 @@
 }
 .widgets {
   flex: 0.3;
+  background-color: white;
 }
 .widgets__input {
   display: flex;
@@ -16,6 +17,7 @@
   padding: 1px;
   border-radius: 20px;
   margin-left: 20px;
+  width: 300px;
 }
 .widgets__input > input {
   height: 30px;
@@ -23,9 +25,9 @@
   background-color: white;
   width: 98%;
   border-radius: 10px;
-  background-color: rgb(227, 227, 227);
   border-color: rgb(227, 227, 227);
   font-size: 15px;
+  color: #0085FF;
 }
 .widgets__searchIcon {
   color: rgb(255, 255, 255);
@@ -34,8 +36,10 @@
   margin-top: 15px;
   margin-left: 20px;
   padding: 20px;
-  background-color: #f5f8fa;
+  background: linear-gradient(#0085FF, #00C2FF);
   border-radius: 20px;
+  color: white;
+  margin-right: 10px;
 }
 
 .widgets__widgetContainer > h2 {

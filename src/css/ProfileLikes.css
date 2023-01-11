@@ -4,6 +4,7 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  background-color: transparent;
 }
 .feed::-webkit-scrollbar {
   display: none;
@@ -15,6 +16,8 @@
   z-index: 100;
   border: 1px solid var(--twitter-background);
   padding: 15px 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .profile__header > h1 {
   font-size: 20px;
