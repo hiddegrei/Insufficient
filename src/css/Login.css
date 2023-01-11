@@ -57,8 +57,6 @@ body {
 .login__container>form>h5 {
   margin-bottom: -25px;
   font-size: 20px;
-
-  /* display:flex; */
 }
 
 .login__container>form>input:hover {
@@ -66,7 +64,6 @@ body {
 }
 
 .login__container>form>input {
-  /* display:flex; */
   height: 30px;
   margin-bottom: 10px;
   background-color: white;
@@ -196,3 +193,6 @@ body {
   font-size: large;
 }
 
+#forgot_password {
+  margin-left: 73px;
+}
