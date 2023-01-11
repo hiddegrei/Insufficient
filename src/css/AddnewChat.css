@@ -13,14 +13,19 @@
   display: flex;
   align-items: center;
   background-color: var(--twitter-background);
-  padding: 10px;
+  padding: 1px;
   border-radius: 20px;
-  margin-top: 10px;
   margin-left: 20px;
 }
 .widgets__input > input {
-  border: none;
-  background-color: var(--twitter-background);
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 98%;
+  border-radius: 10px;
+  background-color: rgb(227, 227, 227);
+  border-color: rgb(227, 227, 227);
+  font-size: 15px;
 }
 .widgets__searchIcon {
   color: grey;

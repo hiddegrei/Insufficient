@@ -60,7 +60,7 @@
 .tweetBox__tweetbutton {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 .tweetBox__tweetButtonO {
   opacity: 0.5;

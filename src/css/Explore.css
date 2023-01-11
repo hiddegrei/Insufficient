@@ -22,7 +22,6 @@
 .explore__header__left {
   display: flex;
   flex-direction: column;
-  
 }
 .explore__header > h2 {
   font-size: 16px;
@@ -66,4 +65,9 @@
 }
 .SearchTwitter {
   height: 100%;
+  margin-top: 10px;
+}
+
+.explore__header__left > h2{
+  margin-top: 20px;
 }
