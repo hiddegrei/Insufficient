@@ -157,3 +157,52 @@
   font-size: 25;
   font-weight: bold;
 }
+.profile_stravaCon{
+  display:flex;
+ 
+  flex-direction: column;
+}
+.profile_stravaCon_con{
+  display:flex;
+  width:30%;
+  flex-direction: column;
+ 
+  margin-left: auto;
+  margin-right: auto;
+  /* border: 1px solid black; */
+}
+.profile_stravaCon_header{
+  display:flex;
+ 
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  margin-bottom: 5px;
+
+}
+.profile_stravaCon_con_row{
+  display:flex;
+  width:100%;
+ 
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.profile_stravaCon_header{
+  display:flex;
+ 
+  font-size: 15px;
+  font-weight: 800;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.profile_stravaCon_elm{
+  display:flex;
+ 
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: auto;
+
+}
