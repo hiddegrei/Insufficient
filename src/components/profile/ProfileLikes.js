@@ -30,16 +30,19 @@ function ProfileLikes() {
   useEffect(() => {
     let isSubscribed = true;
     if (feedposts.length > 0 && isSubscribed) {
+     
       feedposts.map((doc3) => {
         db.collection("posts")
           .doc(doc3.postId)
           .get()
           .then((doc2) => {
+            if(doc2.exists){
             setPosts((dat) => {
               const newdata = doc2.data();
               const olddata = dat.filter((dat) => dat.token !== newdata.token);
               return [...olddata, newdata];
             });
+          }
           });
       });
     }
