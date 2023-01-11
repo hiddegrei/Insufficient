@@ -14,14 +14,12 @@ flex: 0.5;
 }
 .group__header {
     position: sticky;
-    top: 20px;
+    top: 0;
+    background: linear-gradient(145deg, #0085FF, #00C2FF);
     z-index: 100;
-    /* border: 1px solid var(--twitter-background); */
+    
     padding: 15px 20px;
-    width: 80%;
-    margin-left: auto;
-        margin-right: auto;
-        color:#0085FF;
+    color:white;
         /* color:white; */
 }
 .groups_elm{
@@ -36,7 +34,7 @@ flex: 0.5;
         margin-top: 20px;
         align-items: center;
         place-content: center;
-        background-color: #0085FF;
+        background: linear-gradient(145deg, #0085FF, #00C2FF);
         border: 1px solid #ddd;
         color:white;
     

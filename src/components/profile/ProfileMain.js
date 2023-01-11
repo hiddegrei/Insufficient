@@ -37,8 +37,31 @@ function ProfileMain() {
 
   const [streak, setStreak] = useState(profile.streak);
 
+  function getActivities() {
+   
+    fetch(`https://us-central1-ms-strava.cloudfunctions.net/app/api/users/${profile?.username}/activities`, {
+      method: "GET", // or 'PUT',
+
+      headers: {
+        accept: "text/html,application/json",
+        Connection: "keep - alive",
+        
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+       console.log(json)
+       
+       
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   useEffect(() => {
     let isSubscribed = true;
+    // getActivities()
 
     if (profile && pName !== "undefined" && isSubscribed && user) {
       // db.collection("users")
@@ -233,7 +256,8 @@ function ProfileMain() {
   return (
     <div className="profile direc">
       <div className="profile__header">
-        <h1>Profile</h1>
+        <h1 className="profile_header_elm">Profile</h1>
+        <div className="profile_header_elm_logout" onClick={()=>history.push("/login")}>Logout</div>
       </div>
 
       <div className="profile__body">

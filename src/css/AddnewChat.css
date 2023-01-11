@@ -28,7 +28,7 @@
   font-size: 15px;
 }
 .widgets__searchIcon {
-  color: grey;
+  color: rgb(255, 255, 255);
 }
 .widgets__widgetContainer {
   margin-top: 15px;

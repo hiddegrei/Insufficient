@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import Post from "../post/Post";
 import firebase from "firebase";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 function Profile() {
   const { pName } = useParams();
@@ -30,12 +31,30 @@ function Profile() {
   const [doubleposts, setDoubleposts] = useState([]);
 
   const [waterToday, setWaterToday] = useState();
+  const [stravaData, setStravaData] = useState([]);
 
   useEffect(() => {
     let isSubscribed = true;
     const date = new Date();
-    let months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
-    const [month, day, year] = [months[date.getMonth()], date.getDate(), date.getFullYear()];
+    let months = [
+      "Januari",
+      "Februari",
+      "Maart",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Augustus",
+      "September",
+      "Oktober",
+      "November",
+      "December",
+    ];
+    const [month, day, year] = [
+      months[date.getMonth()],
+      date.getDate(),
+      date.getFullYear(),
+    ];
 
     if (user && pName != "undefined") {
       db.collection("users")
@@ -84,8 +103,13 @@ function Profile() {
           querySnapshot.forEach((doc) =>
             isSubscribed
               ? setMyposts((dat) => {
-                  const newdata = { data: doc.data(), createdAt2: doc.data().createdAt };
-                  const olddata = dat.filter((dat) => dat.data.token !== newdata.data.token);
+                  const newdata = {
+                    data: doc.data(),
+                    createdAt2: doc.data().createdAt,
+                  };
+                  const olddata = dat.filter(
+                    (dat) => dat.data.token !== newdata.data.token
+                  );
                   return [...olddata, newdata];
                 })
               : null
@@ -106,7 +130,9 @@ function Profile() {
             isSubscribed
               ? setRetweetData((dat) => {
                   const newdata = doc.data();
-                  const olddata = dat.filter((dat) => dat.createdAt !== newdata.createdAt);
+                  const olddata = dat.filter(
+                    (dat) => dat.createdAt !== newdata.createdAt
+                  );
                   return [...olddata, newdata];
                 })
               : null
@@ -134,9 +160,17 @@ function Profile() {
             querySnapshot.forEach((doc2) =>
               isSubscribed
                 ? setRposts((dat) => {
-                    const newdata = { data: doc2.data(), Rtweeter: retweeter, id: Math.random().toString(36), RcreatedAt: createdA, createdAt2: createdA };
+                    const newdata = {
+                      data: doc2.data(),
+                      Rtweeter: retweeter,
+                      id: Math.random().toString(36),
+                      RcreatedAt: createdA,
+                      createdAt2: createdA,
+                    };
 
-                    const olddata = dat.filter((dat2) => dat2.data.token !== newdata.data.token);
+                    const olddata = dat.filter(
+                      (dat2) => dat2.data.token !== newdata.data.token
+                    );
                     return [...olddata, newdata];
                   })
                 : null
@@ -241,34 +275,122 @@ function Profile() {
   if (doubleposts != undefined) {
     doubleposts.sort(compareValues("createdAt2", "desc"));
   }
-  useEffect(()=>{
-     fetch(`https://us-central1-ms-strava.cloudfunctions.net/app/api/users/${profile?.username}/activities`, {
-           method: "GET", // or 'PUT'
-           headers: {
-             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-           }
-         })
-           .then((res) => res.json())
-           .then((json) => {
-            console.log(json.data)
-            
-                
-             
-           })
-           .catch((err) => {
-             console.log(err);
-           });
-
-
-  },[])
+  useEffect(() => {
+    fetch(
+      `https://us-central1-ms-strava.cloudfunctions.net/app/api/users/${profile?.username}/activities`,
+      {
+        method: "GET", // or 'PUT'
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json.data);
+        setStravaData(json.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
-   
     <div>
       {doubleposts != undefined ? (
         <div>
           {doubleposts.map((post) => (
-            <Post key={post.RcreatedAt ? post.RcreatedAt : post.data.createdAt} audio={post.data.audio} token={post.data.token} userId={post.data.userId} displayName={post.data.displayName} username={post.data.username} verified={post.data.verified} text={post.data.text} avatar={post.data.avatar} image={post.data.image} createdAt={post.data.createdAt} likes={post.data.likes} comments={post.data.comments} shares={post.data.shares} option1={post.data.option1} option2={post.data.option2} option3={post.data.option3} option4={post.data.option4} votes1={post.data.votes1} votes2={post.data.votes2} votes3={post.data.votes3} votes4={post.data.votes4} Rusername={post.data.Rusername} Rimage={post.data.Rimage} Rtext={post.data.Rtext} Ravatar={post.data.Ravatar} Rtweeter={post.Rtweeter} RcreatedAt={post.RcreatedAt} />
+            <Post
+              key={post.RcreatedAt ? post.RcreatedAt : post.data.createdAt}
+              audio={post.data.audio}
+              token={post.data.token}
+              userId={post.data.userId}
+              displayName={post.data.displayName}
+              username={post.data.username}
+              verified={post.data.verified}
+              text={post.data.text}
+              avatar={post.data.avatar}
+              image={post.data.image}
+              createdAt={post.data.createdAt}
+              likes={post.data.likes}
+              comments={post.data.comments}
+              shares={post.data.shares}
+              option1={post.data.option1}
+              option2={post.data.option2}
+              option3={post.data.option3}
+              option4={post.data.option4}
+              votes1={post.data.votes1}
+              votes2={post.data.votes2}
+              votes3={post.data.votes3}
+              votes4={post.data.votes4}
+              Rusername={post.data.Rusername}
+              Rimage={post.data.Rimage}
+              Rtext={post.data.Rtext}
+              Ravatar={post.data.Ravatar}
+              Rtweeter={post.Rtweeter}
+              RcreatedAt={post.RcreatedAt}
+            />
+          ))}
+
+          {stravaData.map((doc) => (
+            <div id="clickable" className="post">
+              <div className="post__avatar">
+                {/* <Link to={`/profile/${username}`}> */}
+                {profile?.avatar ? (
+                  <img src={profile?.avatar} className="post__profile__pic" />
+                ) : (
+                  <Avatar className="post__profile__pic" src="" />
+                )}
+                {/* </Link> */}
+              </div>
+
+              <div className="post__body">
+                <div className="post__header">
+                  <div className="post__headerText">
+                    <h3>
+                      {" "}
+                      {profile?.username}
+                      {""}
+                      <span className="post__headerSpecial">
+                        @{profile?.username}
+                        <FiberManualRecordIcon
+                          style={{ fontSize: "small", marginLeft: "2px" }}
+                        />
+                      </span>
+                    </h3>
+                  </div>
+
+                  <div className="profile_stravaCon">
+                    <div className="profile_stravaCon_header">{doc.name}</div>
+                    <div className="profile_stravaCon_con_row">
+                    <div className="profile_stravaCon_con">
+                      <div className="profile_stravaCon_header">Distance</div>
+                      <div className="profile_stravaCon_elm">
+                        {doc.distance} m
+                      </div>
+                    </div>
+
+                    <div className="profile_stravaCon_con">
+                      <div className="profile_stravaCon_header">Avg hr</div>
+                      <div className="profile_stravaCon_elm">
+                        {doc.average_heartrate
+}
+                      </div>
+                    </div>
+
+                    <div className="profile_stravaCon_con">
+                      <div className="profile_stravaCon_header">Max hr</div>
+                      <div className="profile_stravaCon_elm">
+                        {doc.max_heartrate}
+                      </div>
+                    </div>
+
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       ) : (

@@ -139,11 +139,11 @@ function Explore() {
           <div className="widgets__input">
             <SearchIcon />
 
-            <input onChange={(e) => setSearchContent(e.target.value)} value={searchContent} placeholder="search for users or hashtags" className="SearchTwitter" type="text"></input>
+            <input onChange={(e) => setSearchContent(e.target.value)} value={searchContent} placeholder="search for users or hashtags" className="searchTwitter" type="text"></input>
           </div>
         )}
       </div>
-      <TweetBox />
+      <TweetBox className="explore_box" />
 
       {OpenTrendExplore ? (
         <div>

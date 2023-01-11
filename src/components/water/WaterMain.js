@@ -5,8 +5,10 @@ import { Chart } from "react-google-charts";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import { useStateValue } from "../../Stateprovider";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-
+import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 function WaterMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -23,6 +25,28 @@ function WaterMain(props) {
   const [waterLastMonth, setWaterLastMonth] = useState([]);
   const [show, setShow] = useState(false);
   const [streak, setStreak] = useState();
+  const [waterOptions, setWaterOptions] = useState([
+     { amount: -1000 },
+     { amount: -900 },
+     { amount: -800 },
+     { amount: -700 },
+    { amount: -600 },
+    { amount: -500 },
+    { amount: -400 },
+    { amount: -300 },
+     { amount: -200 }, 
+     { amount: -100 }, 
+     { amount: 100 }, 
+     { amount: 200 },
+     {amount:300},
+    { amount: 400 },
+  { amount: 500 },
+{ amount: 600 },
+ { amount: 700 },
+ { amount: 800 },
+ { amount: 900 },
+ { amount: 1000 },]);
+  const [waterOptionIndex,setWaterOptionIndex]=useState(14)
   const [options, setOptions] = useState({
     hAxis: {
       textColor: "#0085FF",
@@ -52,41 +76,7 @@ function WaterMain(props) {
     ["sat", 2500, "green"],
     ["sun", 2300, "green"],
   ]);
-  useEffect(() => {
-    // waterIntake({ type: 0, username: "test" }).then((doc) => {
-    //   console.log(doc.data);
-    //   setDataToday([doc.data]);
-    // });
-    var today = new Date();
-    var day = today.getDate();
-    var month = today.getMonth();
-    var year = today.getFullYear();
-    console.log(year, month, day, profile?.username);
 
-    // db.collection("users")
-    //   .doc(profile?.username)
-    //   .collection("calender")
-    //   .doc(`${year}`)
-    //   .collection(`${month}`)
-    //   .onSnapshot((docs) => {
-    //     docs.forEach((doc) => {
-    //       if (doc.id === `${day}`) {
-    //         console.log(doc.data());
-    //         setWaterToday(doc.data().waterIntake);
-    //       }
-    //     });
-    //   });
-    // fetch(`https://ms-waterintake.web.app/api/users/newyear`, {
-    //   method: "POST", // or 'PUT',
-
-    //   headers: {
-    //     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    //   }
-    // }).catch((err)=>{
-    //   console.log(err)
-    // })
-    
-  }, [profile]);
 
   useEffect(() => {
     console.log(profile.username);
@@ -196,7 +186,7 @@ function WaterMain(props) {
   }
 
   useEffect(() => {
-    let days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+    let days = [  "mon", "tue", "wed", "thu", "fri","sat","sun"]
 
     if (waterLastWeek?.length === 7) {
       let arr = [["Day of week", "Water Intake (ml)", { role: "style" }]];
@@ -245,10 +235,10 @@ function WaterMain(props) {
 
   }, [waterLastMonth]);
 
-  function addWater() {
+  function addWater(amount) {
     var details = {
       oldAmount: waterToday.waterIntake,
-      amount: 100,
+      amount: amount,
     };
     var formBody = [];
     for (var property in details) {
@@ -285,13 +275,45 @@ function WaterMain(props) {
         <div className="water_top_elm">
           <div className="water_top_elm_h">Today</div>
           <div className="water_top_elm_val">{waterToday?.waterIntake}</div>
-          <AddCircleIcon onClick={() => addWater()} className="water_icon" />
+          {/* <AddCircleIcon onClick={() => addWater()} className="water_icon" />
+          <AddCircleIcon onClick={() => addWater()} className="water_icon" /> */}
         </div>
 
         <div className="water_top_elm">
           <div className="water_top_elm_h">Streak</div>
           <div className="water_top_elm_val">{streak}</div>
         </div>
+      </div>
+      <div className="water_top_elm_changeCon">
+        <KeyboardArrowLeftIcon
+          className="water_icon_left"
+          onClick={() => {
+            if (waterOptionIndex > 1) {
+              setWaterOptionIndex(waterOptionIndex - 1);
+            }
+          }}
+        />
+        {waterOptionIndex > 1 && (
+          <div onClick={()=>addWater(waterOptions[waterOptionIndex - 1].amount)} className="water_top_elm_changeCon_elm">
+            <LocalDrinkIcon  /> {waterOptions[waterOptionIndex - 1].amount}
+          </div>
+        )}
+        <div onClick={()=>addWater(waterOptions[waterOptionIndex ].amount)} className="water_top_elm_changeCon_elm waterMain">
+          <LocalDrinkIcon /> {waterOptions[waterOptionIndex].amount}
+        </div>
+        {waterOptionIndex < waterOptions.length - 1 && (
+          <div onClick={()=>addWater(waterOptions[waterOptionIndex + 1].amount)} className="water_top_elm_changeCon_elm">
+            <LocalDrinkIcon /> {waterOptions[waterOptionIndex + 1].amount}
+          </div>
+        )}
+        <KeyboardArrowRightIcon
+          className="water_icon_right"
+          onClick={() => {
+            if (waterOptionIndex < waterOptions.length - 1) {
+              setWaterOptionIndex(waterOptionIndex + 1);
+            }
+          }}
+        />
       </div>
       <div className="water_table_con">
         <div className="water_table_con_h">
