@@ -295,6 +295,12 @@ function Profile() {
       });
   }, []);
 
+  function getTime(seconds) {
+    var date = new Date(null);
+    date.setSeconds(seconds);
+    return date.toISOString().substr(11, 8);
+  }
+
   return (
     <div>
       {doubleposts != undefined ? (
@@ -363,30 +369,69 @@ function Profile() {
                   <div className="profile_stravaCon">
                     <div className="profile_stravaCon_header">{doc.name}</div>
                     <div className="profile_stravaCon_con_row">
-                    <div className="profile_stravaCon_con">
-                      <div className="profile_stravaCon_header">Distance</div>
-                      <div className="profile_stravaCon_elm">
-                        {doc.distance} m
+                      <div className="profile_stravaCon_con">
+                        <div className="profile_stravaCon_header">Distance</div>
+                        <div className="profile_stravaCon_elm">
+                          {doc.distance} m
+                        </div>
+                      </div>
+
+                      <div className="profile_stravaCon_con">
+                        <div className="profile_stravaCon_header">Avg hr</div>
+                        <div className="profile_stravaCon_elm">
+                          {doc.average_heartrate}
+                        </div>
+                      </div>
+
+                      <div className="profile_stravaCon_con">
+                        <div className="profile_stravaCon_header">Max hr</div>
+                        <div className="profile_stravaCon_elm">
+                          {doc.max_heartrate}
+                        </div>
                       </div>
                     </div>
 
-                    <div className="profile_stravaCon_con">
-                      <div className="profile_stravaCon_header">Avg hr</div>
-                      <div className="profile_stravaCon_elm">
-                        {doc.average_heartrate
-}
+                    <div className="profile_stravaCon_con_row">
+                      <div className="profile_stravaCon_con">
+                        <div className="profile_stravaCon_header">
+                          Time elapsed
+                        </div>
+                        <div className="profile_stravaCon_elm">
+                          {getTime(doc.elapsed_time)}
+                        </div>
+                      </div>
+
+                      <div className="profile_stravaCon_con">
+                        <div className="profile_stravaCon_header">
+                          Avg speed
+                        </div>
+                        <div className="profile_stravaCon_elm">
+                          {doc.average_speed}
+                        </div>
+                      </div>
+
+                      <div className="profile_stravaCon_con">
+                        <div className="profile_stravaCon_header">
+                          Suffer score
+                        </div>
+                        <div className="profile_stravaCon_elm">
+                          {doc.suffer_score}
+                        </div>
                       </div>
                     </div>
 
-                    <div className="profile_stravaCon_con">
-                      <div className="profile_stravaCon_header">Max hr</div>
-                      <div className="profile_stravaCon_elm">
-                        {doc.max_heartrate}
+                    <div className="profile_stravaCon_con_row">
+                      <div className="profile_stravaCon_con">
+                        <div className="profile_stravaCon_header">
+                          Water needed
+                        </div>
+                        <div className="profile_stravaCon_elm">
+                        {(doc.suffer_score*10)}ml
+                        </div>
                       </div>
-                    </div>
 
+                     
                     </div>
-                    
                   </div>
                 </div>
               </div>
