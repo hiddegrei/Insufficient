@@ -423,7 +423,7 @@ function Profile() {
                     <div className="profile_stravaCon_con_row">
                       <div className="profile_stravaCon_con">
                         <div className="profile_stravaCon_header">
-                          Water needed
+                          Water needs
                         </div>
                         <div className="profile_stravaCon_elm">
                         {(doc.suffer_score*10)}ml
