@@ -4,6 +4,8 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  /* border:1px solid black; */
+  height:100%;
 }
 .feed::-webkit-scrollbar {
   display: none;
