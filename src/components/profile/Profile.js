@@ -288,7 +288,13 @@ function Profile() {
       .then((res) => res.json())
       .then((json) => {
         console.log(json.data);
-        setStravaData(json.data);
+
+        if(json.data.message!= 'Authorization Error'){
+          console.log('hi')
+          setStravaData(json.data);
+
+        }
+        
       })
       .catch((err) => {
         console.log(err);
@@ -338,7 +344,7 @@ function Profile() {
             />
           ))}
 
-          {stravaData.map((doc) => (
+          {stravaData?.map((doc) => (
             <div id="clickable" className="post">
               <div className="post__avatar">
                 {/* <Link to={`/profile/${username}`}> */}
