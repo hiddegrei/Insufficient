@@ -27,7 +27,7 @@ function WaterSensor({addWater}) {
         terminal.receive = function (waterOutput) {
           
           console.log(waterOutput);
-          // addWater()
+          addWater(+waterOutput)
           return waterOutput;
         };
 

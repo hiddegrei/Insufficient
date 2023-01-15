@@ -237,6 +237,8 @@ function WaterMain(props) {
   }, [waterLastMonth]);
 
   function addWater(amount) {
+    console.log(amount)
+    if(waterToday.waterIntake+amount>=0){
     var details = {
       oldAmount: waterToday.waterIntake,
       amount: amount,
@@ -266,6 +268,7 @@ function WaterMain(props) {
           getStreak()
         }
       });
+    }
   }
   return (
     <div className="water direc">
