@@ -1,46 +1,33 @@
 import React, { useState, useEffect } from "react";
-import BluetoothTerminal from "./js/BluetoothTerminal.js"
+import BluetoothTerminal from "./js/BluetoothTerminal.js";
+import BluetoothIcon from '@mui/icons-material/Bluetooth';
+import BluetoothDisabledIcon from '@mui/icons-material/BluetoothDisabled';
 
-function WaterSensor(props) {
+function WaterSensor({addWater}) {
 
 
     useEffect(()=>{
         const deviceNameLabel = document.getElementById("device-name");
         const connectButton = document.getElementById("connect");
         const disconnectButton = document.getElementById("disconnect");
-        const terminalContainer = document.getElementById("terminal");
-        const sendForm = document.getElementById("send-form");
-        const inputField = document.getElementById("input");
-
+        
+        
         // Helpers.
         const defaultDeviceName = "Terminal";
-        const terminalAutoScrollingLimit = terminalContainer.offsetHeight / 2;
-        let isTerminalAutoScrolling = true;
-        let waterOutput = 0;
+        
 
-        const scrollElement = (element) => {
-          const scrollTop = element.scrollHeight - element.offsetHeight;
+       
 
-          if (scrollTop > 0) {
-            element.scrollTop = scrollTop;
-          }
-        };
-
-        const logToTerminal = (message, type = "") => {
-          terminalContainer.insertAdjacentHTML("beforeend", `<div${type && ` class="${type}"`}>${message}</div>`);
-
-          if (isTerminalAutoScrolling) {
-            scrollElement(terminalContainer);
-          }
-        };
+        
 
         // Obtain configured instance.
         const terminal = new BluetoothTerminal();
 
         // Override `receive` method to log incoming data to the terminal.
         terminal.receive = function (waterOutput) {
-          logToTerminal(waterOutput, "in");
+          
           console.log(waterOutput);
+          // addWater()
           return waterOutput;
         };
 
@@ -82,11 +69,7 @@ function WaterSensor(props) {
         // });
 
         // Switch terminal auto scrolling if it scrolls out of bottom.
-        terminalContainer.addEventListener("scroll", () => {
-          const scrollTopOffset = terminalContainer.scrollHeight - terminalContainer.offsetHeight - terminalAutoScrollingLimit;
-
-          isTerminalAutoScrolling = scrollTopOffset < terminalContainer.scrollTop;
-        });
+        
 
        
 
@@ -99,17 +82,17 @@ function WaterSensor(props) {
 
 <div className="toolbar">
 
-    <div id="device-name" className="name">Terminal</div>
+    
 
     <div className="buttons">
 
-        <button id="connect" type="button" aria-label="Connect">
-            <i className="material-icons">bluetooth_connected</i>
-        </button>
+       
+           <BluetoothIcon id="connect"/>
+  
 
-        <button id="disconnect" type="button" aria-label="Disconnect">
-            <i className="material-icons">bluetooth_disabled</i>
-        </button>
+        
+            <BluetoothDisabledIcon id="disconnect"/>
+        
 
     </div>
 

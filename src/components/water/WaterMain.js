@@ -9,6 +9,7 @@ import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import WaterSensor from "./WaterSensor";
 
 function WaterMain(props) {
   const [{ user, profile }, dispatch] = useStateValue();
@@ -353,6 +354,7 @@ function WaterMain(props) {
           </div>
         </div>
       </div> */}
+      <WaterSensor addWater={addWater}/>
     </div>
   );
 }

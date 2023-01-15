@@ -289,7 +289,7 @@ function Profile() {
       .then((json) => {
         console.log(json.data);
 
-        if(json.data.message!= 'Authorization Error'){
+        if(json.data.message==undefined){
           console.log('hi')
           setStravaData(json.data);
 
