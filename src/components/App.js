@@ -27,6 +27,7 @@ import GroupMain from "./groups/GroupMain";
 // import Games from "./Games"
 import Home from "./Home";
 import StravaMain from "./strava/StravaMain";
+import StravaLoad from "./strava/StravaLoad";
 import NavBottom from "./NavBottom"
 import "../css/App.css";
 import "../css/Login.css";
@@ -192,6 +193,13 @@ function App() {
           <Route path="/daily-intake">
             <Sidebar />
             <DailyIntakePage />
+            <Widgets />
+            <NavBottom />
+          </Route>
+
+          <Route path="/stravaload">
+            <Sidebar />
+            <StravaLoad />
             <Widgets />
             <NavBottom />
           </Route>

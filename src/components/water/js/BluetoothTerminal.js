@@ -1,7 +1,7 @@
 /**
  * Bluetooth Terminal class.
  */
-class BluetoothTerminal {
+export default class BluetoothTerminal {
   /**
    * Create preconfigured Bluetooth Terminal instance.
    * @param {!(number|string)} [serviceUuid=0xFFE0] - Service UUID
@@ -397,6 +397,6 @@ class BluetoothTerminal {
 
 // Export class as a module to support requiring.
 /* istanbul ignore next */
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  module.exports = BluetoothTerminal;
-}
+// if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+//   module.exports = BluetoothTerminal;
+// }

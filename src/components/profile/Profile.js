@@ -276,12 +276,12 @@ function Profile() {
     doubleposts.sort(compareValues("createdAt2", "desc"));
   }
   useEffect(() => {
-    fetch(
-      `https://us-central1-ms-strava.cloudfunctions.net/app/api/users/${profile?.username}/activities`,
+    fetch(`https://us-central1-ms-strava.cloudfunctions.net/app/api/users/${profile?.username}/activities`,
       {
         method: "GET", // or 'PUT'
         headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+         
         },
       }
     )
@@ -292,6 +292,7 @@ function Profile() {
         if(json.data.message==undefined){
           console.log('hi')
           setStravaData(json.data);
+        
 
         }
         
@@ -307,45 +308,80 @@ function Profile() {
     return date.toISOString().substr(11, 8);
   }
 
+  function handleStravaClick(id){
+    console.log(id)
+    fetch(`https://us-central1-ms-strava.cloudfunctions.net/app/api/users/${profile?.username}/activities/${id}/streams`, {
+           method: "GET", // or 'PUT'
+           headers: {
+             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+           },
+          
+         })
+           .then((res) => res.json())
+           .then((json) => {
+             console.log(json);
+             
+             
+            calcEverything(json,id)
+                
+             
+           })
+          
+  }
+  async function calcEverything(json,idd){
+    console.log(idd)
+    let oneMin=await calc1min(json.data.watts.data)
+    let twoMin=await calc2min(json.data.watts.data)
+    console.log(oneMin,twoMin)
+
+    db.collection("users").doc(profile?.username).collection("activities").doc(`${idd}`).get().then((doc)=>{
+      if(!doc.exists){
+        db.collection("users").doc(profile?.username).collection("activities").doc(`${idd}`).set({
+          oneMin:oneMin,
+          twoMin:twoMin
+        })
+
+      }
+    }).then((doc)=>{
+
+    }).catch((err)=>{
+      console.log(err)
+    })
+
+  }
+
+  async function calc1min(watts){
+    let record=0;
+    for(let i=0;i<watts.length;i++){
+      let temp=0;
+      for(let j=i;j<i+60;j++){
+        temp+=watts[j]}
+      if(temp/60>record){
+        record=temp/60;}}
+     return record;
+  }
+  async function calc2min(watts){
+    let record=0;
+    for(let i=0;i<watts.length;i++){
+      let temp=0;
+      let theEnd=watts.length-i
+      if(theEnd>=120){
+        for(let j=i;j<i+120;j++){
+        temp+=watts[j]}
+      if(temp/120>record){
+        record=temp/120;}}
+      }
+     return record;
+  }
+
   return (
     <div>
-      {doubleposts != undefined ? (
+      
         <div>
-          {doubleposts.map((post) => (
-            <Post
-              key={post.RcreatedAt ? post.RcreatedAt : post.data.createdAt}
-              audio={post.data.audio}
-              token={post.data.token}
-              userId={post.data.userId}
-              displayName={post.data.displayName}
-              username={post.data.username}
-              verified={post.data.verified}
-              text={post.data.text}
-              avatar={post.data.avatar}
-              image={post.data.image}
-              createdAt={post.data.createdAt}
-              likes={post.data.likes}
-              comments={post.data.comments}
-              shares={post.data.shares}
-              option1={post.data.option1}
-              option2={post.data.option2}
-              option3={post.data.option3}
-              option4={post.data.option4}
-              votes1={post.data.votes1}
-              votes2={post.data.votes2}
-              votes3={post.data.votes3}
-              votes4={post.data.votes4}
-              Rusername={post.data.Rusername}
-              Rimage={post.data.Rimage}
-              Rtext={post.data.Rtext}
-              Ravatar={post.data.Ravatar}
-              Rtweeter={post.Rtweeter}
-              RcreatedAt={post.RcreatedAt}
-            />
-          ))}
+          
 
           {stravaData?.map((doc) => (
-            <div id="clickable" className="post">
+            <div onClick={()=>{handleStravaClick(doc.id)}} id="clickable" className="post">
               <div className="post__avatar">
                 {/* <Link to={`/profile/${username}`}> */}
                 {profile?.avatar ? (
@@ -444,11 +480,7 @@ function Profile() {
             </div>
           ))}
         </div>
-      ) : (
-        <div className="loading">
-          <p>Loading....</p>
-        </div>
-      )}
+      
     </div>
   );
 }
