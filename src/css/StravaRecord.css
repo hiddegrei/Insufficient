@@ -1,0 +1,12 @@
+.record{
+    display:flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width:fit-content;
+    height: fit-content;
+    padding: 10px;
+}
+.record_elm{
+    display: flex;
+
+}
